@@ -1,0 +1,11 @@
+device-manage/.idea
+device-manage/guns-parent.iml
+device-manage/guns-generator/guns-generator.iml
+device-manage/guns-gateway/guns-generator.iml
+device-manage/guns-core/guns-core.iml
+device-manage/guns-api/guns-api.iml
+device-manage/guns-admin/guns-admin.iml
+device-manage/guns-api/target
+device-manage/guns-core/target
+device-manage/guns-gateway/target
+device-manage/guns-generator/target
