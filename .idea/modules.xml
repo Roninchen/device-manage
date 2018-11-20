@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/guns-api/guns-api.iml" filepath="$PROJECT_DIR$/guns-api/guns-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guns-core/guns-core.iml" filepath="$PROJECT_DIR$/guns-core/guns-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guns-gateway/guns-gateway.iml" filepath="$PROJECT_DIR$/guns-gateway/guns-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guns-generator/guns-generator.iml" filepath="$PROJECT_DIR$/guns-generator/guns-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guns-parent.iml" filepath="$PROJECT_DIR$/guns-parent.iml" />
+    </modules>
+  </component>
+</project>
