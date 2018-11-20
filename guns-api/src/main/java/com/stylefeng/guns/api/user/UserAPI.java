@@ -14,6 +14,5 @@ public interface UserAPI {
     UserInfoModel getUserInfo(int uuid);
 
     UserInfoModel updateUserInfo(UserInfoModel userInfoModel);
-
 }
 
