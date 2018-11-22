@@ -1,6 +1,7 @@
 package com.stylefeng.guns.rest.modular.user;
 
 import com.stylefeng.guns.api.user.UserAPI;
+import com.stylefeng.guns.api.user.vo.RegisterBo;
 import com.stylefeng.guns.api.user.vo.UserInfoModel;
 import com.stylefeng.guns.api.user.vo.UserModel;
 import com.stylefeng.guns.rest.common.CurrentUser;
@@ -14,8 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RequestMapping("/user/")
 @RestController
+@Api(tags = "用户模块", description = "用户模块")
 public class UserController {
 
     @Autowired
@@ -23,30 +28,45 @@ public class UserController {
 
 
     @RequestMapping(value="register",method = RequestMethod.POST)
-    public ResponseVO register(@RequestBody  UserModel userModel){
-        if(userModel.getUsername() == null || userModel.getUsername().trim().length()==0){
+    @ApiOperation(value = "用户注册", notes = "用户注册")
+    public ResponseVO register(@RequestBody RegisterBo registerBo){
+        if(registerBo.getUserName() == null || registerBo.getUserName().trim().length()==0){
             return ResponseVO.serviceFail("用户名不能为空");
         }
-        if(userModel.getPassword() == null || userModel.getPassword().trim().length()==0){
+        if(registerBo.getUserPwd() == null || registerBo.getUserPwd().trim().length()==0){
             return ResponseVO.serviceFail("密码不能为空");
         }
-        if (userModel.getPhone()==null || userModel.getPhone().trim().length()==0){
-            return ResponseVO.serviceFail("手机号不能为空");
+        int register = userAPI.register(registerBo);
+        switch (register){
+            case 0:
+                return ResponseVO.success("注册成功！");
+            case 1:
+                return ResponseVO.serviceFail("姓名和系统id必须对应，用户不是系统用户无权限注册");
+            case 2:
+                return ResponseVO.serviceFail("账号已存在");
+            case 3:
+                return ResponseVO.appFail("操作失败，请重试！");
         }
-        String regex = "\\d{4}$";
-        Pattern p = Pattern.compile(regex);
-        Matcher m = p.matcher(userModel.getCode());
-        boolean isMatch = m.matches();
-        if (!isMatch) {
-            return ResponseVO.serviceFail("验证码格式错误");
-        }
+        return ResponseVO.appFail("操作失败，请重试！");
 
-        boolean isSuccess = userAPI.register(userModel);
-        if(isSuccess){
-            return ResponseVO.success("注册成功");
-        }else{
-            return ResponseVO.serviceFail("注册失败");
-        }
+
+        //        if (userModel.getPhone()==null || userModel.getPhone().trim().length()==0){
+//            return ResponseVO.serviceFail("手机号不能为空");
+//        }
+//        String regex = "\\d{4}$";
+//        Pattern p = Pattern.compile(regex);
+//        Matcher m = p.matcher(userModel.getCode());
+//        boolean isMatch = m.matches();
+//        if (!isMatch) {
+//            return ResponseVO.serviceFail("验证码格式错误");
+//        }
+//
+//        boolean isSuccess = userAPI.register(userModel);
+//        if(isSuccess){
+//            return ResponseVO.success("注册成功");
+//        }else{
+//            return ResponseVO.serviceFail("注册失败");
+//        }
     }
 
     @RequestMapping(value="check",method = RequestMethod.POST)

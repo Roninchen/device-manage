@@ -1,7 +1,7 @@
 package com.stylefeng.guns.rest.common.persistence.dao;
 
-import com.stylefeng.guns.rest.common.persistence.model.History;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.stylefeng.guns.rest.common.persistence.model.History;
 
 /**
  * <p>
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * </p>
  *
  * @author chauncy
- * @since 2018-11-18
+ * @since 2018-11-22
  */
 public interface HistoryMapper extends BaseMapper<History> {
 

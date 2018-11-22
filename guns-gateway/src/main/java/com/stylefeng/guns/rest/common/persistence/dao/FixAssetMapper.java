@@ -1,7 +1,7 @@
 package com.stylefeng.guns.rest.common.persistence.dao;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.stylefeng.guns.rest.common.persistence.model.Device;
+import com.stylefeng.guns.rest.common.persistence.model.FixAsset;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.stylefeng.guns.rest.common.persistence.model.Device;
  * @author chauncy
  * @since 2018-11-22
  */
-public interface DeviceMapper extends BaseMapper<Device> {
+public interface FixAssetMapper extends BaseMapper<FixAsset> {
 
 }

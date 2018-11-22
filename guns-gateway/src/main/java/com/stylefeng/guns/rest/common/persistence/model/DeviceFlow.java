@@ -13,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author chauncy
- * @since 2018-11-18
+ * @since 2018-11-22
  */
 @TableName("device_flow")
 public class DeviceFlow extends Model<DeviceFlow> {

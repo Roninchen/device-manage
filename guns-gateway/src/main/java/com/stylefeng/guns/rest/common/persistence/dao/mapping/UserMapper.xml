@@ -5,7 +5,9 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.stylefeng.guns.rest.common.persistence.model.User">
         <id column="id" property="id" />
+        <result column="uuid" property="uuid" />
         <result column="user_name" property="userName" />
+        <result column="email" property="email" />
         <result column="user_pwd" property="userPwd" />
         <result column="phone" property="phone" />
         <result column="gender" property="gender" />

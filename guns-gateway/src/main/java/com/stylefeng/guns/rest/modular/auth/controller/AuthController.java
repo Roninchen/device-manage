@@ -1,17 +1,21 @@
 package com.stylefeng.guns.rest.modular.auth.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.stylefeng.guns.api.user.UserAPI;
+import com.stylefeng.guns.api.user.vo.UserInfoVo;
 import com.stylefeng.guns.rest.modular.auth.controller.dto.AuthRequest;
 import com.stylefeng.guns.rest.modular.auth.controller.dto.AuthResponse;
+import com.stylefeng.guns.rest.modular.auth.controller.dto.LoginSuccessVo;
 import com.stylefeng.guns.rest.modular.auth.util.JwtTokenUtil;
 import com.stylefeng.guns.rest.modular.user.serviceImpl.UserService;
 import com.stylefeng.guns.rest.modular.vo.ResponseVO;
+import com.stylefeng.guns.rest.common.persistence.model.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * 请求验证的
@@ -19,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author fengshuonan
  * @Date 2017/8/24 14:22
  */
+@Api(tags = "用户登录", description = "用户登录")
 @RestController
 public class AuthController {
 
@@ -30,12 +35,13 @@ public class AuthController {
 
 //    @Resource(name = "simpleValidator")
 //    private IReqValidator reqValidator;
-
+    @ApiOperation(value = "用户登录", notes = "用户登录")
     @PostMapping(value = "${jwt.auth-path}")
-    public ResponseVO createAuthenticationToken(AuthRequest authRequest) {
+    public ResponseVO createAuthenticationToken(@RequestBody AuthRequest authRequest) {
 
         boolean validate = true;
-        int userId = userAPI.login(authRequest.getUserName(),authRequest.getPassword());
+        UserInfoVo user = userAPI.login(authRequest.getEmail(),authRequest.getPassword());
+        int userId = user.getId().intValue();
         if (userId==0){
             validate=false;
         }
@@ -43,7 +49,11 @@ public class AuthController {
             //
             final String randomKey = jwtTokenUtil.getRandomKey();
             final String token = jwtTokenUtil.generateToken(""+userId, randomKey);
-            return ResponseVO.success(new AuthResponse(token, randomKey));
+            LoginSuccessVo loginSuccessVo = new LoginSuccessVo();
+            loginSuccessVo.setAuthResponse(new AuthResponse(token, randomKey));
+            user.setId(0);
+            loginSuccessVo.setUserInfoVo(user);
+            return ResponseVO.success(loginSuccessVo);
         } else {
             return ResponseVO.serviceFail("用户名或密码错误");
         }

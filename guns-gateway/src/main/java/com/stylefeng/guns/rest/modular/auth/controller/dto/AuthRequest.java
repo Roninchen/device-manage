@@ -9,32 +9,10 @@ import lombok.Data;
  * @author fengshuonan
  * @Date 2017/8/24 14:00
  */
+@Data
 public class AuthRequest {
 
-    private String userName;
+    private String email;
     private String password;
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "AuthRequest{" +
-                "userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
 }
