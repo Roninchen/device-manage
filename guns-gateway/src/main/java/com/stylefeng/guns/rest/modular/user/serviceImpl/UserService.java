@@ -11,9 +11,7 @@ import com.stylefeng.guns.rest.common.persistence.dao.UserMapper;
 import com.stylefeng.guns.rest.common.persistence.model.User;
 import com.stylefeng.guns.rest.common.utils.DateUtil;
 import com.stylefeng.guns.rest.common.persistence.model.UserInfo;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -87,8 +85,17 @@ public class UserService implements UserAPI {
     }
 
     @Override
-    public UserInfoModel getUserInfo(int uuid) {
-        return null;
+    public UserInfoVo getUserInfo(int uuid) {
+        //通过id获取user信息
+        User user = userMapper.selectById(uuid);
+        UserInfoVo userInfoVo = new UserInfoVo();
+        userInfoVo.setEmail(user.getEmail());
+        userInfoVo.setGender(user.getGender());
+        userInfoVo.setUserName(user.getUserName());
+        userInfoVo.setPhone(user.getPhone());
+        userInfoVo.setNumber(user.getNumber());
+        userInfoVo.setDepartment(user.getDepartment());
+        return userInfoVo;
     }
 
     @Override

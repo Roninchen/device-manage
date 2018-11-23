@@ -30,7 +30,7 @@ public class SwaggerConfig {
                 .title("并行计算服务 - API接口")
                 .description("REST风格API")
                 .contact(contact)
-                .version("1.0")
+                .version("3.0.0")
                 .build();
         return apiInfo;
     }

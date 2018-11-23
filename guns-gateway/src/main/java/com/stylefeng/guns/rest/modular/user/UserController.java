@@ -3,6 +3,7 @@ package com.stylefeng.guns.rest.modular.user;
 import com.stylefeng.guns.api.user.UserAPI;
 import com.stylefeng.guns.api.user.vo.RegisterBo;
 import com.stylefeng.guns.api.user.vo.UserInfoModel;
+import com.stylefeng.guns.api.user.vo.UserInfoVo;
 import com.stylefeng.guns.api.user.vo.UserModel;
 import com.stylefeng.guns.rest.common.CurrentUser;
 import com.stylefeng.guns.rest.modular.vo.ResponseVO;
@@ -112,7 +113,7 @@ public class UserController {
         if(userId != null && userId.trim().length()>0){
             // 将用户ID传入后端进行查询
             int uuid = Integer.parseInt(userId);
-            UserInfoModel userInfo = userAPI.getUserInfo(uuid);
+            UserInfoVo userInfo = userAPI.getUserInfo(uuid);
             if(userInfo!=null){
                 return ResponseVO.success(userInfo);
             }else{
