@@ -10,7 +10,11 @@ package com.stylefeng.guns.rest.modular.user;
 import com.stylefeng.guns.api.device.DeviceServiceApi;
 import com.stylefeng.guns.api.device.bo.DeviceBorrowBO;
 import com.stylefeng.guns.api.device.vo.DeviceVo;
+import com.stylefeng.guns.api.user.UserAPI;
+import com.stylefeng.guns.api.user.vo.UserInfoModel;
+import com.stylefeng.guns.api.user.vo.UserInfoVo;
 import com.stylefeng.guns.api.vo.ResponseVO;
+import com.stylefeng.guns.rest.common.CurrentUser;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +37,8 @@ public class DeviceController {
 
     @Autowired
     private DeviceServiceApi deviceServiceApi;
+    @Autowired
+    private UserAPI userAPI;
 
     @GetMapping("get")
     public ResponseVO getDeviceByNo(@RequestParam(value = "enterpriseNo") String enterpriseNo){
@@ -48,5 +54,41 @@ public class DeviceController {
     public ResponseVO addEmail(){
         ResponseVO responseVO =deviceServiceApi.addEmail();
         return responseVO;
+    }
+    @GetMapping("recieve")
+    public ResponseVO recieveMessage(){
+        // 获取当前登陆用户
+        String userId = CurrentUser.getCurrentUser();
+        if(userId != null && userId.trim().length()>0){
+            // 将用户ID传入后端进行查询
+            int uuid = Integer.parseInt(userId);
+            UserInfoVo userInfo = userAPI.getUserInfo(uuid);
+            if(userInfo!=null){
+                ResponseVO responseVO = deviceServiceApi.recieveMessage(userInfo.getEmail());
+                return responseVO;
+            }else{
+                return ResponseVO.appFail("用户信息查询失败");
+            }
+        }else{
+            return ResponseVO.serviceFail("用户未登陆");
+        }
+    }
+    @GetMapping("send")
+    public ResponseVO sendMessage(){
+        // 获取当前登陆用户
+        String userId = CurrentUser.getCurrentUser();
+        if(userId != null && userId.trim().length()>0){
+            // 将用户ID传入后端进行查询
+            int uuid = Integer.parseInt(userId);
+            UserInfoVo userInfo = userAPI.getUserInfo(uuid);
+            if(userInfo!=null){
+                ResponseVO responseVO = deviceServiceApi.sendMessage(userInfo.getEmail());
+                return responseVO;
+            }else{
+                return ResponseVO.appFail("用户信息查询失败");
+            }
+        }else{
+            return ResponseVO.serviceFail("用户未登陆");
+        }
     }
 }

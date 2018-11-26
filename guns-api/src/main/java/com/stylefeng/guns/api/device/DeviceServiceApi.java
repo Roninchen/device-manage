@@ -11,4 +11,8 @@ public interface DeviceServiceApi {
     ResponseVO borrowDevice(DeviceBorrowBO deviceBorrowBO);
 
     ResponseVO addEmail();
+
+    ResponseVO recieveMessage(String email);
+
+    ResponseVO sendMessage(String email);
 }

@@ -22,7 +22,9 @@ import com.stylefeng.guns.rest.common.persistence.model.User;
 import com.stylefeng.guns.rest.common.persistence.model.UserInfo;
 import com.stylefeng.guns.rest.common.utils.DateUtil;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,7 +92,7 @@ public class DeviceService implements DeviceServiceApi {
                 .eq("status", 1));
         //借用申请已经发出，无需多次
         if (deviceFlows.size()>0){
-            ResponseVO.serviceFail("借用申请已经发出,无需多次申请!");
+            return ResponseVO.serviceFail("借用申请已经发出,无需多次申请!");
         }
         Long date = DateUtil.getTimeOfEastEight();
         DeviceFlow deviceFlow = new DeviceFlow();
@@ -98,7 +100,7 @@ public class DeviceService implements DeviceServiceApi {
         deviceFlow.setUpdateTime(date);
         deviceFlow.setStatus(1);
         deviceFlow.setRemark(BO.getRemark());
-        deviceFlow.setLendToName(user.getUserName());
+        deviceFlow.setLendToName(borrowUser.getUserName());
         deviceFlow.setLendFromName(fix.getOwner());
         deviceFlow.setDeviceName(fix.getDeviceName());
         deviceFlow.setDeviceId(fix.getEnterpriseNo());
@@ -122,5 +124,24 @@ public class DeviceService implements DeviceServiceApi {
         fixAssetMapper.updateBatch1(fixAssets);
 
         return ResponseVO.success("ok");
+    }
+
+    @Override
+    public ResponseVO recieveMessage(String email) {
+        Set<String> set = new HashSet<>();
+        set.add("update_time");
+        List<DeviceFlow> lend_from = deviceFlowMapper
+            .selectList(new EntityWrapper<DeviceFlow>().eq("lend_from", email).orderDesc(set));
+        lend_from.stream().filter(lf->lf.getStatus()!=4).collect(Collectors.toList());
+        return ResponseVO.success(lend_from);
+    }
+
+    @Override
+    public ResponseVO sendMessage(String email) {
+        Set<String> set = new HashSet<>();
+        set.add("update_time");
+        List<DeviceFlow> lend_from = deviceFlowMapper
+            .selectList(new EntityWrapper<DeviceFlow>().eq("lend_to", email).orderDesc(set));
+        return ResponseVO.success(lend_from);
     }
 }
