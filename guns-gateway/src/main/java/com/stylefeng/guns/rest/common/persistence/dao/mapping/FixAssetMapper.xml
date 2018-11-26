@@ -17,5 +17,18 @@
         <result column="is_fix" property="isFix" />
         <result column="create_time" property="createTime" />
     </resultMap>
+    <update id="updateBatch1" parameterType="java.util.List">
+        update fix_asset
+        set owner_email=
+        <foreach collection="list" item="item" index="index"
+                 separator=" " open="case ID" close="end">
+            when #{item.id} then #{item.ownerEmail}
+        </foreach>
+        where id in
+        <foreach collection="list" index="index" item="item"
+                 separator="," open="(" close=")">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
 
 </mapper>

@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
 
+import lombok.Data;
+
 /**
  * <p>
  * 
@@ -15,6 +17,7 @@ import java.io.Serializable;
  * @author chauncy
  * @since 2018-11-22
  */
+@Data
 @TableName("device_flow")
 public class DeviceFlow extends Model<DeviceFlow> {
 
@@ -29,7 +32,7 @@ public class DeviceFlow extends Model<DeviceFlow> {
      * 设备id
      */
     @TableField("device_id")
-    private Integer deviceId;
+    private String deviceId;
     /**
      * 通用唯一识别码
      */
@@ -44,12 +47,12 @@ public class DeviceFlow extends Model<DeviceFlow> {
      * 借出人id
      */
     @TableField("lend_from")
-    private Long lendFrom;
+    private String lendFrom;
     /**
      * 借入人id
      */
     @TableField("lend_to")
-    private Long lendTo;
+    private String lendTo;
     /**
      * 借出人名字
      */
@@ -79,123 +82,8 @@ public class DeviceFlow extends Model<DeviceFlow> {
      */
     private String remark;
 
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(Integer deviceId) {
-        this.deviceId = deviceId;
-    }
-
-    public String getDeviceUuid() {
-        return deviceUuid;
-    }
-
-    public void setDeviceUuid(String deviceUuid) {
-        this.deviceUuid = deviceUuid;
-    }
-
-    public String getDeviceName() {
-        return deviceName;
-    }
-
-    public void setDeviceName(String deviceName) {
-        this.deviceName = deviceName;
-    }
-
-    public Long getLendFrom() {
-        return lendFrom;
-    }
-
-    public void setLendFrom(Long lendFrom) {
-        this.lendFrom = lendFrom;
-    }
-
-    public Long getLendTo() {
-        return lendTo;
-    }
-
-    public void setLendTo(Long lendTo) {
-        this.lendTo = lendTo;
-    }
-
-    public String getLendFromName() {
-        return lendFromName;
-    }
-
-    public void setLendFromName(String lendFromName) {
-        this.lendFromName = lendFromName;
-    }
-
-    public String getLendToName() {
-        return lendToName;
-    }
-
-    public void setLendToName(String lendToName) {
-        this.lendToName = lendToName;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Long getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Long createTime) {
-        this.createTime = createTime;
-    }
-
-    public Long getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Long updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
     @Override
     protected Serializable pkVal() {
-        return this.id;
-    }
-
-    @Override
-    public String toString() {
-        return "DeviceFlow{" +
-        "id=" + id +
-        ", deviceId=" + deviceId +
-        ", deviceUuid=" + deviceUuid +
-        ", deviceName=" + deviceName +
-        ", lendFrom=" + lendFrom +
-        ", lendTo=" + lendTo +
-        ", lendFromName=" + lendFromName +
-        ", lendToName=" + lendToName +
-        ", status=" + status +
-        ", createTime=" + createTime +
-        ", updateTime=" + updateTime +
-        ", remark=" + remark +
-        "}";
+        return null;
     }
 }

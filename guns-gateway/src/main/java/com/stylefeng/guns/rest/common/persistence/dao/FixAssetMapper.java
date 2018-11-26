@@ -3,6 +3,8 @@ package com.stylefeng.guns.rest.common.persistence.dao;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.stylefeng.guns.rest.common.persistence.model.FixAsset;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -12,5 +14,5 @@ import com.stylefeng.guns.rest.common.persistence.model.FixAsset;
  * @since 2018-11-22
  */
 public interface FixAssetMapper extends BaseMapper<FixAsset> {
-
+    void updateBatch1(List list);
 }

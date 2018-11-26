@@ -6,8 +6,7 @@ import com.stylefeng.guns.rest.modular.auth.controller.dto.AuthResponse;
 import com.stylefeng.guns.rest.modular.auth.controller.dto.LoginSuccessVo;
 import com.stylefeng.guns.rest.modular.auth.util.JwtTokenUtil;
 import com.stylefeng.guns.rest.modular.user.serviceImpl.UserService;
-import com.stylefeng.guns.rest.modular.vo.ResponseVO;
-import com.stylefeng.guns.rest.common.persistence.model.User;
+import com.stylefeng.guns.api.vo.ResponseVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

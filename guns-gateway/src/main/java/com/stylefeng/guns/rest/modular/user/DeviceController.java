@@ -8,13 +8,14 @@
 package com.stylefeng.guns.rest.modular.user;
 
 import com.stylefeng.guns.api.device.DeviceServiceApi;
+import com.stylefeng.guns.api.device.bo.DeviceBorrowBO;
 import com.stylefeng.guns.api.device.vo.DeviceVo;
-import com.stylefeng.guns.rest.modular.vo.ResponseVO;
+import com.stylefeng.guns.api.vo.ResponseVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,15 +28,25 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2018-11-23 22:03
  */
 @RestController
-@RequestMapping("/device/")
+@RequestMapping("/device")
 public class DeviceController {
 
     @Autowired
     private DeviceServiceApi deviceServiceApi;
 
-    @PostMapping("get")
-    public ResponseVO getDeviceByNo(String enterpriseNo){
+    @GetMapping("get")
+    public ResponseVO getDeviceByNo(@RequestParam(value = "enterpriseNo") String enterpriseNo){
         DeviceVo deviceByEnterpriseNo = deviceServiceApi.getDeviceByEnterpriseNo(enterpriseNo);
         return ResponseVO.success(deviceByEnterpriseNo);
+    }
+    @PostMapping("borrow")
+    public ResponseVO borrowDevice(@RequestBody DeviceBorrowBO deviceBorrowBO){
+        ResponseVO responseVO = deviceServiceApi.borrowDevice(deviceBorrowBO);
+        return responseVO;
+    }
+    @GetMapping("emailsadfasdasdasdsda4523")
+    public ResponseVO addEmail(){
+        ResponseVO responseVO =deviceServiceApi.addEmail();
+        return responseVO;
     }
 }

@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
 
+import lombok.Data;
+
 /**
  * <p>
  * 
@@ -16,6 +18,7 @@ import java.io.Serializable;
  * @since 2018-11-22
  */
 @TableName("fix_asset")
+@Data
 public class FixAsset extends Model<FixAsset> {
 
     private static final long serialVersionUID = 1L;
@@ -56,9 +59,21 @@ public class FixAsset extends Model<FixAsset> {
      */
     private Integer status;
     /**
+     * 负责人名字
+     */
+    private String charge;
+    /**
+     * 负责人email
+     */
+    private String chargeEmail;
+    /**
      * 持有人
      */
     private String owner;
+    /**
+     * 持有人email
+     */
+    private String ownerEmail;
     /**
      * 是否为固定资产，1是固定资产
      */
@@ -67,123 +82,8 @@ public class FixAsset extends Model<FixAsset> {
     @TableField("create_time")
     private Long createTime;
 
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getEnterpriseNo() {
-        return enterpriseNo;
-    }
-
-    public void setEnterpriseNo(String enterpriseNo) {
-        this.enterpriseNo = enterpriseNo;
-    }
-
-    public String getDeviceName() {
-        return deviceName;
-    }
-
-    public void setDeviceName(String deviceName) {
-        this.deviceName = deviceName;
-    }
-
-    public String getDeviceModel() {
-        return deviceModel;
-    }
-
-    public void setDeviceModel(String deviceModel) {
-        this.deviceModel = deviceModel;
-    }
-
-    public String getTechniqueTarget() {
-        return techniqueTarget;
-    }
-
-    public void setTechniqueTarget(String techniqueTarget) {
-        this.techniqueTarget = techniqueTarget;
-    }
-
-    public String getManufactor() {
-        return manufactor;
-    }
-
-    public void setManufactor(String manufactor) {
-        this.manufactor = manufactor;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    public Integer getIsFix() {
-        return isFix;
-    }
-
-    public void setIsFix(Integer isFix) {
-        this.isFix = isFix;
-    }
-
-    public Long getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Long createTime) {
-        this.createTime = createTime;
-    }
-
     @Override
     protected Serializable pkVal() {
-        return this.id;
-    }
-
-    @Override
-    public String toString() {
-        return "FixAsset{" +
-        "id=" + id +
-        ", uuid=" + uuid +
-        ", enterpriseNo=" + enterpriseNo +
-        ", deviceName=" + deviceName +
-        ", deviceModel=" + deviceModel +
-        ", techniqueTarget=" + techniqueTarget +
-        ", manufactor=" + manufactor +
-        ", type=" + type +
-        ", status=" + status +
-        ", owner=" + owner +
-        ", isFix=" + isFix +
-        ", createTime=" + createTime +
-        "}";
+        return null;
     }
 }
