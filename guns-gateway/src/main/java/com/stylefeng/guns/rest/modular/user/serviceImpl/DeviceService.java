@@ -120,7 +120,6 @@ public class DeviceService implements DeviceServiceApi {
             return fixAsset;
         }).collect(Collectors.toList());
         fixAssetMapper.updateBatch1(fixAssets);
-
         return ResponseVO.success("ok");
     }
 }
