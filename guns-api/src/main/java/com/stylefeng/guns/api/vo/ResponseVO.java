@@ -41,6 +41,7 @@ public class ResponseVO<M> {
         ResponseVO responseVo = new ResponseVO();
         responseVo.setCode(200);
         responseVo.setMessage(msg);
+        responseVo.setData(null);
 
         return responseVo;
     }
@@ -48,6 +49,7 @@ public class ResponseVO<M> {
         ResponseVO responseVo = new ResponseVO();
         responseVo.setCode(400);
         responseVo.setMessage(msg);
+        responseVo.setData(null);
 
         return responseVo;
     }
@@ -56,8 +58,15 @@ public class ResponseVO<M> {
         ResponseVO responseVo = new ResponseVO();
         responseVo.setCode(999);
         responseVo.setMessage(msg);
+        responseVo.setData(null);
 
         return responseVo;
     }
-
+    public static<M> ResponseVO success(M m,String msg) {
+        ResponseVO responseVo = new ResponseVO();
+        responseVo.setCode(200);
+        responseVo.setData(m);
+        responseVo.setMessage(msg);
+        return responseVo;
+    }
 }

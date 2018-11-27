@@ -9,6 +9,7 @@ package com.stylefeng.guns.rest.modular.user;
 
 import com.stylefeng.guns.api.device.DeviceServiceApi;
 import com.stylefeng.guns.api.device.bo.DeviceBorrowBO;
+import com.stylefeng.guns.api.device.bo.LendBO;
 import com.stylefeng.guns.api.device.vo.DeviceVo;
 import com.stylefeng.guns.api.user.UserAPI;
 import com.stylefeng.guns.api.user.vo.UserInfoModel;
@@ -40,13 +41,35 @@ public class DeviceController {
     @Autowired
     private UserAPI userAPI;
 
+    /**
+     * 获取设备
+     * @param enterpriseNo
+     * @return
+     */
     @GetMapping("get")
     public ResponseVO getDeviceByNo(@RequestParam(value = "enterpriseNo") String enterpriseNo){
         DeviceVo deviceByEnterpriseNo = deviceServiceApi.getDeviceByEnterpriseNo(enterpriseNo);
         return ResponseVO.success(deviceByEnterpriseNo);
     }
+
+    /**
+     * 借用设备
+     * @param deviceBorrowBO
+     * @return
+     */
     @PostMapping("borrow")
     public ResponseVO borrowDevice(@RequestBody DeviceBorrowBO deviceBorrowBO){
+        // 获取当前登陆用户
+        String userId = CurrentUser.getCurrentUser();
+        if(userId != null && userId.trim().length()>0){
+            // 将用户ID传入后端进行查询
+            int uuid = Integer.parseInt(userId);
+            UserInfoVo userInfo = userAPI.getUserInfo(uuid);
+            if(userInfo==null){
+            return ResponseVO.serviceFail("获取用户信息失败");
+            }
+            deviceBorrowBO.setEmail(userInfo.getEmail());
+        }
         ResponseVO responseVO = deviceServiceApi.borrowDevice(deviceBorrowBO);
         return responseVO;
     }
@@ -55,6 +78,11 @@ public class DeviceController {
         ResponseVO responseVO =deviceServiceApi.addEmail();
         return responseVO;
     }
+
+    /**
+     * 收到的消息
+     * @return
+     */
     @GetMapping("recieve")
     public ResponseVO recieveMessage(){
         // 获取当前登陆用户
@@ -73,6 +101,11 @@ public class DeviceController {
             return ResponseVO.serviceFail("用户未登陆");
         }
     }
+
+    /**
+     * 发出的消息
+     * @return
+     */
     @GetMapping("send")
     public ResponseVO sendMessage(){
         // 获取当前登陆用户
@@ -90,5 +123,16 @@ public class DeviceController {
         }else{
             return ResponseVO.serviceFail("用户未登陆");
         }
+    }
+
+    /**
+     * 同意借出设备
+     * @param bo
+     * @return
+     */
+    @PostMapping("lend")
+    public ResponseVO agreeLend(@RequestBody LendBO bo){
+        ResponseVO responseVO = deviceServiceApi.agreeLend(bo);
+        return responseVO;
     }
 }

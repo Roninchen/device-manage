@@ -17,5 +17,18 @@
         <result column="update_time" property="updateTime" />
         <result column="remark" property="remark" />
     </resultMap>
+    <update id="updateBatch1">
+        update device_flow
+        set status=
+        <foreach collection="list" item="item" index="index"
+                 separator=" " open="case ID" close="end">
+            when #{item.id} then #{item.status}
+        </foreach>
+        where id in
+        <foreach collection="list" index="index" item="item"
+                 separator="," open="(" close=")">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
 
 </mapper>

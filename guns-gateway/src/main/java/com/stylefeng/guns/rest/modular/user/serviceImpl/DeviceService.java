@@ -10,6 +10,7 @@ package com.stylefeng.guns.rest.modular.user.serviceImpl;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.stylefeng.guns.api.device.DeviceServiceApi;
 import com.stylefeng.guns.api.device.bo.DeviceBorrowBO;
+import com.stylefeng.guns.api.device.bo.LendBO;
 import com.stylefeng.guns.api.device.vo.DeviceVo;
 import com.stylefeng.guns.api.vo.ResponseVO;
 import com.stylefeng.guns.rest.common.persistence.dao.DeviceFlowMapper;
@@ -143,5 +144,25 @@ public class DeviceService implements DeviceServiceApi {
         List<DeviceFlow> lend_from = deviceFlowMapper
             .selectList(new EntityWrapper<DeviceFlow>().eq("lend_to", email).orderDesc(set));
         return ResponseVO.success(lend_from);
+    }
+
+    @Override
+    public ResponseVO agreeLend(LendBO bo) {
+        List<DeviceFlow> deviceFlows = deviceFlowMapper
+            .selectList(new EntityWrapper<DeviceFlow>().eq("device_id", bo.getEnterpriseNo()).eq("status", 1));
+
+        List<DeviceFlow> flows = deviceFlows.stream().filter(d -> d.getLendTo().equals(bo.getLendTo()))
+            .collect(Collectors.toList());
+        //状态更新为4，4设备已经借给其他人
+        List<DeviceFlow> collect = deviceFlows.stream().filter(d -> !d.getLendTo().equals(bo.getLendTo()))
+            .collect(Collectors.toList());
+        collect.forEach(deviceFlow -> deviceFlow.setStatus(4));
+
+
+        DeviceFlow deviceFlow = flows.get(0);
+        deviceFlow.setStatus(2);
+        collect.add(deviceFlow);
+        deviceFlowMapper.updateBatch1(collect);
+        return ResponseVO.success("借用成功!");
     }
 }
