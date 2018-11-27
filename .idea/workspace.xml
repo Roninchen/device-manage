@@ -1,0 +1,1241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e1096655-9d13-4879-a6ff-f9890ceff10c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/guns-admin/guns-admin.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/beetl/BeetlConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/beetl/ShiroExt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/annotion/BussinessLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/annotion/Permission.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/Const.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/DatasourceEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/cache/Cache.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/cache/CacheKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/dictmap/DeleteDict.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/dictmap/DeptDict.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/dictmap/DictMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/dictmap/LogDict.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/dictmap/MenuDict.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/dictmap/NoticeMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/dictmap/RoleDict.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/dictmap/UserDict.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/dictmap/base/AbstractDictMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/dictmap/base/SystemDict.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/dictmap/factory/DictFieldWarpperFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/factory/ConstantFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/factory/IConstantFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/factory/MutiStrFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/factory/PageFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/state/BizLogType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/state/ExpenseState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/state/LogSucceed.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/state/LogType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/state/ManagerStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/state/MenuOpenStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/state/MenuStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/constant/state/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/exception/BizExceptionEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/common/exception/InvalidKaptchaException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/aop/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/aop/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/aop/LogAop.java" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/aop/LogAop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/config/EhCacheConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/config/SpringSessionConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/config/SwaggerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/config/properties/BeetlProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/config/properties/GunsProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/config/web/BeetlConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/config/web/ShiroConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/config/web/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/util/ApiMenuFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/util/ApiMenuFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/util/Contrast.java" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/util/Contrast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/util/KaptchaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/util/KaptchaUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/intercept/GunsUserFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/intercept/SessionHolderInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/listener/ConfigListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/log/LogManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/log/LogObjectHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/log/factory/LogFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/log/factory/LogTaskFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/modular/system/controller/KaptchaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/modular/system/controller/KaptchaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/modular/system/controller/UserMgrController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/modular/system/controller/UserMgrController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/shiro/ShiroDbRealm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/shiro/ShiroKit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/shiro/ShiroUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/shiro/check/ICheck.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/shiro/check/PermissionCheckFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/shiro/check/PermissionCheckManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/shiro/factory/IShiro.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/shiro/factory/ShiroFactroy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/tag/DictSelectorTag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/main/webapp/static/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/src/main/webapp/static/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/test/java/com/stylefeng/guns/core/base/BaseJunit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/test/java/com/stylefeng/guns/system/BlackBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/src/test/java/com/stylefeng/guns/system/BlackBoardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/test/java/com/stylefeng/guns/system/DeptTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/src/test/java/com/stylefeng/guns/system/DeptTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/test/java/com/stylefeng/guns/system/DictTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/src/test/java/com/stylefeng/guns/system/DictTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/test/java/com/stylefeng/guns/system/MenuTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/src/test/java/com/stylefeng/guns/system/MenuTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/src/test/java/com/stylefeng/guns/system/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/src/test/java/com/stylefeng/guns/system/UserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/target/classes/META-INF/spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/target/classes/META-INF/spring-configuration-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/target/classes/static/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/guns-admin/target/classes/static/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-admin/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-gateway/guns-gateway.iml" beforeDir="false" afterPath="$PROJECT_DIR$/guns-gateway/guns-gateway.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/user/serviceImpl/DeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/user/serviceImpl/DeviceService.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/guns-core/target/" />
+    <ignored path="$PROJECT_DIR$/guns-order/target/" />
+    <ignored path="$PROJECT_DIR$/guns-admin/target/" />
+    <ignored path="$PROJECT_DIR$/guns-api/target/" />
+    <ignored path="$PROJECT_DIR$/guns-gateway/target/" />
+    <ignored path="$PROJECT_DIR$/guns-film/target/" />
+    <ignored path="$PROJECT_DIR$/guns-cinema/target/" />
+    <ignored path="$PROJECT_DIR$/guns-rest/target/" />
+    <ignored path="$PROJECT_DIR$/guns-generator/target/" />
+    <ignored path="$PROJECT_DIR$/guns-user/target/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/guns_parent$GatewayApplication.ic" NAME="GatewayApplication Coverage Results" MODIFIED="1542902994950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/guns_parent$GatewayApplication.coverage" NAME="GatewayApplication Coverage Results" MODIFIED="1542642085220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/user/DeviceController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="120" column="54" selection-start-line="120" selection-start-column="15" selection-end-line="120" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/device/DeviceServiceApi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="329">
+              <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/user/serviceImpl/DeviceService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="78">
+              <caret line="191" column="58" selection-start-line="191" selection-start-column="58" selection-end-line="191" selection-end-column="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/GunsApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="142">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/resources/application.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="356">
+              <caret line="41" column="22" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/guns-admin/src/main/resources/application.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="43" column="27" lean-forward="true" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/DeviceFlowMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/mapping/FixAssetMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="454">
+              <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/mapping/DeviceFlowMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/user/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="107" column="53" selection-start-line="107" selection-start-column="53" selection-end-line="107" selection-end-column="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Long</find>
+      <find>long</find>
+      <find>swagg</find>
+      <find>status</find>
+      <find>INTERNAL_SERVER_ERROR</find>
+      <find>threadlocal</find>
+      <find>null</find>
+    </findStrings>
+    <dirStrings>
+      <dir>C:\IDEA-workspace\device-manage\guns-gateway\src\main</dir>
+      <dir>C:\IDEA-workspace\device-manage</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/guns-cinema/src/test/java/com/stylefeng/guns/generator/EntityGenerator.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/utils/DateUtil.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/auth/converter/WithSignMessageConverter.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/example/ExampleController.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/auth/validator/impl/DbValidator.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/test/java/com/stylefeng/guns/generator/EntityGenerator.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/guns-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/user/vo/RegisterBo.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/auth/controller/dto/AuthRequest.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/persistence/model/User.java" />
+        <option value="$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/user/vo/User.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/UserMapper.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/mapping/DeviceMapper.xml" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/mapping/HistoryMapper.xml" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/mapping/UserInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/mapping/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/user/vo/UserModel.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/auth/controller/dto/LoginSuccessVo.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/model/User.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/auth/controller/AuthController.java" />
+        <option value="$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/user/vo/UserInfoVo.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/GatewayApplication.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/config/SwaggerConfig.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/auth/filter/AuthFilter.java" />
+        <option value="$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/user/UserAPI.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/user/UserController.java" />
+        <option value="$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/device/vo/DeviceVo.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/user/serviceImpl/UserService.java" />
+        <option value="$PROJECT_DIR$/guns-core/src/main/java/com/stylefeng/guns/core/page/PageBT.java" />
+        <option value="$PROJECT_DIR$/guns-core/src/main/java/com/stylefeng/guns/core/base/tips/Tip.java" />
+        <option value="$PROJECT_DIR$/guns-core/src/main/java/com/stylefeng/guns/core/base/tips/ErrorTip.java" />
+        <option value="$PROJECT_DIR$/guns-core/src/main/java/com/stylefeng/guns/core/base/tips/SuccessTip.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/vo/ResponseVO.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/model/FixAsset.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/model/DeviceFlow.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/FixAssetMapper.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/mapping/FixAssetMapper.xml" />
+        <option value="$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/vo/ResponseVO.java" />
+        <option value="$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/device/bo/DeviceBorrowBO.java" />
+        <option value="$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/device/bo/LendBO.java" />
+        <option value="$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/device/DeviceServiceApi.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/DeviceFlowMapper.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/mapping/DeviceFlowMapper.xml" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/user/DeviceController.java" />
+        <option value="$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/user/serviceImpl/DeviceService.java" />
+        <option value="$PROJECT_DIR$/guns-admin/src/main/resources/application.yml" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:/class32/apache-maven-3.5.3" />
+        <option name="userSettingsFile" value="C:\class32\apache-maven-3.5.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="guns-parent" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="guns-parent" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="#JAVA_HOME" />
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="262" />
+    <option name="y" value="67" />
+    <option name="width" value="1435" />
+    <option name="height" value="915" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="guns-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="device-manage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="guns-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="device-manage" type="462c0819:PsiDirectoryNode" />
+              <item name="guns-admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="guns-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="device-manage" type="462c0819:PsiDirectoryNode" />
+              <item name="guns-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="guns-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="device-manage" type="462c0819:PsiDirectoryNode" />
+              <item name="guns-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="guns-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="device-manage" type="462c0819:PsiDirectoryNode" />
+              <item name="guns-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="guns-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="device-manage" type="462c0819:PsiDirectoryNode" />
+              <item name="guns-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="guns" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="guns-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="device-manage" type="462c0819:PsiDirectoryNode" />
+              <item name="guns-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543331147896" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/guns-admin" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.14576034" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="show.run.dashboard.notification" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\IDEA-workspace\device-manage\guns-gateway\src\main\java\com\stylefeng\guns\rest\common\persistence\dao\mapping" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.stylefeng.guns.api.user.vo" />
+      <recent name="com.stylefeng.guns.rest.config" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\IDEA-workspace\device-manage\guns-gateway\src\main\java\com\stylefeng\guns\rest\common\persistence\dao" />
+      <recent name="C:\IDEA-workspace\device-manage\guns-gateway\src\main\java\com\stylefeng\guns\rest\common\utils" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.GunsApplication">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MD5Util" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.stylefeng.guns.core.util.MD5Util" />
+      <module name="guns-core" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.stylefeng.guns.core.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EntityGenerator.entityGenerator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="guns-gateway" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.stylefeng.guns.generator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.stylefeng.guns.generator" />
+      <option name="MAIN_CLASS_NAME" value="com.stylefeng.guns.generator.EntityGenerator" />
+      <option name="METHOD_NAME" value="entityGenerator" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="generator.entityGenerator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.stylefeng.guns.generator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.stylefeng.guns.generator" />
+      <option name="MAIN_CLASS_NAME" value="com.stylefeng.guns.generator" />
+      <option name="METHOD_NAME" value="entityGenerator" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CinemaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="guns-cinema" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.stylefeng.guns.rest.CinemaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FilmApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="guns-film" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.stylefeng.guns.rest.FilmApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="guns-gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.stylefeng.guns.rest.GatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GunsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="guns-admin" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.stylefeng.guns.GunsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GunsRestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="guns-rest" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.stylefeng.guns.rest.GunsRestApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="guns-order" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.stylefeng.guns.rest.OrderApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="guns-user" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.stylefeng.guns.rest.UserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.MD5Util" />
+      <item itemvalue="JUnit.generator.entityGenerator" />
+      <item itemvalue="JUnit.EntityGenerator.entityGenerator" />
+      <item itemvalue="Spring Boot.OrderApplication" />
+      <item itemvalue="Spring Boot.GunsApplication" />
+      <item itemvalue="Spring Boot.GatewayApplication" />
+      <item itemvalue="Spring Boot.FilmApplication" />
+      <item itemvalue="Spring Boot.CinemaApplication" />
+      <item itemvalue="Spring Boot.GunsRestApplication" />
+      <item itemvalue="Spring Boot.UserApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.EntityGenerator.entityGenerator" />
+        <item itemvalue="JUnit.generator.entityGenerator" />
+        <item itemvalue="Application.MD5Util" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e1096655-9d13-4879-a6ff-f9890ceff10c" name="Default" comment="" />
+      <created>1542556104580</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1542556104580</updated>
+      <workItem from="1542556106175" duration="36576000" />
+      <workItem from="1542763332090" duration="1166000" />
+      <workItem from="1542765410373" duration="597000" />
+      <workItem from="1542768010911" duration="15000" />
+      <workItem from="1542861747860" duration="56000" />
+      <workItem from="1542863208987" duration="1025000" />
+      <workItem from="1542864283757" duration="306000" />
+      <workItem from="1542864633977" duration="594000" />
+      <workItem from="1542869751870" duration="383000" />
+      <workItem from="1542874788025" duration="82000" />
+      <workItem from="1542893762433" duration="11616000" />
+      <workItem from="1542943050010" duration="160000" />
+      <workItem from="1542943241345" duration="14351000" />
+      <workItem from="1543047122097" duration="189000" />
+      <workItem from="1543047374923" duration="1036000" />
+      <workItem from="1543062667656" duration="18284000" />
+      <workItem from="1543199334829" duration="231000" />
+      <workItem from="1543199596710" duration="1628000" />
+      <workItem from="1543238153674" duration="4966000" />
+      <workItem from="1543325069178" duration="6001000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="EntityGenerator_entityGenerator - 2018.11.18 at 23h 52m 20s.xml">
+      <configuration name="EntityGenerator.entityGenerator" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EntityGenerator_entityGenerator - 2018.11.22 at 22h 03m 10s.xml">
+      <configuration name="EntityGenerator.entityGenerator" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EntityGenerator_entityGenerator - 2018.11.22 at 22h 05m 55s.xml">
+      <configuration name="EntityGenerator.entityGenerator" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="99262000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19235925" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17705382" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.43201134" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.5084986" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.37393767" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.3286119" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.23937677" />
+      <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="14" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" sideWeight="0.49361023" visible="true" weight="0.11748927" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Coverage" order="9" sideWeight="0.50487804" side_tool="true" visible="true" weight="0.121983916" />
+      <window_info anchor="right" id="Bean Validation" order="10" weight="0.3297587" />
+      <window_info anchor="right" id="Maven" order="11" sideWeight="0.49512196" visible="true" weight="0.16621985" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/user/vo/UserInfoModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Develop/Java/jdk1.8.0_152/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-147">
+          <caret line="1401" column="19" selection-start-line="1401" selection-start-column="19" selection-end-line="1401" selection-end-column="19" />
+          <folding>
+            <element signature="e#55800#55801#0" expanded="true" />
+            <element signature="e#55844#55845#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/config/SwaggerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/GatewayApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+          <folding>
+            <element signature="e#428#429#0" expanded="true" />
+            <element signature="e#497#498#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-core/src/main/java/com/stylefeng/guns/core/page/PageBT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-core/src/main/java/com/stylefeng/guns/core/exception/GunsExceptionEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="802">
+          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/exception/BizExceptionEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="16" column="31" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-core/src/main/java/com/stylefeng/guns/core/base/tips/Tip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-core/src/main/java/com/stylefeng/guns/core/base/tips/ErrorTip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-core/src/main/java/com/stylefeng/guns/core/base/tips/SuccessTip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-actuator/2.0.1.RELEASE/spring-boot-actuator-2.0.1.RELEASE-sources.jar!/org/springframework/boot/actuate/web/trace/servlet/HttpTraceFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.29/tomcat-embed-core-8.5.29.jar!/org/apache/catalina/core/ApplicationFilterChain.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="95" selection-start-line="95" selection-end-line="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.5.RELEASE/spring-web-5.0.5.RELEASE-sources.jar!/org/springframework/web/filter/OncePerRequestFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/jsonwebtoken/jjwt/0.9.0/jjwt-0.9.0.jar!/io/jsonwebtoken/JwtParser.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="55" column="25" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/jsonwebtoken/jjwt/0.9.0/jjwt-0.9.0.jar!/io/jsonwebtoken/impl/DefaultJwtParser.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5078">
+          <caret line="428" column="80" lean-forward="true" selection-start-line="428" selection-start-column="80" selection-end-line="428" selection-end-column="80" />
+          <folding>
+            <element signature="e#19184#19185#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/auth/util/JwtTokenUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="103" column="31" lean-forward="true" selection-start-line="103" selection-start-column="31" selection-end-line="103" selection-end-column="31" />
+          <folding>
+            <element signature="e#915#916#0" expanded="true" />
+            <element signature="e#975#976#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/jsonwebtoken/jjwt/0.9.0/jjwt-0.9.0.jar!/io/jsonwebtoken/ClaimJwtException.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="14" column="8" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/jsonwebtoken/jjwt/0.9.0/jjwt-0.9.0.jar!/io/jsonwebtoken/JwtException.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+          <folding>
+            <element signature="e#225#226#0" expanded="true" />
+            <element signature="e#255#256#0" expanded="true" />
+            <element signature="e#315#316#0" expanded="true" />
+            <element signature="e#352#353#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Develop/Java/jdk1.8.0_152/src.zip!/java/lang/Exception.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="65" column="10" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="10" />
+          <folding>
+            <element signature="e#1663#1664#0" expanded="true" />
+            <element signature="e#1693#1694#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Develop/Java/jdk1.8.0_152/src.zip!/java/lang/Throwable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="126" column="6" lean-forward="true" selection-start-line="126" selection-start-column="6" selection-end-line="126" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/jsonwebtoken/jjwt/0.9.0/jjwt-0.9.0.jar!/io/jsonwebtoken/ExpiredJwtException.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+          <folding>
+            <element signature="e#270#271#0" expanded="true" />
+            <element signature="e#316#317#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.5.RELEASE/spring-web-5.0.5.RELEASE-sources.jar!/org/springframework/http/HttpStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="355" column="25" selection-start-line="355" selection-start-column="4" selection-end-line="355" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-core/src/main/java/com/stylefeng/guns/core/exception/GunsException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-core/src/main/java/com/stylefeng/guns/core/aop/BaseControllerExceptionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Develop/Java/jdk1.8.0_152/src.zip!/java/lang/RuntimeException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1674">
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+          <folding>
+            <element signature="e#1598#1599#0" expanded="true" />
+            <element signature="e#1628#1629#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/aop/GlobalExceptionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/device/vo/DeviceVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/model/FixAsset.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="71" column="25" lean-forward="true" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
+          <folding>
+            <element signature="e#1642#1643#0" expanded="true" />
+            <element signature="e#1669#1670#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/vo.java" />
+    <entry file="file://$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/user/UserAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/user/serviceImpl/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1512">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/model/DeviceFlow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="54" column="18" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
+          <folding>
+            <element signature="e#1615#1616#0" expanded="true" />
+            <element signature="e#1642#1643#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.5.RELEASE/spring-web-5.0.5.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="217" selection-start-line="217" selection-end-line="217" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway.log" />
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/CurrentUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+          <folding>
+            <element signature="e#590#591#0" expanded="true" />
+            <element signature="e#629#630#0" expanded="true" />
+            <element signature="e#686#687#0" expanded="true" />
+            <element signature="e#726#727#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/auth/filter/AuthFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1100">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/vo/ResponseVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1318">
+          <caret line="68" column="35" lean-forward="true" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/device/bo/DeviceBorrowBO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/FixAssetMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="16" column="15" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/mapping/FixAssetMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/mapping/DeviceFlowMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/common/persistence/dao/DeviceFlowMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/user/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="107" column="53" selection-start-line="107" selection-start-column="53" selection-end-line="107" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/device/DeviceServiceApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-api/src/main/java/com/stylefeng/guns/api/device/bo/LendBO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/user/DeviceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="120" column="54" selection-start-line="120" selection-start-column="15" selection-end-line="120" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/core/config/web/WebConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="64" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/java/com/stylefeng/guns/rest/modular/user/serviceImpl/DeviceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="191" column="58" selection-start-line="191" selection-start-column="58" selection-end-line="191" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-admin/src/main/java/com/stylefeng/guns/GunsApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-gateway/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="41" column="22" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/guns-admin/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="43" column="27" lean-forward="true" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>guns-admin</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8 (3)</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: ch.qos.logback:logback-classic:1.2.3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

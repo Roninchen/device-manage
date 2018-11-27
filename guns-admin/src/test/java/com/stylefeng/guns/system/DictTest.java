@@ -1,6 +1,6 @@
 package com.stylefeng.guns.system;
 
-import com.stylefeng.guns.core.base.BaseJunit;
+import com.stylefeng.guns.base.BaseJunit;
 import com.stylefeng.guns.modular.system.dao.DictMapper;
 import com.stylefeng.guns.modular.system.service.IDictService;
 import org.junit.Assert;

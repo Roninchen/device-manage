@@ -12,7 +12,10 @@ import com.stylefeng.guns.api.device.DeviceServiceApi;
 import com.stylefeng.guns.api.device.bo.DeviceBorrowBO;
 import com.stylefeng.guns.api.device.bo.LendBO;
 import com.stylefeng.guns.api.device.vo.DeviceVo;
+import com.stylefeng.guns.api.user.UserAPI;
+import com.stylefeng.guns.api.user.vo.UserInfoVo;
 import com.stylefeng.guns.api.vo.ResponseVO;
+import com.stylefeng.guns.rest.common.CurrentUser;
 import com.stylefeng.guns.rest.common.persistence.dao.DeviceFlowMapper;
 import com.stylefeng.guns.rest.common.persistence.dao.FixAssetMapper;
 import com.stylefeng.guns.rest.common.persistence.dao.UserInfoMapper;
@@ -48,6 +51,8 @@ public class DeviceService implements DeviceServiceApi {
     private UserMapper userMapper;
     @Autowired
     private UserInfoMapper userInfoMapper;
+    @Autowired
+    private UserAPI userAPI;
     @Override
     public DeviceVo getDeviceByEnterpriseNo(String enterpriseNo) {
         FixAsset fixAssetC =new FixAsset();
@@ -148,21 +153,48 @@ public class DeviceService implements DeviceServiceApi {
 
     @Override
     public ResponseVO agreeLend(LendBO bo) {
+        // 获取当前登陆用户
+        String userId = CurrentUser.getCurrentUser();
+        UserInfoVo userInfo = new UserInfoVo();
+        if (userId != null && userId.trim().length() > 0) {
+            // 将用户ID传入后端进行查询
+            int uuid = Integer.parseInt(userId);
+            userInfo = userAPI.getUserInfo(uuid);
+        }else {
+            return ResponseVO.appFail("用户信息查询失败");
+        }
+
         List<DeviceFlow> deviceFlows = deviceFlowMapper
-            .selectList(new EntityWrapper<DeviceFlow>().eq("device_id", bo.getEnterpriseNo()).eq("status", 1));
+            .selectList(new EntityWrapper<DeviceFlow>().eq("device_id", bo.getEnterpriseNo()).eq("status", 1).eq("lend_from",userInfo.getEmail()));
 
-        List<DeviceFlow> flows = deviceFlows.stream().filter(d -> d.getLendTo().equals(bo.getLendTo()))
-            .collect(Collectors.toList());
+        List<DeviceFlow> flows = deviceFlows.stream().filter(d -> d.getLendTo().equals(bo.getLendTo())).collect(Collectors.toList());
         //状态更新为4，4设备已经借给其他人
-        List<DeviceFlow> collect = deviceFlows.stream().filter(d -> !d.getLendTo().equals(bo.getLendTo()))
-            .collect(Collectors.toList());
+        List<DeviceFlow> collect = deviceFlows.stream().filter(d -> !d.getLendTo().equals(bo.getLendTo())).collect(Collectors.toList());
         collect.forEach(deviceFlow -> deviceFlow.setStatus(4));
-
 
         DeviceFlow deviceFlow = flows.get(0);
         deviceFlow.setStatus(2);
         collect.add(deviceFlow);
+
+        FixAsset fixAssetCond = new FixAsset();
+        fixAssetCond.setEnterpriseNo(bo.getEnterpriseNo());
+
+        FixAsset fixAsset = fixAssetMapper.selectOne(fixAssetCond);
+        FixAsset fixAssetUpdate = new FixAsset();
+
+
+        //借用人信息
+        User user = new User();
+        user.setEmail(bo.getLendTo());
+        User borrowUser = userMapper.selectOne(user);
+        fixAssetUpdate.setId(fixAsset.getId());
+        fixAssetUpdate.setOwnerEmail(borrowUser.getEmail());
+        fixAssetUpdate.setOwner(borrowUser.getUserName());
+
+        fixAssetMapper.updateById(fixAssetUpdate);
         deviceFlowMapper.updateBatch1(collect);
+
         return ResponseVO.success("借用成功!");
     }
+
 }

@@ -2,7 +2,7 @@ package com.stylefeng.guns.modular.system.controller;
 
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
-import com.stylefeng.guns.core.config.properties.GunsProperties;
+import com.stylefeng.guns.config.properties.GunsProperties;
 import com.stylefeng.guns.core.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

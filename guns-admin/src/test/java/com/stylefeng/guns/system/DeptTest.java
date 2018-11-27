@@ -1,6 +1,6 @@
 package com.stylefeng.guns.system;
 
-import com.stylefeng.guns.core.base.BaseJunit;
+import com.stylefeng.guns.base.BaseJunit;
 import com.stylefeng.guns.modular.system.dao.DeptMapper;
 import com.stylefeng.guns.modular.system.model.Dept;
 import org.junit.Test;

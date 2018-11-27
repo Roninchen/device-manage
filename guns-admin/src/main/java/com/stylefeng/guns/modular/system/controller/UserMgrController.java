@@ -1,6 +1,6 @@
 package com.stylefeng.guns.modular.system.controller;
 
-import com.stylefeng.guns.core.config.properties.GunsProperties;
+import com.stylefeng.guns.config.properties.GunsProperties;
 import com.stylefeng.guns.core.base.controller.BaseController;
 import com.stylefeng.guns.core.base.tips.Tip;
 import com.stylefeng.guns.core.common.annotion.BussinessLog;

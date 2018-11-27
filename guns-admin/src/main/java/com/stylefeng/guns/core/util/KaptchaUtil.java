@@ -1,6 +1,6 @@
 package com.stylefeng.guns.core.util;
 
-import com.stylefeng.guns.core.config.properties.GunsProperties;
+import com.stylefeng.guns.config.properties.GunsProperties;
 
 /**
  * 验证码工具类
