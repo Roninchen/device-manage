@@ -16,10 +16,6 @@ public class DeviceBorrowBO {
      */
     private String enterpriseNo;
     /**
-     * 借用人email
-     */
-    private String email;
-    /**
      * 借用备注
      */
     private String remark;

@@ -12,10 +12,12 @@ import com.stylefeng.guns.api.device.bo.DeviceBorrowBO;
 import com.stylefeng.guns.api.device.bo.LendBO;
 import com.stylefeng.guns.api.device.vo.DeviceVo;
 import com.stylefeng.guns.api.user.UserAPI;
-import com.stylefeng.guns.api.user.vo.UserInfoModel;
 import com.stylefeng.guns.api.user.vo.UserInfoVo;
+import com.stylefeng.guns.api.vo.ResponseReturn;
 import com.stylefeng.guns.api.vo.ResponseVO;
 import com.stylefeng.guns.rest.common.CurrentUser;
+
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,9 +49,9 @@ public class DeviceController {
      * @return
      */
     @GetMapping("get")
-    public ResponseVO getDeviceByNo(@RequestParam(value = "enterpriseNo") String enterpriseNo){
+    public Map getDeviceByNo(@RequestParam(value = "enterpriseNo") String enterpriseNo){
         DeviceVo deviceByEnterpriseNo = deviceServiceApi.getDeviceByEnterpriseNo(enterpriseNo);
-        return ResponseVO.success(deviceByEnterpriseNo);
+        return ResponseReturn.success(deviceByEnterpriseNo);
     }
 
     /**
@@ -58,25 +60,25 @@ public class DeviceController {
      * @return
      */
     @PostMapping("borrow")
-    public ResponseVO borrowDevice(@RequestBody DeviceBorrowBO deviceBorrowBO){
+    public Map borrowDevice(@RequestBody DeviceBorrowBO deviceBorrowBO){
         // 获取当前登陆用户
         String userId = CurrentUser.getCurrentUser();
+        UserInfoVo userInfo = new UserInfoVo();
         if(userId != null && userId.trim().length()>0){
             // 将用户ID传入后端进行查询
             int uuid = Integer.parseInt(userId);
-            UserInfoVo userInfo = userAPI.getUserInfo(uuid);
+            userInfo = userAPI.getUserInfo(uuid);
             if(userInfo==null){
-            return ResponseVO.serviceFail("获取用户信息失败");
+            return ResponseReturn.failed("获取用户信息失败");
             }
-            deviceBorrowBO.setEmail(userInfo.getEmail());
         }
-        ResponseVO responseVO = deviceServiceApi.borrowDevice(deviceBorrowBO);
-        return responseVO;
+        Map map = deviceServiceApi.borrowDevice(deviceBorrowBO, userInfo.getEmail());
+        return map;
     }
     @GetMapping("emailkmkmihghbhuihb")
-    public ResponseVO addEmail(){
-        ResponseVO responseVO =deviceServiceApi.addEmail();
-        return responseVO;
+    public Map addEmail(){
+        Map map = deviceServiceApi.addEmail();
+        return map;
     }
 
     /**
@@ -84,7 +86,7 @@ public class DeviceController {
      * @return
      */
     @GetMapping("recieve")
-    public ResponseVO recieveMessage(){
+    public Map recieveMessage(){
         // 获取当前登陆用户
         String userId = CurrentUser.getCurrentUser();
         if(userId != null && userId.trim().length()>0){
@@ -92,13 +94,13 @@ public class DeviceController {
             int uuid = Integer.parseInt(userId);
             UserInfoVo userInfo = userAPI.getUserInfo(uuid);
             if(userInfo!=null){
-                ResponseVO responseVO = deviceServiceApi.recieveMessage(userInfo.getEmail());
-                return responseVO;
+                Map map = deviceServiceApi.recieveMessage(userInfo.getEmail());
+                return map;
             }else{
-                return ResponseVO.appFail("用户信息查询失败");
+                return ResponseReturn.failed("用户信息查询失败");
             }
         }else{
-            return ResponseVO.serviceFail("用户未登陆");
+            return ResponseReturn.failed("用户未登陆");
         }
     }
 
@@ -107,7 +109,7 @@ public class DeviceController {
      * @return
      */
     @GetMapping("send")
-    public ResponseVO sendMessage(){
+    public Map sendMessage(){
         // 获取当前登陆用户
         String userId = CurrentUser.getCurrentUser();
         if(userId != null && userId.trim().length()>0){
@@ -115,13 +117,13 @@ public class DeviceController {
             int uuid = Integer.parseInt(userId);
             UserInfoVo userInfo = userAPI.getUserInfo(uuid);
             if(userInfo!=null){
-                ResponseVO responseVO = deviceServiceApi.sendMessage(userInfo.getEmail());
-                return responseVO;
+
+                return deviceServiceApi.sendMessage(userInfo.getEmail());
             }else{
-                return ResponseVO.appFail("用户信息查询失败");
+                return ResponseReturn.failed("用户信息查询失败");
             }
         }else{
-            return ResponseVO.serviceFail("用户未登陆");
+            return ResponseReturn.failed("用户未登陆");
         }
     }
 
@@ -131,8 +133,16 @@ public class DeviceController {
      * @return
      */
     @PostMapping("lend")
-    public ResponseVO agreeLend(@RequestBody LendBO bo){
-        ResponseVO responseVO = deviceServiceApi.agreeLend(bo);
-        return responseVO;
+    public Map agreeLend(@RequestBody LendBO bo){
+       return deviceServiceApi.agreeLend(bo);
+
     }
+
+    @PostMapping("refuse")
+    public Map refuseLend(@RequestBody LendBO bo){
+        return deviceServiceApi.refuseLend(bo);
+    }
+
+
+
 }

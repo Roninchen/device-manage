@@ -1,12 +1,15 @@
 package com.stylefeng.guns.rest.modular.auth.controller;
 
 import com.stylefeng.guns.api.user.vo.UserInfoVo;
+import com.stylefeng.guns.api.vo.ResponseReturn;
 import com.stylefeng.guns.rest.modular.auth.controller.dto.AuthRequest;
 import com.stylefeng.guns.rest.modular.auth.controller.dto.AuthResponse;
 import com.stylefeng.guns.rest.modular.auth.controller.dto.LoginSuccessVo;
 import com.stylefeng.guns.rest.modular.auth.util.JwtTokenUtil;
 import com.stylefeng.guns.rest.modular.user.serviceImpl.UserService;
 import com.stylefeng.guns.api.vo.ResponseVO;
+
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,7 +39,7 @@ public class AuthController {
 //    private IReqValidator reqValidator;
     @ApiOperation(value = "用户登录", notes = "用户登录")
     @PostMapping(value = "${jwt.auth-path}")
-    public ResponseVO createAuthenticationToken(@RequestBody AuthRequest authRequest) {
+    public Map createAuthenticationToken(@RequestBody AuthRequest authRequest) {
 
         boolean validate = true;
         UserInfoVo user = userAPI.login(authRequest.getEmail(),authRequest.getPassword());
@@ -52,9 +55,9 @@ public class AuthController {
             loginSuccessVo.setAuthResponse(new AuthResponse(token, randomKey));
             user.setId(0);
             loginSuccessVo.setUserInfoVo(user);
-            return ResponseVO.success(loginSuccessVo);
+            return ResponseReturn.success(loginSuccessVo);
         } else {
-            return ResponseVO.serviceFail("用户名或密码错误");
+            return ResponseReturn.failed("用户名或密码错误");
         }
     }
 }

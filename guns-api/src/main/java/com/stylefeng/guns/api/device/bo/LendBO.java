@@ -13,4 +13,5 @@ import lombok.Data;
 public class LendBO {
     private String enterpriseNo;
     private String lendTo;
+    private Integer agree;
 }

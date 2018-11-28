@@ -3,19 +3,22 @@ package com.stylefeng.guns.api.device;
 import com.stylefeng.guns.api.device.bo.DeviceBorrowBO;
 import com.stylefeng.guns.api.device.bo.LendBO;
 import com.stylefeng.guns.api.device.vo.DeviceVo;
-import com.stylefeng.guns.api.vo.ResponseVO;
+
+import java.util.Map;
 
 public interface DeviceServiceApi {
 
     DeviceVo getDeviceByEnterpriseNo(String enterpriseNo);
 
-    ResponseVO borrowDevice(DeviceBorrowBO deviceBorrowBO);
+    Map borrowDevice(DeviceBorrowBO deviceBorrowBO,String email);
 
-    ResponseVO addEmail();
+    Map addEmail();
 
-    ResponseVO recieveMessage(String email);
+    Map recieveMessage(String email);
 
-    ResponseVO sendMessage(String email);
+    Map sendMessage(String email);
 
-    ResponseVO agreeLend(LendBO bo);
+    Map agreeLend(LendBO bo);
+
+    Map refuseLend(LendBO bo);
 }
