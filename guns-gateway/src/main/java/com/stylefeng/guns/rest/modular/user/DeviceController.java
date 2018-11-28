@@ -73,7 +73,7 @@ public class DeviceController {
         ResponseVO responseVO = deviceServiceApi.borrowDevice(deviceBorrowBO);
         return responseVO;
     }
-    @GetMapping("emailsadfasdasdasdsda4523")
+    @GetMapping("emailkmkmihghbhuihb")
     public ResponseVO addEmail(){
         ResponseVO responseVO =deviceServiceApi.addEmail();
         return responseVO;

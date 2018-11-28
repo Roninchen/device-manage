@@ -124,6 +124,7 @@ public class DeviceService implements DeviceServiceApi {
             List<UserInfo> us = userInfos.stream().filter(userInfo -> userInfo.getUserName().equals(fixAsset.getOwner())).collect(Collectors.toList());
             if (us.size()>0) {
                 fixAsset.setOwnerEmail(us.get(0).getEmail());
+                fixAsset.setChargeEmail(us.get(0).getEmail());
             }
             return fixAsset;
         }).collect(Collectors.toList());
@@ -166,7 +167,9 @@ public class DeviceService implements DeviceServiceApi {
 
         List<DeviceFlow> deviceFlows = deviceFlowMapper
             .selectList(new EntityWrapper<DeviceFlow>().eq("device_id", bo.getEnterpriseNo()).eq("status", 1).eq("lend_from",userInfo.getEmail()));
-
+        if (deviceFlows.size()<1){
+            return ResponseVO.serviceFail("设备状态不对");
+        }
         List<DeviceFlow> flows = deviceFlows.stream().filter(d -> d.getLendTo().equals(bo.getLendTo())).collect(Collectors.toList());
         //状态更新为4，4设备已经借给其他人
         List<DeviceFlow> collect = deviceFlows.stream().filter(d -> !d.getLendTo().equals(bo.getLendTo())).collect(Collectors.toList());

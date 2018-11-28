@@ -24,6 +24,11 @@
                  separator=" " open="case ID" close="end">
             when #{item.id} then #{item.ownerEmail}
         </foreach>
+        ,charge_email=
+        <foreach collection="list" item="item" index="index"
+                 separator=" " open="case ID" close="end">
+            when #{item.id} then #{item.chargeEmail}
+        </foreach>
         where id in
         <foreach collection="list" index="index" item="item"
                  separator="," open="(" close=")">

@@ -51,8 +51,9 @@ public class UserService implements UserAPI {
     @Override
     public int register(RegisterBo registerBo) {
         List<UserInfo> email = userInfoMapper
-            .selectList(new EntityWrapper<UserInfo>().eq("email", registerBo.getEmail()).eq("user_name",registerBo.getUserName()));
-        //姓名和系统id必须对应，用户不是系统用户无权限注册
+            .selectList(new EntityWrapper<UserInfo>().eq("email", registerBo.getEmail()));
+                //.eq("user_name",registerBo.getUserName()));
+        //系统id必须对应，用户不是系统用户无权限注册
         if (email.size()<1){
             return 1;
         }
