@@ -1,4 +1,4 @@
-package com.stylefeng.guns.modular.system_userinfo.controller;
+package com.stylefeng.guns.modular.system_staff.controller;
 
 import com.stylefeng.guns.core.base.controller.BaseController;
 import org.springframework.stereotype.Controller;
@@ -10,25 +10,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.stylefeng.guns.core.log.LogObjectHolder;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.stylefeng.guns.modular.system.model.UserInfo;
-import com.stylefeng.guns.modular.system_userinfo.service.IUserInfoService;
+import com.stylefeng.guns.modular.system_staff.service.IUserInfoService;
 
 /**
- * 用户信息管理控制器
+ * 员工信息控制器
  *
  * @author fengshuonan
- * @Date 2018-11-29 00:25:04
+ * @Date 2018-11-29 01:04:36
  */
 @Controller
 @RequestMapping("/userInfo")
 public class UserInfoController extends BaseController {
 
-    private String PREFIX = "/system_userinfo/userInfo/";
+    private String PREFIX = "/system_staff/userInfo/";
 
     @Autowired
     private IUserInfoService userInfoService;
 
     /**
-     * 跳转到用户信息管理首页
+     * 跳转到员工信息首页
      */
     @RequestMapping("")
     public String index() {
@@ -36,7 +36,7 @@ public class UserInfoController extends BaseController {
     }
 
     /**
-     * 跳转到添加用户信息管理
+     * 跳转到添加员工信息
      */
     @RequestMapping("/userInfo_add")
     public String userInfoAdd() {
@@ -44,7 +44,7 @@ public class UserInfoController extends BaseController {
     }
 
     /**
-     * 跳转到修改用户信息管理
+     * 跳转到修改员工信息
      */
     @RequestMapping("/userInfo_update/{userInfoId}")
     public String userInfoUpdate(@PathVariable Integer userInfoId, Model model) {
@@ -55,7 +55,7 @@ public class UserInfoController extends BaseController {
     }
 
     /**
-     * 获取用户信息管理列表
+     * 获取员工信息列表
      */
     @RequestMapping(value = "/list")
     @ResponseBody
@@ -64,7 +64,7 @@ public class UserInfoController extends BaseController {
     }
 
     /**
-     * 新增用户信息管理
+     * 新增员工信息
      */
     @RequestMapping(value = "/add")
     @ResponseBody
@@ -74,7 +74,7 @@ public class UserInfoController extends BaseController {
     }
 
     /**
-     * 删除用户信息管理
+     * 删除员工信息
      */
     @RequestMapping(value = "/delete")
     @ResponseBody
@@ -84,7 +84,7 @@ public class UserInfoController extends BaseController {
     }
 
     /**
-     * 修改用户信息管理
+     * 修改员工信息
      */
     @RequestMapping(value = "/update")
     @ResponseBody
@@ -94,7 +94,7 @@ public class UserInfoController extends BaseController {
     }
 
     /**
-     * 用户信息管理详情
+     * 员工信息详情
      */
     @RequestMapping(value = "/detail/{userInfoId}")
     @ResponseBody

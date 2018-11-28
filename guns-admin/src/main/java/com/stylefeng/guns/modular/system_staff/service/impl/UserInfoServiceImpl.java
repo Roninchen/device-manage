@@ -1,8 +1,8 @@
-package com.stylefeng.guns.modular.system_userinfo.service.impl;
+package com.stylefeng.guns.modular.system_staff.service.impl;
 
 import com.stylefeng.guns.modular.system.model.UserInfo;
 import com.stylefeng.guns.modular.system.dao.UserInfoMapper;
-import com.stylefeng.guns.modular.system_userinfo.service.IUserInfoService;
+import com.stylefeng.guns.modular.system_staff.service.IUserInfoService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

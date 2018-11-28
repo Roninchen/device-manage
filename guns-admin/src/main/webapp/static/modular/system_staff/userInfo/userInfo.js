@@ -1,5 +1,5 @@
 /**
- * 用户信息管理管理初始化
+ * 员工信息管理初始化
  */
 var UserInfo = {
     id: "UserInfoTable",	//表格id
@@ -36,12 +36,12 @@ UserInfo.check = function () {
 };
 
 /**
- * 点击添加用户信息管理
+ * 点击添加员工信息
  */
 UserInfo.openAddUserInfo = function () {
     var index = layer.open({
         type: 2,
-        title: '添加用户信息管理',
+        title: '添加员工信息',
         area: ['800px', '420px'], //宽高
         fix: false, //不固定
         maxmin: true,
@@ -51,13 +51,13 @@ UserInfo.openAddUserInfo = function () {
 };
 
 /**
- * 打开查看用户信息管理详情
+ * 打开查看员工信息详情
  */
 UserInfo.openUserInfoDetail = function () {
     if (this.check()) {
         var index = layer.open({
             type: 2,
-            title: '用户信息管理详情',
+            title: '员工信息详情',
             area: ['800px', '420px'], //宽高
             fix: false, //不固定
             maxmin: true,
@@ -68,7 +68,7 @@ UserInfo.openUserInfoDetail = function () {
 };
 
 /**
- * 删除用户信息管理
+ * 删除员工信息
  */
 UserInfo.delete = function () {
     if (this.check()) {
@@ -84,7 +84,7 @@ UserInfo.delete = function () {
 };
 
 /**
- * 查询用户信息管理列表
+ * 查询员工信息列表
  */
 UserInfo.search = function () {
     var queryData = {};

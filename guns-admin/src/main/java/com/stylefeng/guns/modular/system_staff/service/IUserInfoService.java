@@ -1,4 +1,4 @@
-package com.stylefeng.guns.modular.system_userinfo.service;
+package com.stylefeng.guns.modular.system_staff.service;
 
 import com.stylefeng.guns.modular.system.model.UserInfo;
 import com.baomidou.mybatisplus.service.IService;

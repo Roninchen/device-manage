@@ -1,5 +1,5 @@
 /**
- * 初始化用户信息管理详情对话框
+ * 初始化员工信息详情对话框
  */
 var UserInfoInfoDlg = {
     userInfoInfoData : {}
