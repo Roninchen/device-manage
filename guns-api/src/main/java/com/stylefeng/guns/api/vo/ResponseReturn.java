@@ -45,7 +45,7 @@ public class ResponseReturn {
      * @return
      */
     public static Map success(@NonNull Object o) {
-        return responseReturn(200,"成功",o);
+        return responseReturn(200,"成功",null);
     }
 
     /**
