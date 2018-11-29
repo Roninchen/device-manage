@@ -1,16 +1,21 @@
 package com.stylefeng.guns.modular.system_userinfo.controller;
 
 import com.stylefeng.guns.core.base.controller.BaseController;
+import com.stylefeng.guns.core.base.tips.ErrorTip;
+import com.stylefeng.guns.util.ExcelUtil;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.stylefeng.guns.core.log.LogObjectHolder;
-import org.springframework.web.bind.annotation.RequestParam;
 import com.stylefeng.guns.modular.system.model.UserInfo;
 import com.stylefeng.guns.modular.system_userinfo.service.IUserInfoService;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * 用户信息管理控制器
@@ -43,13 +48,18 @@ public class UserInfoController extends BaseController {
         return PREFIX + "userInfo_add.html";
     }
 
+    @RequestMapping("/userInfo_adds")
+    public String userInfosAdd() {
+        return PREFIX + "userInfo_adds.html";
+    }
+
     /**
      * 跳转到修改用户信息管理
      */
     @RequestMapping("/userInfo_update/{userInfoId}")
     public String userInfoUpdate(@PathVariable Integer userInfoId, Model model) {
         UserInfo userInfo = userInfoService.selectById(userInfoId);
-        model.addAttribute("item",userInfo);
+        model.addAttribute("item", userInfo);
         LogObjectHolder.me().set(userInfo);
         return PREFIX + "userInfo_edit.html";
     }
@@ -70,6 +80,27 @@ public class UserInfoController extends BaseController {
     @ResponseBody
     public Object add(UserInfo userInfo) {
         userInfoService.insert(userInfo);
+        return SUCCESS_TIP;
+    }
+
+    /*
+     *上传文件
+     */
+    @Transactional
+    @PostMapping(value = "/adds")
+    @ResponseBody
+    public Object adds(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+
+        if (multipartFile.isEmpty()) {
+            return new ErrorTip(500, "文件错误");
+        }
+
+
+        List<UserInfo> userInfos = ExcelUtil.resolveStream(multipartFile.getInputStream(), multipartFile.getOriginalFilename(), UserInfo.class);
+
+        userInfoService.insertBatch(userInfos);
+
+
         return SUCCESS_TIP;
     }
 

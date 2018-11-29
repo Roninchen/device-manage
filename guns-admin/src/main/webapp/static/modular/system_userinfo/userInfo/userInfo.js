@@ -8,6 +8,10 @@ var UserInfo = {
     layerIndex: -1
 };
 
+var FileInfo = {
+    file:null
+}
+
 /**
  * 初始化表格的列
  */
@@ -50,6 +54,18 @@ UserInfo.openAddUserInfo = function () {
     this.layerIndex = index;
 };
 
+UserInfo.openAddUserInfos = function () {
+    var index = layer.open({
+        type:2,
+        title:"员工批量导入",
+        area:['400px','280px'],
+        fix:false,
+        maxmin: true,
+        content:Feng.ctxPath + '/userInfo/userInfo_adds'
+    });
+    this.layerIndex = index;
+};
+
 /**
  * 打开查看用户信息管理详情
  */
@@ -82,6 +98,7 @@ UserInfo.delete = function () {
         ajax.start();
     }
 };
+
 
 /**
  * 查询用户信息管理列表
