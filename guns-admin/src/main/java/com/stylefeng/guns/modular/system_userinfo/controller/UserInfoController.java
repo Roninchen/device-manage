@@ -5,6 +5,7 @@ import com.stylefeng.guns.core.base.tips.ErrorTip;
 import com.stylefeng.guns.util.ExcelUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -97,6 +99,10 @@ public class UserInfoController extends BaseController {
 
 
         List<UserInfo> userInfos = ExcelUtil.resolveStream(multipartFile.getInputStream(), multipartFile.getOriginalFilename(), UserInfo.class);
+
+        if (CollectionUtils.isEmpty(userInfos)) {
+            return new ErrorTip(500,"没有数据");
+        }
 
         userInfoService.insertBatch(userInfos);
 
