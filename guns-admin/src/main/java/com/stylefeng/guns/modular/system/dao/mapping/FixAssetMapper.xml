@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.FixAssetMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.FixAsset">
+        <id column="id" property="id" />
+        <result column="uuid" property="uuid" />
+        <result column="enterprise_no" property="enterpriseNo" />
+        <result column="device_name" property="deviceName" />
+        <result column="device_model" property="deviceModel" />
+        <result column="technique_target" property="techniqueTarget" />
+        <result column="manufactor" property="manufactor" />
+        <result column="type" property="type" />
+        <result column="status" property="status" />
+        <result column="charge" property="charge" />
+        <result column="charge_email" property="chargeEmail" />
+        <result column="owner" property="owner" />
+        <result column="owner_email" property="ownerEmail" />
+        <result column="is_fix" property="isFix" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="device_status" property="deviceStatus" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, uuid, enterprise_no, device_name, device_model, technique_target, manufactor, type, status, charge, charge_email, owner, owner_email, is_fix, create_time, update_time, device_status
+    </sql>
+
+</mapper>

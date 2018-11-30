@@ -1,0 +1,40 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="enterpriseNo" name="企业编号" underline="true"/>
+                            <#input id="deviceName" name="设备名称" underline="true"/>
+                            <#input id="deviceModel" name="型号" underline="true"/>
+                            <#input id="techniqueTarget" name="技术指标" underline="true"/>
+                            <#input id="manufactor" name="国别厂家" underline="true"/>
+                            <#input id="type" name="设备分类，1为计量设备" underline="true"/>
+                            <#input id="status" name="管理状态,0为封存，1为已领用"/>
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="charge" name="负责人名字" underline="true"/>
+                            <#input id="chargeEmail" name="负责人email" underline="true"/>
+                            <#input id="owner" name="持有人" underline="true"/>
+                            <#input id="ownerEmail" name="持有人email" underline="true"/>
+                            <#input id="isFix" name="是否为固定资产，1是固定资产" underline="true"/>
+                            <#input id="createTime" name="" underline="true"/>
+                            <#input id="updateTime" name="更新时间" underline="true"/>
+                            <#input id="deviceStatus" name="设备状态" underline="true" type="number" min="1" max="5"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="FixAssetInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="FixAssetInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system_device/fixAsset/fixAsset_info.js"></script>
+@}
