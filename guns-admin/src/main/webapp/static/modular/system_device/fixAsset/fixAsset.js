@@ -55,7 +55,7 @@ FixAsset.openAddFixAsset = function () {
     var index = layer.open({
         type: 2,
         title: '添加设备',
-        area: ['800px', '420px'], //宽高
+        area: ['900px', '520px'], //宽高
         fix: false, //不固定
         maxmin: true,
         content: Feng.ctxPath + '/fixAsset/fixAsset_add'

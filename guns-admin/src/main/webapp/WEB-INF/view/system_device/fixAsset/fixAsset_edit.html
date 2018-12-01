@@ -3,17 +3,23 @@
     <div class="ibox-content">
         <div class="form-horizontal">
 
+            <input id="id" name="" value="${item.id}"  type="hidden"/>
+            <input id="uuid" name="" value="${item.uuid}" type="hidden"/>
+            <input id="updateTime" name="更新时间" value="${item.updateTime}"  type="hidden"/>
             <div class="row">
                 <div class="col-sm-6 b-r">
-                            <#input id="id" name="" value="${item.id}" underline="true"/>
-                            <#input id="uuid" name="" value="${item.uuid}" underline="true"/>
+
                             <#input id="enterpriseNo" name="企业编号" value="${item.enterpriseNo}" underline="true"/>
                             <#input id="deviceName" name="设备名称" value="${item.deviceName}" underline="true"/>
                             <#input id="deviceModel" name="型号" value="${item.deviceModel}" underline="true"/>
                             <#input id="techniqueTarget" name="技术指标" value="${item.techniqueTarget}" underline="true"/>
                             <#input id="manufactor" name="国别厂家" value="${item.manufactor}" underline="true"/>
                             <#input id="type" name="设备分类，1为计量设备" value="${item.type}" underline="true"/>
-                            <#input id="status" name="管理状态,0为封存，1为已领用" value="${item.status}" />
+                            <!--<#input id="status" name="管理状态,0为封存，1为已领用" value="${item.status}" />-->
+                    <#select id="status" name="管理状态" underline="true">
+                    <option value="0">封存</option>
+                    <option value="1">已领用</option>
+                    </#select>
                 </div>
 
                 <div class="col-sm-6">
@@ -23,7 +29,6 @@
                             <#input id="ownerEmail" name="持有人email" value="${item.ownerEmail}" underline="true"/>
                             <#input id="isFix" name="是否为固定资产，1是固定资产" value="${item.isFix}" underline="true"/>
                             <#input id="createTime" name="" value="${item.createTime}" underline="true"/>
-                            <#input id="updateTime" name="更新时间" value="${item.updateTime}" underline="true"/>
                             <#input id="deviceStatus" name="设备状态：1合格，2限用，3准用，4禁用，5停用" value="${item.deviceStatus}" />
                 </div>
             </div>

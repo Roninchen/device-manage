@@ -130,5 +130,5 @@ FixAssetInfoDlg.editSubmit = function() {
 }
 
 $(function() {
-
+    $("#status").val($("#statusValue").val());
 });
