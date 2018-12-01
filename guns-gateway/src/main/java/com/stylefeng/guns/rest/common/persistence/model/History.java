@@ -67,6 +67,8 @@ public class History extends Model<History> {
     @TableField("create_time")
     private Long createTime;
 
+    private String connectPersonDepartment;
+
     @Override
     protected Serializable pkVal() {
         return null;

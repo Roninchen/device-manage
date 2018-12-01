@@ -133,6 +133,9 @@ public class DeviceController {
 
     @GetMapping("like_search")
     public Map likeSearch(String context){
+        if (context==null || context.trim()==""){
+            return ResponseReturn.failed("输入不能为空");
+        }
         Map map = deviceServiceApi.likeSearch(context);
         return map;
     }
@@ -144,8 +147,17 @@ public class DeviceController {
     }
 
     @GetMapping("history")
-    public Map history(){
-        Map history = deviceServiceApi.history();
+    public Map history(String enterpriseNo){
+        if (enterpriseNo==null || enterpriseNo.trim()==""){
+            return ResponseReturn.failed("设备id不能为空");
+        }
+        Map history = deviceServiceApi.history(enterpriseNo);
+        return history;
+    }
+
+    @GetMapping("op_history")
+    public Map opHistory(){
+        Map history = deviceServiceApi.opHistory();
         return history;
     }
 

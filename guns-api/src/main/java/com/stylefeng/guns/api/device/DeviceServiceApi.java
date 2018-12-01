@@ -31,5 +31,7 @@ public interface DeviceServiceApi {
 
     Map hold(PageBO pageBO);
 
-    Map history();
+    Map history(String enterpriseNo);
+
+    Map opHistory();
 }

@@ -87,7 +87,7 @@ public class DeviceService implements DeviceServiceApi {
         deviceVo.setDeviceStatus(fixAsset.getDeviceStatus());
         deviceVo.setCharge(fixAsset.getCharge());
         deviceVo.setOwnerDepartment(userMapper.selectByEmail(fixAsset.getOwnerEmail()).getDepartment());
-        deviceVo.setOwnerDepartment(userMapper.selectByEmail(fixAsset.getChargeEmail()).getDepartment());
+        deviceVo.setChargeDepartment(userMapper.selectByEmail(fixAsset.getChargeEmail()).getDepartment());
 
         return deviceVo;
     }
@@ -250,6 +250,7 @@ public class DeviceService implements DeviceServiceApi {
             history.setConnectPersonName(borrowUser.getUserName());
             history.setType(2);
             history.setOperator(userInfo.getEmail());
+            history.setConnectPersonDepartment(borrowUser.getDepartment());
 
             fixAssetMapper.updateById(fixAssetUpdate);
             deviceFlowMapper.updateBatch1(collect);
@@ -373,7 +374,7 @@ public class DeviceService implements DeviceServiceApi {
     }
 
     @Override
-    public Map history() {
+    public Map history(String enterpriseNo) {
         // 获取当前登陆用户
         String userId = CurrentUser.getCurrentUser();
         UserInfoVo userInfo = new UserInfoVo();
@@ -385,7 +386,24 @@ public class DeviceService implements DeviceServiceApi {
             return ResponseReturn.failed("用户信息查询失败");
         }
         List<History> histories = historyMapper
-            .selectList(new EntityWrapper<History>().eq("operator", userInfo.getEmail()).orderBy("create_time", false));
+            .selectList(new EntityWrapper<History>().eq("device_id",enterpriseNo).eq("type",2).orderBy("create_time", false));
+        return ResponseReturn.success(histories);
+    }
+
+    @Override
+    public Map opHistory() {
+        // 获取当前登陆用户
+        String userId = CurrentUser.getCurrentUser();
+        UserInfoVo userInfo = new UserInfoVo();
+        if (userId != null && userId.trim().length() > 0) {
+            // 将用户ID传入后端进行查询
+            int uuid = Integer.parseInt(userId);
+            userInfo = userAPI.getUserInfo(uuid);
+        }else {
+            return ResponseReturn.failed("用户信息查询失败");
+        }
+        List<History> histories = historyMapper
+            .selectList(new EntityWrapper<History>().eq("operator",userInfo.getEmail()).orderBy("create_time", false));
         return ResponseReturn.success(histories);
     }
 
