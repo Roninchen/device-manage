@@ -9,3 +9,4 @@ device-manage/guns-api/target
 device-manage/guns-core/target
 device-manage/guns-gateway/target
 device-manage/guns-generator/target
+.idea/

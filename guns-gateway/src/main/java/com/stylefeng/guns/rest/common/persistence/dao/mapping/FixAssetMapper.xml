@@ -35,5 +35,27 @@
             #{item.id,jdbcType=BIGINT}
         </foreach>
     </update>
+    <select id="likeSearch" resultType="com.stylefeng.guns.api.device.vo.HomepageVO">
+        SELECT
+            enterprise_no as enterpriseNo,
+            device_name as deviceName,
+            device_model as deviceModel,
+            technique_target as techniqueTarget,
+            manufactor as manufactor,
+            charge as charge,
+            owner as owner
+        FROM
+            fix_asset f
+        WHERE
+            (
+                    f.`enterprise_no` LIKE CONCAT('%', #{context}, '%')
+                    OR f.`device_name` LIKE CONCAT('%', #{context}, '%')
+                    OR f.device_model LIKE CONCAT('%', #{context}, '%')
+                    OR f.technique_target LIKE CONCAT('%', #{context}, '%')
+                    OR f.manufactor LIKE CONCAT('%', #{context}, '%')
+                    OR f.owner LIKE CONCAT('%', #{context}, '%')
+                    OR f.charge LIKE CONCAT('%', #{context}, '%')
+                )
+    </select>
 
 </mapper>

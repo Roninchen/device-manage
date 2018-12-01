@@ -15,5 +15,12 @@
         <result column="department" property="department" />
         <result column="create_time" property="createTime" />
     </resultMap>
+    <select id="selectByEmail" resultType="com.stylefeng.guns.rest.common.persistence.model.User">
+        SELECT
+            *
+        FROM
+            `user_info` u
+        WHERE u.email = #{email}
+    </select>
 
 </mapper>

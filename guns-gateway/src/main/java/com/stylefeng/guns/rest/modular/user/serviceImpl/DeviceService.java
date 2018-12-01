@@ -8,25 +8,32 @@
 package com.stylefeng.guns.rest.modular.user.serviceImpl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.stylefeng.guns.api.device.DeviceServiceApi;
 import com.stylefeng.guns.api.device.bo.DeviceBorrowBO;
 import com.stylefeng.guns.api.device.bo.LendBO;
+import com.stylefeng.guns.api.device.bo.PageBO;
 import com.stylefeng.guns.api.device.vo.DeviceVo;
+import com.stylefeng.guns.api.device.vo.HomepageVO;
 import com.stylefeng.guns.api.user.UserAPI;
 import com.stylefeng.guns.api.user.vo.UserInfoVo;
 import com.stylefeng.guns.api.vo.ResponseReturn;
-import com.stylefeng.guns.api.vo.ResponseVO;
 import com.stylefeng.guns.rest.common.CurrentUser;
 import com.stylefeng.guns.rest.common.persistence.dao.DeviceFlowMapper;
 import com.stylefeng.guns.rest.common.persistence.dao.FixAssetMapper;
+import com.stylefeng.guns.rest.common.persistence.dao.HistoryMapper;
 import com.stylefeng.guns.rest.common.persistence.dao.UserInfoMapper;
 import com.stylefeng.guns.rest.common.persistence.dao.UserMapper;
 import com.stylefeng.guns.rest.common.persistence.model.DeviceFlow;
 import com.stylefeng.guns.rest.common.persistence.model.FixAsset;
+import com.stylefeng.guns.rest.common.persistence.model.History;
 import com.stylefeng.guns.rest.common.persistence.model.User;
 import com.stylefeng.guns.rest.common.persistence.model.UserInfo;
 import com.stylefeng.guns.rest.common.utils.DateUtil;
+import com.stylefeng.guns.rest.modular.es.FixAssetInfo;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -55,6 +62,8 @@ public class DeviceService implements DeviceServiceApi {
     private UserInfoMapper userInfoMapper;
     @Autowired
     private UserAPI userAPI;
+    @Autowired
+    private HistoryMapper historyMapper;
     @Override
     public DeviceVo getDeviceByEnterpriseNo(String enterpriseNo) {
         FixAsset fixAssetC =new FixAsset();
@@ -74,11 +83,29 @@ public class DeviceService implements DeviceServiceApi {
         deviceVo.setIsFix(fixAsset.getIsFix());
         deviceVo.setEnterpriseNo(fixAsset.getEnterpriseNo());
         deviceVo.setDeviceName(fixAsset.getDeviceName());
+        deviceVo.setUpdateTime(fixAsset.getUpdateTime());
+        deviceVo.setDeviceStatus(fixAsset.getDeviceStatus());
+        deviceVo.setCharge(fixAsset.getCharge());
+        deviceVo.setOwnerDepartment(userMapper.selectByEmail(fixAsset.getOwnerEmail()).getDepartment());
+        deviceVo.setOwnerDepartment(userMapper.selectByEmail(fixAsset.getChargeEmail()).getDepartment());
+
         return deviceVo;
     }
 
     @Override
-    public Map borrowDevice(DeviceBorrowBO BO,String email) {
+    public Map borrowDevice(DeviceBorrowBO BO) {
+        // 获取当前登陆用户
+        String userId = CurrentUser.getCurrentUser();
+        UserInfoVo userInfo = new UserInfoVo();
+        if(userId != null && userId.trim().length()>0){
+            // 将用户ID传入后端进行查询
+            int uuid = Integer.parseInt(userId);
+            userInfo = userAPI.getUserInfo(uuid);
+            if(userInfo==null){
+                return ResponseReturn.failed("获取用户信息失败");
+            }
+        }
+        String email = userInfo.getEmail();
         FixAsset fixAsset = new FixAsset();
         fixAsset.setEnterpriseNo(BO.getEnterpriseNo());
         FixAsset fix = fixAssetMapper.selectOne(fixAsset);
@@ -114,7 +141,21 @@ public class DeviceService implements DeviceServiceApi {
         deviceFlow.setDeviceId(fix.getEnterpriseNo());
         deviceFlow.setLendFrom(fix.getOwnerEmail());
         deviceFlow.setLendTo(user.getEmail());
+
+        //历史记录
+        History history = new History();
+        history.setConnectPerson(fix.getOwnerEmail());
+        history.setTypeName("发起借用操作");
+        history.setOperatorName(userInfo.getUserName());
+        history.setDeviceName(fix.getDeviceName());
+        history.setDeviceId(fix.getEnterpriseNo());
+        history.setCreateTime(DateUtil.getTimeOfEastEight());
+        history.setConnectPersonName(fix.getOwner());
+        history.setType(1);
+        history.setOperator(userInfo.getEmail());
+
         deviceFlowMapper.insert(deviceFlow);
+        historyMapper.insert(history);
         return ResponseReturn.success("申请已发出,可以联系对方及时处理");
     }
 
@@ -196,9 +237,23 @@ public class DeviceService implements DeviceServiceApi {
             fixAssetUpdate.setId(fixAsset.getId());
             fixAssetUpdate.setOwnerEmail(borrowUser.getEmail());
             fixAssetUpdate.setOwner(borrowUser.getUserName());
+            fixAssetUpdate.setUpdateTime(DateUtil.getTimeOfEastEight());
+
+            //历史记录
+            History history = new History();
+            history.setConnectPerson(borrowUser.getEmail());
+            history.setTypeName("同意借用操作");
+            history.setOperatorName(userInfo.getUserName());
+            history.setDeviceName(deviceFlow.getDeviceName());
+            history.setDeviceId(deviceFlow.getDeviceId());
+            history.setCreateTime(DateUtil.getTimeOfEastEight());
+            history.setConnectPersonName(borrowUser.getUserName());
+            history.setType(2);
+            history.setOperator(userInfo.getEmail());
 
             fixAssetMapper.updateById(fixAssetUpdate);
             deviceFlowMapper.updateBatch1(collect);
+            historyMapper.insert(history);
             return ResponseReturn.success("借用成功!");
         }else{
             List<DeviceFlow> deviceFlows = deviceFlowMapper
@@ -214,7 +269,21 @@ public class DeviceService implements DeviceServiceApi {
             DeviceFlow deviceFlow = new DeviceFlow();
             deviceFlow.setId(collect.get(0).getId());
             deviceFlow.setStatus(3);
+
+            //历史记录
+            History history = new History();
+            history.setConnectPerson(deviceFlow.getLendTo());
+            history.setTypeName("拒绝借用操作");
+            history.setOperatorName(userInfo.getUserName());
+            history.setDeviceName(deviceFlow.getDeviceName());
+            history.setDeviceId(deviceFlow.getDeviceId());
+            history.setCreateTime(DateUtil.getTimeOfEastEight());
+            history.setConnectPersonName(deviceFlow.getLendToName());
+            history.setType(3);
+            history.setOperator(userInfo.getEmail());
+
             deviceFlowMapper.updateById(deviceFlow);
+            historyMapper.insert(history);
             return ResponseReturn.success("拒绝成功");
         }
     }
@@ -247,6 +316,112 @@ public class DeviceService implements DeviceServiceApi {
         deviceFlow.setStatus(3);
         deviceFlowMapper.updateById(deviceFlow);
         return ResponseReturn.success("拒绝成功");
+    }
+
+    @Override
+    public Map getAllFixAsset2AssertInfo() {
+        List<FixAsset> fixAssets = fixAssetMapper.selectList(null);
+        List<FixAssetInfo> fixAssetInfos = new ArrayList<>();
+        fixAssets.forEach(fixAsset -> fixAssetInfos.add(poToAssetInfo(fixAsset)));
+        Map<String,List<FixAssetInfo>> map = new HashMap<>();
+        map.put("fixAssets",fixAssetInfos);
+        return map;
+    }
+
+    @Override
+    public Map homepage(PageBO bo) {
+        Page page = new Page();
+        page.setCurrent(bo.getPageNo());
+        page.setSize(bo.getPageSize());
+        List<FixAsset> fixAssets = fixAssetMapper.selectPage(page, null);
+        List<HomepageVO> list = fixAssets.stream().map(DeviceService::fixAsset2Vo).collect(Collectors.toList());
+        page.setRecords(list);
+
+        return ResponseReturn.success(page);
+    }
+
+    @Override
+    public Map likeSearch(String context) {
+        Page page = new Page<>();
+        page.setSize(100);
+        page.setCurrent(1);
+        List<HomepageVO> homepageVOPage = fixAssetMapper.likeSearch(page, context);
+        page.setRecords(homepageVOPage);
+        return ResponseReturn.success(page);
+    }
+
+    @Override
+    public Map hold(PageBO pageBO) {
+        // 获取当前登陆用户
+        String userId = CurrentUser.getCurrentUser();
+        UserInfoVo userInfo = new UserInfoVo();
+        if (userId != null && userId.trim().length() > 0) {
+            // 将用户ID传入后端进行查询
+            int uuid = Integer.parseInt(userId);
+            userInfo = userAPI.getUserInfo(uuid);
+        }else {
+            return ResponseReturn.failed("用户信息查询失败");
+        }
+        Page page = new Page();
+        page.setCurrent(pageBO.getPageNo());
+        page.setSize(pageBO.getPageSize());
+
+        List<FixAsset> owner_email = fixAssetMapper
+            .selectPage(page,new EntityWrapper<FixAsset>().eq("owner_email", userInfo.getEmail()));
+        page.setRecords(owner_email);
+        return ResponseReturn.success(page);
+    }
+
+    @Override
+    public Map history() {
+        // 获取当前登陆用户
+        String userId = CurrentUser.getCurrentUser();
+        UserInfoVo userInfo = new UserInfoVo();
+        if (userId != null && userId.trim().length() > 0) {
+            // 将用户ID传入后端进行查询
+            int uuid = Integer.parseInt(userId);
+            userInfo = userAPI.getUserInfo(uuid);
+        }else {
+            return ResponseReturn.failed("用户信息查询失败");
+        }
+        List<History> histories = historyMapper
+            .selectList(new EntityWrapper<History>().eq("operator", userInfo.getEmail()).orderBy("create_time", false));
+        return ResponseReturn.success(histories);
+    }
+
+    private static FixAssetInfo poToAssetInfo(FixAsset fixAsset){
+        FixAssetInfo fixAssetInfo = new FixAssetInfo();
+        if (fixAsset==null){
+            return null;
+        }
+        fixAssetInfo.setCharge(fixAsset.getCharge());
+        fixAssetInfo.setUpdateTime(fixAsset.getUpdateTime());
+        fixAssetInfo.setType(fixAsset.getType());
+        fixAssetInfo.setTechniqueTarget(fixAsset.getTechniqueTarget());
+        fixAssetInfo.setStatus(fixAsset.getStatus());
+        fixAssetInfo.setOwnerEmail(fixAsset.getOwnerEmail());
+        fixAssetInfo.setManufactor(fixAsset.getManufactor());
+        fixAssetInfo.setIsFix(fixAsset.getIsFix());
+        fixAssetInfo.setEnterpriseNo(fixAsset.getEnterpriseNo());
+        fixAssetInfo.setDeviceName(fixAsset.getDeviceName());
+        fixAssetInfo.setDeviceModel(fixAsset.getDeviceModel());
+        fixAssetInfo.setCreateTime(fixAsset.getCreateTime());
+        fixAssetInfo.setChargeEmail(fixAsset.getChargeEmail());
+        fixAssetInfo.setEnterpriseNo(fixAsset.getEnterpriseNo());
+        fixAssetInfo.setId(fixAsset.getId());
+        return fixAssetInfo;
+    }
+
+    private static HomepageVO fixAsset2Vo(FixAsset fixAsset){
+        HomepageVO homepageVO = new HomepageVO();
+        homepageVO.setDeviceModel(fixAsset.getDeviceModel());
+        homepageVO.setEnterpriseNo(fixAsset.getEnterpriseNo());
+        homepageVO.setDeviceName(fixAsset.getDeviceName());
+        homepageVO.setTechniqueTarget(fixAsset.getTechniqueTarget());
+        homepageVO.setOwner(fixAsset.getOwner());
+        homepageVO.setManufactor(fixAsset.getManufactor());
+        homepageVO.setCharge(fixAsset.getCharge());
+        return homepageVO;
     }
 
 }

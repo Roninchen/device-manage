@@ -1,50 +1,37 @@
-package com.stylefeng.guns.rest.common.persistence.model;
+package com.stylefeng.guns.rest.modular.es;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
+
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import lombok.Data;
 
 /**
- * <p>
- * 
- * </p>
+ * TODO
  *
- * @author chauncy
- * @since 2018-11-22
+ * @author 17262
+ * @version V1.0
+ * @since 2018-11-30 14:46
  */
-@TableName("fix_asset")
 @Data
-public class FixAsset extends Model<FixAsset> {
-
-    private static final long serialVersionUID = 1L;
-
-    @TableId(value = "id", type = IdType.AUTO)
+@Document(indexName = "asset",type = "assetInfo")
+public class FixAssetInfo implements Serializable {
     private Integer id;
-    private String uuid;
     /**
      * 企业编号
      */
-    @TableField("enterprise_no")
     private String enterpriseNo;
     /**
      * 设备名称
      */
-    @TableField("device_name")
     private String deviceName;
     /**
      * 型号
      */
-    @TableField("device_model")
     private String deviceModel;
     /**
      * 技术指标
      */
-    @TableField("technique_target")
     private String techniqueTarget;
     /**
      * 国别厂家
@@ -77,15 +64,7 @@ public class FixAsset extends Model<FixAsset> {
     /**
      * 是否为固定资产，1是固定资产
      */
-    @TableField("is_fix")
     private Integer isFix;
-    @TableField("create_time")
     private Long createTime;
     private Long updateTime;
-    private Integer deviceStatus;
-
-    @Override
-    protected Serializable pkVal() {
-        return null;
-    }
 }
