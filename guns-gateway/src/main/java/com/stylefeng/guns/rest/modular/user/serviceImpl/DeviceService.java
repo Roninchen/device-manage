@@ -109,7 +109,9 @@ public class DeviceService implements DeviceServiceApi {
         FixAsset fixAsset = new FixAsset();
         fixAsset.setEnterpriseNo(BO.getEnterpriseNo());
         FixAsset fix = fixAssetMapper.selectOne(fixAsset);
-
+        if (fix.getOwnerEmail().equals(userInfo.getEmail())){
+            return ResponseReturn.failed("该设备已被你持有,无需向自己借用");
+        }
         User user = new User();
         user.setEmail(email);
         User borrowUser = userMapper.selectOne(user);
@@ -267,19 +269,21 @@ public class DeviceService implements DeviceServiceApi {
             if (collect.size()<1){
                 return  ResponseReturn.failed("设备状态不对");
             }
+            DeviceFlow device = collect.get(0);
+
             DeviceFlow deviceFlow = new DeviceFlow();
-            deviceFlow.setId(collect.get(0).getId());
+            deviceFlow.setId(device.getId());
             deviceFlow.setStatus(3);
 
             //历史记录
             History history = new History();
-            history.setConnectPerson(deviceFlow.getLendTo());
+            history.setConnectPerson(device.getLendTo());
             history.setTypeName("拒绝借用操作");
             history.setOperatorName(userInfo.getUserName());
-            history.setDeviceName(deviceFlow.getDeviceName());
-            history.setDeviceId(deviceFlow.getDeviceId());
+            history.setDeviceName(device.getDeviceName());
+            history.setDeviceId(device.getDeviceId());
             history.setCreateTime(DateUtil.getTimeOfEastEight());
-            history.setConnectPersonName(deviceFlow.getLendToName());
+            history.setConnectPersonName(device.getLendToName());
             history.setType(3);
             history.setOperator(userInfo.getEmail());
 
