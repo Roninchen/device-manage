@@ -8,14 +8,14 @@
             <div class="ibox-content">
                 <div class="row row-lg">
                     <div class="col-sm-12">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <#NameCon id="condition" name="名称" />
-                            </div>
-                            <div class="col-sm-3">
-                                <#button name="搜索" icon="fa-search" clickFun="FixAsset.search()"/>
-                            </div>
-                        </div>
+                        <!--<div class="row">-->
+                            <!--<div class="col-sm-3">-->
+                                <!--<#NameCon id="condition" name="名称" />-->
+                            <!--</div>-->
+                            <!--<div class="col-sm-3">-->
+                                <!--<#button name="搜索" icon="fa-search" clickFun="FixAsset.search()"/>-->
+                            <!--</div>-->
+                        <!--</div>-->
                         <div class="hidden-xs" id="FixAssetTableToolbar" role="group">
                             @if(shiro.hasPermission("/fixAsset/add")){
                                 <#button name="添加" icon="fa-plus" clickFun="FixAsset.openAddFixAsset()"/>

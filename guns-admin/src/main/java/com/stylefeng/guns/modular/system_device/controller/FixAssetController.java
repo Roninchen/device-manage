@@ -2,9 +2,17 @@ package com.stylefeng.guns.modular.system_device.controller;
 
 import com.stylefeng.guns.core.base.controller.BaseController;
 import com.stylefeng.guns.core.base.tips.ErrorTip;
+import com.stylefeng.guns.core.datascope.DataScope;
+import com.stylefeng.guns.core.shiro.ShiroKit;
+import com.stylefeng.guns.modular.system.model.UserInfo;
+import com.stylefeng.guns.modular.system.warpper.FixAssetWrapper;
+import com.stylefeng.guns.modular.system.warpper.UserWarpper;
+import com.stylefeng.guns.util.ExcelUtil;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
@@ -15,6 +23,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.stylefeng.guns.modular.system.model.FixAsset;
 import com.stylefeng.guns.modular.system_device.service.IFixAssetService;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 设备管理控制器
@@ -69,7 +82,12 @@ public class FixAssetController extends BaseController {
     @RequestMapping(value = "/list")
     @ResponseBody
     public Object list(String condition) {
-        return fixAssetService.selectList(null);
+//        return fixAssetService.selectList(null);
+//        return new UserWarpper(users).warp();
+        List<Map<String, Object>> maps = fixAssetService.selectFixAssets(null);
+
+        Object o = new FixAssetWrapper(maps).warp();
+        return o;
     }
 
     /**
@@ -84,17 +102,37 @@ public class FixAssetController extends BaseController {
 
     @RequestMapping(value = "/adds")
     @ResponseBody
-    public Object adds(@RequestParam("file") MultipartFile multipartFile){
+    @Transactional
+    public Object adds(@RequestParam("file") MultipartFile multipartFile) throws IOException {
 
 
         if (multipartFile.isEmpty()) {
-
-            return new ErrorTip(500,"空文件");
+            return new ErrorTip(500, "文件错误");
         }
 
 
-        return SUCCESS_TIP;
+        List<FixAsset> assetList = ExcelUtil.resolveStream(multipartFile.getInputStream(), multipartFile.getOriginalFilename(), FixAsset.class);
 
+
+
+        if (CollectionUtils.isEmpty(assetList)) {
+            return new ErrorTip(500,"没有数据");
+        }
+
+        long time = System.currentTimeMillis();
+
+        assetList=assetList
+                .stream()
+                .map(e->{
+                    e.setUuid(e.getEnterpriseNo());
+                    e.setUpdateTime(time);
+                    e.setCreateTime(time);
+                    return e;
+                }).collect(Collectors.toList());
+
+        fixAssetService.insertBatch(assetList);
+
+        return SUCCESS_TIP;
     }
 
     /**

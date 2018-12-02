@@ -28,4 +28,10 @@
         id, uuid, enterprise_no, device_name, device_model, technique_target, manufactor, type, status, charge, charge_email, owner, owner_email, is_fix, create_time, update_time, device_status
     </sql>
 
+    <select id="selectFixAssets" resultType="map">
+        select
+        <include refid="Base_Column_List" />
+        from fix_asset
+    </select>
+
 </mapper>

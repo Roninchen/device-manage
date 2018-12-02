@@ -36,6 +36,7 @@ public class ConstantFactory implements IConstantFactory {
     private UserMapper userMapper = SpringContextHolder.getBean(UserMapper.class);
     private MenuMapper menuMapper = SpringContextHolder.getBean(MenuMapper.class);
     private NoticeMapper noticeMapper = SpringContextHolder.getBean(NoticeMapper.class);
+    private FixAssetMapper fixAsset = SpringContextHolder.getBean(FixAssetMapper.class);
 
     public static IConstantFactory me() {
         return SpringContextHolder.getBean("constantFactory");
@@ -252,6 +253,7 @@ public class ConstantFactory implements IConstantFactory {
         return getDictsByName("性别", sex);
     }
 
+
     /**
      * 获取用户登录状态
      */
@@ -327,6 +329,34 @@ public class ConstantFactory implements IConstantFactory {
             parentDeptIds.add(Integer.valueOf(StrKit.removeSuffix(StrKit.removePrefix(s, "["), "]")));
         }
         return parentDeptIds;
+    }
+
+    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.DEVICE_STATUS + "'+#deviceStatus")
+    @Override
+    public String getDeviceStatusName(Integer deviceStatus) {
+
+        return getDictsByName("设备状态", deviceStatus);
+    }
+
+    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.DEVICE_MANAGE_STATUS + "'+#status")
+    @Override
+    public String getManageStatusName(Integer status) {
+
+        return getDictsByName("管理状态", status);
+    }
+
+    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.DEVICE_IS_FIX + "'+#isFix")
+    @Override
+    public String getFixStatusName(Integer isFix) {
+
+        return getDictsByName("固定资产", isFix);
+    }
+
+    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.DEVICE_TYPE + "'+#type")
+    @Override
+    public String getDeviceTypeName(Integer type) {
+
+        return getDictsByName("设备类型", type);
     }
 
 

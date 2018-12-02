@@ -84,10 +84,11 @@ public class ExcelUtil {
                     if (fieldClass.equals(String.class)) {
 
                         field.set(t, cell.getStringCellValue());
-                    }
-                    if (fieldClass.equals(Double.class)) {
+                    } else if (fieldClass.equals(Double.class)) {
 
                         field.set(t, cell.getNumericCellValue());
+                    } else if (fieldClass.equals(Integer.class)) {
+                        field.set(t,Double.valueOf(cell.getNumericCellValue()).intValue());
                     }
 
                 }

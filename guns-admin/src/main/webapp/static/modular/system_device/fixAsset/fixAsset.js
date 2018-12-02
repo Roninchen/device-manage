@@ -14,23 +14,19 @@ var FixAsset = {
 FixAsset.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
-            // {title: '', field: 'id', visible: true, align: 'center', valign: 'middle'},
-            // {title: '', field: 'uuid', visible: true, align: 'center', valign: 'middle'},
-            {title: '企业编号', field: 'enterpriseNo', visible: true, align: 'center', valign: 'middle'},
-            {title: '设备名称', field: 'deviceName', visible: true, align: 'center', valign: 'middle'},
-            {title: '型号', field: 'deviceModel', visible: true, align: 'center', valign: 'middle'},
-            {title: '技术指标', field: 'techniqueTarget', visible: true, align: 'center', valign: 'middle'},
+            {title: '企业编号', field: 'enterprise_no', visible: true, align: 'center', valign: 'middle'},
+            {title: '设备名称', field: 'device_name', visible: true, align: 'center', valign: 'middle'},
+            {title: '型号', field: 'device_model', visible: true, align: 'center', valign: 'middle'},
+            {title: '技术指标', field: 'technique_target', visible: true, align: 'center', valign: 'middle'},
             {title: '国别厂家', field: 'manufactor', visible: true, align: 'center', valign: 'middle'},
-            {title: '设备分类', field: 'type', visible: true, align: 'center', valign: 'middle'},
-            {title: '管理状态', field: 'status', visible: true, align: 'center', valign: 'middle'},
+            {title: '设备分类', field: 'typeName', visible: true, align: 'center', valign: 'middle'},
+            {title: '管理状态', field: 'statusName', visible: true, align: 'center', valign: 'middle'},
             {title: '负责人', field: 'charge', visible: true, align: 'center', valign: 'middle'},
-            // {title: '负责人email', field: 'chargeEmail', visible: true, align: 'center', valign: 'middle'},
+            {title: '负责人ID', field: 'charge_email', visible: true, align: 'center', valign: 'middle'},
             {title: '持有人', field: 'owner', visible: true, align: 'center', valign: 'middle'},
-            // {title: '持有人email', field: 'ownerEmail', visible: true, align: 'center', valign: 'middle'},
-            // {title: '是否为固定资产，1是固定资产', field: 'isFix', visible: true, align: 'center', valign: 'middle'},
-            // {title: '', field: 'createTime', visible: true, align: 'center', valign: 'middle'},
-            // {title: '更新时间', field: 'updateTime', visible: true, align: 'center', valign: 'middle'},
-            {title: '设备状态', field: 'deviceStatus', visible: true, align: 'center', valign: 'middle'}
+            {title: '持有人ID', field: 'owner_email', visible: true, align: 'center', valign: 'middle'},
+            {title: '固定资产', field: 'isFixName', visible: true, align: 'center', valign: 'middle'},
+            {title: '设备状态', field: 'deviceStatusName', visible: true, align: 'center', valign: 'middle'}
     ];
 };
 

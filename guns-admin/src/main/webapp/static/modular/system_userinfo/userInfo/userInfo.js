@@ -8,20 +8,16 @@ var UserInfo = {
     layerIndex: -1
 };
 
-var FileInfo = {
-    file:null
-}
-
 /**
  * 初始化表格的列
  */
 UserInfo.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
-            {title: '', field: 'id', visible: true, align: 'center', valign: 'middle'},
-            {title: '', field: 'email', visible: true, align: 'center', valign: 'middle'},
-            {title: '', field: 'userName', visible: true, align: 'center', valign: 'middle'},
-            {title: '', field: 'department', visible: true, align: 'center', valign: 'middle'}
+            {title: '', field: 'id', visible: false, align: 'center', valign: 'middle'},
+            {title: 'ID', field: 'email', visible: true, align: 'center', valign: 'middle'},
+            {title: '姓名', field: 'userName', visible: true, align: 'center', valign: 'middle'},
+            {title: '所在部门', field: 'department', visible: true, align: 'center', valign: 'middle'}
     ];
 };
 
@@ -113,5 +109,8 @@ $(function () {
     var defaultColunms = UserInfo.initColumn();
     var table = new BSTable(UserInfo.id, "/userInfo/list", defaultColunms);
     table.setPaginationType("client");
+    table.responseHandler = function(data){
+        console.info(data);
+    }
     UserInfo.table = table.init();
 });

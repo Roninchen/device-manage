@@ -6,16 +6,24 @@
             <input id="id" name="" value="${item.id}"  type="hidden"/>
             <input id="uuid" name="" value="${item.uuid}" type="hidden"/>
             <input id="updateTime" name="更新时间" value="${item.updateTime}"  type="hidden"/>
+            <input type="hidden" id="statusValue" value="${item.status}">
+            <input type="hidden" id="deviceStatusValue" name="设备状态：1合格，2限用，3准用，4禁用，5停用" value="${item.deviceStatus}" />
+            <input type="hidden" id="isFixValue" name="是否为固定资产，1是固定资产" value="${item.isFix}" />
+            <input type="hidden" id="typeValue" name="设备分类，1为计量设备" value="${item.type}"/>
+
             <div class="row">
                 <div class="col-sm-6 b-r">
 
-                            <#input id="enterpriseNo" name="企业编号" value="${item.enterpriseNo}" underline="true"/>
-                            <#input id="deviceName" name="设备名称" value="${item.deviceName}" underline="true"/>
-                            <#input id="deviceModel" name="型号" value="${item.deviceModel}" underline="true"/>
-                            <#input id="techniqueTarget" name="技术指标" value="${item.techniqueTarget}" underline="true"/>
-                            <#input id="manufactor" name="国别厂家" value="${item.manufactor}" underline="true"/>
-                            <#input id="type" name="设备分类，1为计量设备" value="${item.type}" underline="true"/>
-                            <!--<#input id="status" name="管理状态,0为封存，1为已领用" value="${item.status}" />-->
+                    <#input id="enterpriseNo" name="企业编号" value="${item.enterpriseNo}" underline="true"/>
+                    <#input id="deviceName" name="设备名称" value="${item.deviceName}" underline="true"/>
+                    <#input id="deviceModel" name="型号" value="${item.deviceModel}" underline="true"/>
+                    <#input id="techniqueTarget" name="技术指标" value="${item.techniqueTarget}" underline="true"/>
+                    <#input id="manufactor" name="国别厂家" value="${item.manufactor}" underline="true"/>
+                            <!--<#input id="type" name="设备分类，1为计量设备" value="${item.type}" underline="true"/>-->
+                    <#select id="type" name="设备分类" underline="true">
+                    <option value="1">计量设备</option>
+                    </#select>
+                    <!--<#input id="status" name="管理状态,0为封存，1为已领用" value="${item.status}" />-->
                     <#select id="status" name="管理状态" underline="true">
                     <option value="0">封存</option>
                     <option value="1">已领用</option>
@@ -23,13 +31,23 @@
                 </div>
 
                 <div class="col-sm-6">
-                            <#input id="charge" name="负责人名字" value="${item.charge}" underline="true"/>
-                            <#input id="chargeEmail" name="负责人email" value="${item.chargeEmail}" underline="true"/>
-                            <#input id="owner" name="持有人" value="${item.owner}" underline="true"/>
-                            <#input id="ownerEmail" name="持有人email" value="${item.ownerEmail}" underline="true"/>
-                            <#input id="isFix" name="是否为固定资产，1是固定资产" value="${item.isFix}" underline="true"/>
-                            <#input id="createTime" name="" value="${item.createTime}" underline="true"/>
-                            <#input id="deviceStatus" name="设备状态：1合格，2限用，3准用，4禁用，5停用" value="${item.deviceStatus}" />
+                    <#input id="charge" name="负责人" value="${item.charge}" underline="true"/>
+                    <#input id="chargeEmail" name="负责人ID" value="${item.chargeEmail}" underline="true"/>
+                    <#input id="owner" name="持有人" value="${item.owner}" underline="true"/>
+                    <#input id="ownerEmail" name="持有人ID" value="${item.ownerEmail}" underline="true"/>
+
+                    <#select id="isFix" name="固定资产" underline="true">
+                    <option value="0">否</option>
+                    <option value="1">是</option>
+                    </#select>
+
+                    <#select id="deviceStatus" name="设备状态" underline="true">
+                    <option value="1">合格</option>
+                    <option value="2">限用</option>
+                    <option value="3">准用</option>
+                    <option value="4">禁用</option>
+                    <option value="5">停用</option>
+                    </#select>
                 </div>
             </div>
 

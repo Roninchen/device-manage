@@ -18,10 +18,41 @@ FixAssetInfoDlg.clearData = function() {
  * @param key 数据的名称
  * @param val 数据的具体值
  */
-FixAssetInfoDlg.set = function(key, val) {
-    this.fixAssetInfoData[key] = (typeof val == "undefined") ? $("#" + key).val() : val;
+// FixAssetInfoDlg.set = function(key, val) {
+//     this.fixAssetInfoData[key] = (typeof val == "undefined") ? $("#" + key).val() : val;
+//     return this;
+// }
+
+
+FixAssetInfoDlg.set = function (key, value) {
+    if(typeof value == "undefined"){
+        if(typeof $("#" + key).val() =="undefined"){
+            var str="";
+            var ids="";
+            $("input[name='"+key+"']:checkbox").each(function(){
+                if(true == $(this).is(':checked')){
+                    str+=$(this).val()+",";
+                }
+            });
+            if(str){
+                if(str.substr(str.length-1)== ','){
+                    ids = str.substr(0,str.length-1);
+                }
+            }else{
+                $("input[name='"+key+"']:radio").each(function(){
+                    if(true == $(this).is(':checked')){
+                        ids=$(this).val()
+                    }
+                });
+            }
+            this.fixAssetInfoData[key] = ids;
+        }else{
+            this.fixAssetInfoData[key]= $("#" + key).val();
+        }
+    }
+
     return this;
-}
+};
 
 /**
  * 设置对话框中的数据
@@ -99,7 +130,7 @@ FixAssetInfoDlg.addsSubmit = function() {
         dataType:"json",
         success:function (data) {
             Feng.success("导入成功!");
-            window.parent.UserInfo.table.refresh();
+            window.parent.FixAsset.table.refresh();
             FixAssetInfoDlg.close();},
         error:function (data) {
             Feng.error("导入失败!" + data.responseJSON.message + "!");
@@ -131,4 +162,7 @@ FixAssetInfoDlg.editSubmit = function() {
 
 $(function() {
     $("#status").val($("#statusValue").val());
+    $("#deviceStatus").val($("#deviceStatusValue").val());
+    $("#isFix").val($("#isFixValue").val());
+    $("#type").val($("#typeValue").val());
 });
