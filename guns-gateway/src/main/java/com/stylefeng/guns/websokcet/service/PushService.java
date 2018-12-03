@@ -7,17 +7,11 @@ package com.stylefeng.guns.websokcet.service;
  */
 public interface PushService {
 
-    /**
-     * 发送 通知数据给客户端
-     * @param data
-     *
-     */
-    void sendNotification(Object data);
-
 
     /**
      * 用户唯一id
-     * @param uuid
+     * @param email
+     * @param type 1.用户收到借用请求，2用借用请求得到处理
      */
-    void sendUUIDNotification(String uuid);
+    void sendNotification(String email,int type);
 }

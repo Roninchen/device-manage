@@ -1,9 +1,9 @@
 package com.stylefeng.guns.api.vo;
 
-import java.util.List;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.util.List;
 
 /**
  * 自定义响应结构

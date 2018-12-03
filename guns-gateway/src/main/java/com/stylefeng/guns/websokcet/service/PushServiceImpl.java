@@ -1,8 +1,11 @@
 package com.stylefeng.guns.websokcet.service;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.alibaba.fastjson.JSON;
 import com.stylefeng.guns.websokcet.WebsocketServer;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @note:
@@ -12,16 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Service
 public class PushServiceImpl implements PushService{
 
-    @Autowired
-    private WebsocketServer websocketServer;
-
     @Override
-    public void sendNotification(Object data) {
-        websocketServer.send(data);
-    }
+    public void sendNotification(String email,int type) {
 
-    @Override
-    public void sendUUIDNotification(String uuid) {
-        websocketServer.send(uuid);
+        Map<String,Object> map = new HashMap<>();
+        map.put("email",email);
+        map.put("type",type);
+        WebsocketServer.send(JSON.toJSONString(map));
     }
 }
