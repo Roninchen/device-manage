@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <!--<module>guns-admin</module>-->
+        <module>guns-admin</module>
         <module>guns-core</module>
         <module>guns-generator</module>
         <module>guns-gateway</module>

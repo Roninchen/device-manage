@@ -1,4 +1,4 @@
-device-manage/.idea
+
 device-manage/guns-parent.iml
 device-manage/guns-generator/guns-generator.iml
 device-manage/guns-gateway/guns-generator.iml
@@ -9,3 +9,4 @@ device-manage/guns-api/target
 device-manage/guns-core/target
 device-manage/guns-gateway/target
 device-manage/guns-generator/target
+device-manage/guns-admin/target/*
