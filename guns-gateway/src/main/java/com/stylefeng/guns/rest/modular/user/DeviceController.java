@@ -1,20 +1,13 @@
-/*
- * Copyright (c) 2001-2018 GuaHao.com Corporation Limited. All rights reserved.
- * This software is the confidential and proprietary information of GuaHao Company.
- * ("Confidential Information").
- * You shall not disclose such Confidential Information and shall use it only
- * in accordance with the terms of the license agreement you entered into with GuaHao.com.
- */
 package com.stylefeng.guns.rest.modular.user;
 
 import com.stylefeng.guns.api.device.DeviceServiceApi;
 import com.stylefeng.guns.api.device.bo.DeviceBorrowBO;
 import com.stylefeng.guns.api.device.bo.LendBO;
+import com.stylefeng.guns.api.device.bo.PageBO;
 import com.stylefeng.guns.api.device.vo.DeviceVo;
 import com.stylefeng.guns.api.user.UserAPI;
 import com.stylefeng.guns.api.user.vo.UserInfoVo;
 import com.stylefeng.guns.api.vo.ResponseReturn;
-import com.stylefeng.guns.api.vo.ResponseVO;
 import com.stylefeng.guns.rest.common.CurrentUser;
 
 import java.util.Map;
@@ -61,18 +54,7 @@ public class DeviceController {
      */
     @PostMapping("borrow")
     public Map borrowDevice(@RequestBody DeviceBorrowBO deviceBorrowBO){
-        // 获取当前登陆用户
-        String userId = CurrentUser.getCurrentUser();
-        UserInfoVo userInfo = new UserInfoVo();
-        if(userId != null && userId.trim().length()>0){
-            // 将用户ID传入后端进行查询
-            int uuid = Integer.parseInt(userId);
-            userInfo = userAPI.getUserInfo(uuid);
-            if(userInfo==null){
-            return ResponseReturn.failed("获取用户信息失败");
-            }
-        }
-        Map map = deviceServiceApi.borrowDevice(deviceBorrowBO, userInfo.getEmail());
+        Map map = deviceServiceApi.borrowDevice(deviceBorrowBO);
         return map;
     }
     @GetMapping("emailkmkmihghbhuihb")
@@ -143,6 +125,40 @@ public class DeviceController {
         return deviceServiceApi.refuseLend(bo);
     }
 
+    @GetMapping("homepage")
+    public Map homepage(PageBO pageBO){
+        Map homepage = deviceServiceApi.homepage(pageBO);
+        return homepage;
+    }
 
+    @GetMapping("like_search")
+    public Map likeSearch(String context){
+        if (context==null || context.trim()==""){
+            return ResponseReturn.failed("输入不能为空");
+        }
+        Map map = deviceServiceApi.likeSearch(context);
+        return map;
+    }
+
+    @GetMapping("hold")
+    public Map hold(PageBO pageBO){
+        Map hold = deviceServiceApi.hold(pageBO);
+        return hold;
+    }
+
+    @GetMapping("history")
+    public Map history(String enterpriseNo){
+        if (enterpriseNo==null || enterpriseNo.trim()==""){
+            return ResponseReturn.failed("设备id不能为空");
+        }
+        Map history = deviceServiceApi.history(enterpriseNo);
+        return history;
+    }
+
+    @GetMapping("op_history")
+    public Map opHistory(){
+        Map history = deviceServiceApi.opHistory();
+        return history;
+    }
 
 }

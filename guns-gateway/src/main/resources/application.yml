@@ -42,6 +42,9 @@ spring:
       username: device
       password: device001
       filters: log4j,wall,mergeStat
+#  data:
+#    elasticsearch:
+#      cluster-nodes: 111.231.84.238:9300
 
 logging:
   level.root: info

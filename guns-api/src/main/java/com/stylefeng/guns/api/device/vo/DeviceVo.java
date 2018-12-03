@@ -39,8 +39,24 @@ public class DeviceVo implements Serializable {
      */
     private String owner;
     /**
+     * 借用人
+     */
+    private String charge;
+    /**
      * 是否为固定资产，1是固定资产
      */
     private Integer isFix;
-    private Long createTime;
+    /**
+     * 借用时间
+     */
+    private Long updateTime;
+    private Integer deviceStatus;
+    /**
+     * 借用人部门
+     */
+    private String ownerDepartment;
+    /**
+     * 负责人部门
+     */
+    private String chargeDepartment;
 }
