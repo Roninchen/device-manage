@@ -81,6 +81,13 @@
             <artifactId>hibernate-validator</artifactId>
             <version>6.0.10.Final</version>
         </dependency>
+
+        <!--socket.io server-->
+        <dependency>
+            <groupId>com.corundumstudio.socketio</groupId>
+            <artifactId>netty-socketio</artifactId>
+            <version>1.7.12</version>
+        </dependency>
     </dependencies>
 
     <build>

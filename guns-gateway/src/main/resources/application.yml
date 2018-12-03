@@ -14,6 +14,10 @@ jwt:
 server:
   port: 8012 #项目端口
 
+websocket:
+  port: 8014
+  bossThread: 2
+  workerThread: 4
 mybatis-plus:
   mapper-locations: classpath*:com/stylefeng/guns/rest/**/mapping/*.xml
   typeAliasesPackage: com.stylefeng.guns.rest.common.persistence.model
