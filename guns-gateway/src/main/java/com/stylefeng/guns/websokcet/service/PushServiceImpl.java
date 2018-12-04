@@ -1,11 +1,12 @@
 package com.stylefeng.guns.websokcet.service;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.fastjson.JSON;
 import com.stylefeng.guns.websokcet.WebsocketServer;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.springframework.stereotype.Service;
 
 /**
  * @note:

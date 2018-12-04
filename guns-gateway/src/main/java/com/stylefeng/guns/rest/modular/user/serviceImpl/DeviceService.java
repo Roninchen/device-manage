@@ -31,6 +31,8 @@ import com.stylefeng.guns.rest.common.persistence.model.User;
 import com.stylefeng.guns.rest.common.persistence.model.UserInfo;
 import com.stylefeng.guns.rest.common.utils.DateUtil;
 import com.stylefeng.guns.rest.modular.es.FixAssetInfo;
+import com.stylefeng.guns.websokcet.service.PushService;
+import com.stylefeng.guns.websokcet.service.PushServiceImpl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,6 +66,8 @@ public class DeviceService implements DeviceServiceApi {
     private UserAPI userAPI;
     @Autowired
     private HistoryMapper historyMapper;
+    @Autowired
+    private PushService pushService;
     @Override
     public DeviceVo getDeviceByEnterpriseNo(String enterpriseNo) {
         FixAsset fixAssetC =new FixAsset();
@@ -158,6 +162,8 @@ public class DeviceService implements DeviceServiceApi {
 
         deviceFlowMapper.insert(deviceFlow);
         historyMapper.insert(history);
+        //socket推送,推送给被借用人
+        pushService.sendNotification(fix.getOwnerEmail(),1);
         return ResponseReturn.success("申请已发出,可以联系对方及时处理");
     }
 
@@ -209,7 +215,10 @@ public class DeviceService implements DeviceServiceApi {
         }else {
             return ResponseReturn.failed("用户信息查询失败");
         }
-
+        //借用人信息
+        User user = new User();
+        user.setEmail(bo.getLendTo());
+        User borrowUser = userMapper.selectOne(user);
         if (bo.getAgree().intValue()==1) {
             List<DeviceFlow> deviceFlows = deviceFlowMapper.selectList(
                 new EntityWrapper<DeviceFlow>().eq("device_id", bo.getEnterpriseNo()).eq("status", 1)
@@ -232,10 +241,6 @@ public class DeviceService implements DeviceServiceApi {
             FixAsset fixAsset = fixAssetMapper.selectOne(fixAssetCond);
             FixAsset fixAssetUpdate = new FixAsset();
 
-            //借用人信息
-            User user = new User();
-            user.setEmail(bo.getLendTo());
-            User borrowUser = userMapper.selectOne(user);
             fixAssetUpdate.setId(fixAsset.getId());
             fixAssetUpdate.setOwnerEmail(borrowUser.getEmail());
             fixAssetUpdate.setOwner(borrowUser.getUserName());
@@ -257,6 +262,8 @@ public class DeviceService implements DeviceServiceApi {
             fixAssetMapper.updateById(fixAssetUpdate);
             deviceFlowMapper.updateBatch1(collect);
             historyMapper.insert(history);
+            //socket推送,推送给借用人
+            pushService.sendNotification(borrowUser.getEmail(),2);
             return ResponseReturn.success("借用成功!");
         }else{
             List<DeviceFlow> deviceFlows = deviceFlowMapper
@@ -289,6 +296,8 @@ public class DeviceService implements DeviceServiceApi {
 
             deviceFlowMapper.updateById(deviceFlow);
             historyMapper.insert(history);
+            //socket推送,推送给借用人
+            pushService.sendNotification(borrowUser.getEmail(),2);
             return ResponseReturn.success("拒绝成功");
         }
     }
