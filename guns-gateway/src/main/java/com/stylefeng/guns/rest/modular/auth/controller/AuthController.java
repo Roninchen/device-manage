@@ -29,6 +29,8 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 public class AuthController {
 
+    public static final long KEEP_LIVE_TIME = 7*24*60*60*1000;
+
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
@@ -52,7 +54,8 @@ public class AuthController {
             final String randomKey = jwtTokenUtil.getRandomKey();
             final String token = jwtTokenUtil.generateToken(""+userId, randomKey);
             LoginSuccessVo loginSuccessVo = new LoginSuccessVo();
-            loginSuccessVo.setAuthResponse(new AuthResponse(token, randomKey));
+//            loginSuccessVo.setAuthResponse(new AuthResponse(token, randomKey));
+            loginSuccessVo.setAuthResponse(new AuthResponse(token, System.currentTimeMillis()+KEEP_LIVE_TIME,randomKey));
             user.setId(0);
             loginSuccessVo.setUserInfoVo(user);
             return ResponseReturn.success(loginSuccessVo);
