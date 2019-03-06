@@ -43,7 +43,6 @@ public class UserInfoVo extends Model<UserInfoVo> {
      * 部门
      */
     private String department;
-    private String fullName;
 
     @Override
     protected Serializable pkVal() {
