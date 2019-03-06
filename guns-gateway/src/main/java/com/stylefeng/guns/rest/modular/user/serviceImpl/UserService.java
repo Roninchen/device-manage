@@ -29,7 +29,8 @@ public class UserService implements UserAPI {
         UserInfoVo userInfoVo = new UserInfoVo();
         ////根据登录账户获取用户信息
         User user = new User();
-        user.setEmail(email);
+        //user.setEmail(email);
+        user.setFullName(email);
         User result = userMapper.selectOne(user);
         if (result!=null && result.getId()>0){
             String md5Password = MD5Util.encrypt(password);
@@ -51,7 +52,7 @@ public class UserService implements UserAPI {
     @Override
     public int register(RegisterBo registerBo) {
         List<UserInfo> email = userInfoMapper
-            .selectList(new EntityWrapper<UserInfo>().eq("email", registerBo.getEmail()));
+            .selectList(new EntityWrapper<UserInfo>().like("email", registerBo.getEmail()));
                 //.eq("user_name",registerBo.getUserName()));
         //系统id必须对应，用户不是系统用户无权限注册
         if (email.size()<1){
@@ -64,12 +65,13 @@ public class UserService implements UserAPI {
         }
         UserInfo userInfo = email.get(0);
         User user = new User();
-        user.setEmail(registerBo.getEmail());
+        user.setEmail(userInfo.getEmail());
         user.setUserName(registerBo.getUserName());
         user.setDepartment(userInfo.getDepartment());
         user.setUserPwd(MD5Util.encrypt(registerBo.getUserPwd()));
         user.setPhone(registerBo.getPhone());
         user.setCreateTime(DateUtil.getTimeOfEastEight());
+        user.setFullName(registerBo.getEmail());
         Integer insert = userMapper.insert(user);
         //0为成功
         if (insert==1){

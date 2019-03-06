@@ -54,6 +54,11 @@ public class User extends Model<User> {
     @TableField("create_time")
     private Long createTime;
 
+    /**
+     * 名字全拼
+     */
+    private  String fullName;
+
     @Override
     protected Serializable pkVal() {
         return null;

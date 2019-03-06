@@ -55,6 +55,8 @@
                     OR f.manufactor LIKE CONCAT('%', #{context}, '%')
                     OR f.owner LIKE CONCAT('%', #{context}, '%')
                     OR f.charge LIKE CONCAT('%', #{context}, '%')
+                    OR f.chargeEmail LIKE CONCAT('%', #{context}, '%')
+                    OR f.ownerEmail LIKE CONCAT('%', #{context}, '%')
                 )
     </select>
 
