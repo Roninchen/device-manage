@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2001-2018 GuaHao.com Corporation Limited. All rights reserved.
- * This software is the confidential and proprietary information of GuaHao Company.
- * ("Confidential Information").
- * You shall not disclose such Confidential Information and shall use it only
- * in accordance with the terms of the license agreement you entered into with GuaHao.com.
- */
 package com.stylefeng.guns.rest.modular.user.serviceImpl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
@@ -142,28 +135,34 @@ public class DeviceService implements DeviceServiceApi {
         deviceFlow.setStatus(1);
         deviceFlow.setRemark(BO.getRemark());
         deviceFlow.setLendToName(borrowUser.getUserName());
-        deviceFlow.setLendFromName(fix.getOwner());
+        //deviceFlow.setLendFromName(fix.getOwner());
+        //向负责人借用
+        deviceFlow.setLendFromName(fix.getCharge());
         deviceFlow.setDeviceName(fix.getDeviceName());
         deviceFlow.setDeviceId(fix.getEnterpriseNo());
-        deviceFlow.setLendFrom(fix.getOwnerEmail());
+        //向负责人借用 deviceFlow.setLendFrom(fix.getOwnerEmail());
+        deviceFlow.setLendFromName(fix.getChargeEmail());
         deviceFlow.setLendTo(user.getEmail());
 
         //历史记录
         History history = new History();
-        history.setConnectPerson(fix.getOwnerEmail());
+        // history.setConnectPerson(fix.getOwnerEmail());
+        //向负责人借用
+        history.setConnectPerson(fix.getChargeEmail());
         history.setTypeName("发起借用操作");
         history.setOperatorName(userInfo.getUserName());
         history.setDeviceName(fix.getDeviceName());
         history.setDeviceId(fix.getEnterpriseNo());
         history.setCreateTime(DateUtil.getTimeOfEastEight());
-        history.setConnectPersonName(fix.getOwner());
+        //向负责人借用
+        history.setConnectPersonName(fix.getCharge());
         history.setType(1);
         history.setOperator(userInfo.getEmail());
 
         deviceFlowMapper.insert(deviceFlow);
         historyMapper.insert(history);
         //socket推送,推送给被借用人
-        pushService.sendNotification(fix.getOwnerEmail(),1);
+        pushService.sendNotification(fix.getChargeEmail(),1);
         return ResponseReturn.success("申请已发出,可以联系对方及时处理");
     }
 
