@@ -19,3 +19,4 @@ guns-gateway.log.2018-12-04.0.gz
 guns-gateway/target/
 guns-generator/target/
 .idea/workspace.xml
+idea/*
