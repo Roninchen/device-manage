@@ -10,6 +10,7 @@ import com.stylefeng.guns.modular.system.warpper.UserWarpper;
 import com.stylefeng.guns.util.ExcelUtil;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -43,6 +44,9 @@ public class FixAssetController extends BaseController {
 
     @Autowired
     private IFixAssetService fixAssetService;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     /**
      * 跳转到设备管理首页
@@ -119,16 +123,10 @@ public class FixAssetController extends BaseController {
             return new ErrorTip(500,"没有数据");
         }
 
+        jdbcTemplate.execute("DELETE FROM `fix_asset_new`");
+
         long time = System.currentTimeMillis();
 
-        assetList=assetList
-                .stream()
-                .map(e->{
-                    e.setUuid(e.getEnterpriseNo());
-                    e.setUpdateTime(time);
-                    e.setCreateTime(time);
-                    return e;
-                }).collect(Collectors.toList());
 
         fixAssetService.insertBatch(assetList);
 

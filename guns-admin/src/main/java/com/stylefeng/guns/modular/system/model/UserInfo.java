@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.stylefeng.guns.annotation.Alias;
+
 import java.io.Serializable;
 
 /**
@@ -22,9 +24,14 @@ public class UserInfo extends Model<UserInfo> {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
+
+    @Alias(name ="用户ID")
     private String email;
+    @Alias(name = "用户姓名")
     @TableField("user_name")
     private String userName;
+
+    @Alias(name = "部门名称")
     private String department;
 
 

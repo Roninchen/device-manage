@@ -3,6 +3,7 @@ package com.stylefeng.guns.modular.system_userinfo.controller;
 import com.stylefeng.guns.core.base.controller.BaseController;
 import com.stylefeng.guns.core.base.tips.ErrorTip;
 import com.stylefeng.guns.util.ExcelUtil;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.JDBCType;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,6 +35,9 @@ public class UserInfoController extends BaseController {
 
     @Autowired
     private IUserInfoService userInfoService;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     /**
      * 跳转到用户信息管理首页
@@ -103,6 +108,8 @@ public class UserInfoController extends BaseController {
         if (CollectionUtils.isEmpty(userInfos)) {
             return new ErrorTip(500,"没有数据");
         }
+
+        jdbcTemplate.execute("DELETE FROM user_info");
 
         userInfoService.insertBatch(userInfos);
 

@@ -14,10 +14,9 @@ var UserInfo = {
 UserInfo.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
-            {title: '', field: 'id', visible: false, align: 'center', valign: 'middle'},
-            {title: 'ID', field: 'email', visible: true, align: 'center', valign: 'middle'},
-            {title: '姓名', field: 'userName', visible: true, align: 'center', valign: 'middle'},
-            {title: '所在部门', field: 'department', visible: true, align: 'center', valign: 'middle'}
+            {title: '用户ID', field: 'email', visible: true, align: 'center', valign: 'middle'},
+            {title: '用户姓名', field: 'userName', visible: true, align: 'center', valign: 'middle'},
+            {title: '部门名称', field: 'department', visible: true, align: 'center', valign: 'middle'}
     ];
 };
 

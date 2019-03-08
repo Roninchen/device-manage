@@ -1,5 +1,6 @@
 package com.stylefeng.guns;
 
+import com.stylefeng.guns.modular.system.model.FixAsset;
 import com.stylefeng.guns.modular.system.model.UserInfo;
 import com.stylefeng.guns.util.ExcelUtil;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -24,7 +25,7 @@ import java.util.List;
 public class Test {
 
 
-    static String url = "/Users/fine/Desktop/960c576c2d50387e.xls";
+    static String url = "/Users/finefine/Desktop/7dc07406e22bafdc.xls";
 
     /**
     public static void main(String[] args) throws IOException {
@@ -82,8 +83,9 @@ public class Test {
     public static void main(String[] args) {
         File file = new File(url);
         try {
-            List<UserInfo> list = ExcelUtil.resolve(file, UserInfo.class);
+//            List<UserInfo> list = ExcelUtil.resolve(file, UserInfo.class);
 
+            List<FixAsset> list = ExcelUtil.resolve(file,FixAsset.class);
             if (list != null) {
                 list.forEach(System.out::println);
             }

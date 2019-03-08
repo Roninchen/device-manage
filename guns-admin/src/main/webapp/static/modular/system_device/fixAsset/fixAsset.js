@@ -15,18 +15,18 @@ FixAsset.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
             {title: '企业编号', field: 'enterprise_no', visible: true, align: 'center', valign: 'middle'},
-            {title: '设备名称', field: 'device_name', visible: true, align: 'center', valign: 'middle'},
+            {title: '名称', field: 'device_name', visible: true, align: 'center', valign: 'middle'},
             {title: '型号', field: 'device_model', visible: true, align: 'center', valign: 'middle'},
             {title: '技术指标', field: 'technique_target', visible: true, align: 'center', valign: 'middle'},
             {title: '国别厂家', field: 'manufactor', visible: true, align: 'center', valign: 'middle'},
-            {title: '设备分类', field: 'typeName', visible: true, align: 'center', valign: 'middle'},
-            {title: '管理状态', field: 'statusName', visible: true, align: 'center', valign: 'middle'},
+            {title: '分类名称', field: 'type', visible: true, align: 'center', valign: 'middle'},
+            {title: '出厂编号', field: 'manufact_no', visible: true, align: 'center', valign: 'middle'},
+            {title: '有效日期', field: 'valid_date', visible: true, align: 'center', valign: 'middle'},
+            {title: '检定结果', field: 'appraisal', visible: true, align: 'center', valign: 'middle'},
+            {title: '管理状态', field: 'status', visible: true, align: 'center', valign: 'middle'},
             {title: '负责人', field: 'charge', visible: true, align: 'center', valign: 'middle'},
-            {title: '负责人ID', field: 'charge_email', visible: true, align: 'center', valign: 'middle'},
-            {title: '持有人', field: 'owner', visible: true, align: 'center', valign: 'middle'},
-            {title: '持有人ID', field: 'owner_email', visible: true, align: 'center', valign: 'middle'},
-            {title: '固定资产', field: 'isFixName', visible: true, align: 'center', valign: 'middle'},
-            {title: '设备状态', field: 'deviceStatusName', visible: true, align: 'center', valign: 'middle'}
+            {title: '使用部门', field: 'charge_department', visible: true, align: 'center', valign: 'middle'}
+
     ];
 };
 

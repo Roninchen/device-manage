@@ -1,13 +1,16 @@
 package com.stylefeng.guns.util;
 
+import com.stylefeng.guns.annotation.Alias;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.util.StringUtils;
 
 import java.io.*;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,7 +58,16 @@ public class ExcelUtil {
             for (int j = 0; j < fileds.length; j++) {
                 fileds[j].setAccessible(true);
 
-                if (fileds[j].getName().equalsIgnoreCase(nameRow.getCell(i).toString())) {
+                String filedName="";
+
+                Annotation annotation = fileds[j].getAnnotation(Alias.class);
+                if (annotation != null) {
+                    filedName = ((Alias) annotation).name();
+                }
+
+                filedName= StringUtils.isEmpty(filedName)?fileds[j].getName():filedName;
+
+                if (filedName.equalsIgnoreCase(nameRow.getCell(i).toString())) {
                     positionMap.put(i, fileds[j].getName());
                 }
             }

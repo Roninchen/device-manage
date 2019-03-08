@@ -19,9 +19,9 @@ public class FixAssetWrapper extends BaseControllerWarpper {
 
     @Override
     protected void warpTheMap(Map<String, Object> map) {
-        map.put("statusName", ConstantFactory.me().getManageStatusName((Integer) map.get("status")));
-        map.put("isFixName", ConstantFactory.me().getFixStatusName((Integer) map.get("is_fix")));
-        map.put("typeName", ConstantFactory.me().getDeviceTypeName((Integer) map.get("type")));
-        map.put("deviceStatusName", ConstantFactory.me().getDeviceStatusName((Integer) map.get("device_status")));
+//        map.put("statusName", ConstantFactory.me().getManageStatusName((Integer) map.get("status")));
+//        map.put("isFixName", ConstantFactory.me().getFixStatusName((Integer) map.get("is_fix")));
+//        map.put("typeName", ConstantFactory.me().getDeviceTypeName((Integer) map.get("type")));
+//        map.put("deviceStatusName", ConstantFactory.me().getDeviceStatusName((Integer) map.get("device_status")));
     }
 }
