@@ -69,7 +69,10 @@ public class DeviceService implements DeviceServiceApi {
         deviceVo.setType(fixAsset.getType());
         deviceVo.setTechniqueTarget(fixAsset.getTechniqueTarget());
         deviceVo.setStatus(fixAsset.getStatus());
-        //deviceVo.setOwner(fixAsset.getOwner());
+        List<DeviceFlow> deviceFlows = deviceFlowMapper.selectList(new EntityWrapper<DeviceFlow>().eq("device_id", fixAsset.getEnterpriseNo()).eq("status", "已同意"));
+        if (deviceFlows.size()>0){
+            deviceVo.setOwner(deviceFlows.get(0).getLendToName());
+        }
         deviceVo.setManufactor(fixAsset.getManufactor());
         // deviceVo.setIsFix(fixAsset.getIsFix());
         deviceVo.setEnterpriseNo(fixAsset.getEnterpriseNo());
