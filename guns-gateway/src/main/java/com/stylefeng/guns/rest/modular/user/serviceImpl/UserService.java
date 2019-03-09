@@ -106,14 +106,12 @@ public class UserService implements UserAPI {
     @Override
     public UserInfoVo getUserInfo(int uuid) {
         //通过id获取user信息
-        User user = userMapper.selectById(uuid);
+        UserInfo user = userInfoMapper.selectById(uuid);
         UserInfoVo userInfoVo = new UserInfoVo();
         userInfoVo.setEmail(user.getEmail());
-        userInfoVo.setGender(user.getGender());
         userInfoVo.setUserName(user.getUserName());
-        userInfoVo.setPhone(user.getPhone());
-        userInfoVo.setNumber(user.getNumber());
         userInfoVo.setDepartment(user.getDepartment());
+        userInfoVo.setId(user.getId());
         return userInfoVo;
     }
 

@@ -12,16 +12,8 @@ import com.stylefeng.guns.api.user.UserAPI;
 import com.stylefeng.guns.api.user.vo.UserInfoVo;
 import com.stylefeng.guns.api.vo.ResponseReturn;
 import com.stylefeng.guns.rest.common.CurrentUser;
-import com.stylefeng.guns.rest.common.persistence.dao.DeviceFlowMapper;
-import com.stylefeng.guns.rest.common.persistence.dao.FixAssetMapper;
-import com.stylefeng.guns.rest.common.persistence.dao.HistoryMapper;
-import com.stylefeng.guns.rest.common.persistence.dao.UserInfoMapper;
-import com.stylefeng.guns.rest.common.persistence.dao.UserMapper;
-import com.stylefeng.guns.rest.common.persistence.model.DeviceFlow;
-import com.stylefeng.guns.rest.common.persistence.model.FixAsset;
-import com.stylefeng.guns.rest.common.persistence.model.History;
-import com.stylefeng.guns.rest.common.persistence.model.User;
-import com.stylefeng.guns.rest.common.persistence.model.UserInfo;
+import com.stylefeng.guns.rest.common.persistence.dao.*;
+import com.stylefeng.guns.rest.common.persistence.model.*;
 import com.stylefeng.guns.rest.common.utils.DateUtil;
 import com.stylefeng.guns.rest.modular.es.FixAssetInfo;
 import com.stylefeng.guns.websokcet.service.PushService;
@@ -61,31 +53,34 @@ public class DeviceService implements DeviceServiceApi {
     private HistoryMapper historyMapper;
     @Autowired
     private PushService pushService;
+    @Autowired
+    private FixAssetNewMapper fixAssetNewMapper;
     @Override
     public DeviceVo getDeviceByEnterpriseNo(String enterpriseNo) {
-        FixAsset fixAssetC =new FixAsset();
+        FixAssetNew fixAssetC =new FixAssetNew();
         fixAssetC.setEnterpriseNo(enterpriseNo);
-        FixAsset fixAsset = fixAssetMapper.selectOne(fixAssetC);
+        FixAssetNew fixAsset = fixAssetNewMapper.selectOne(fixAssetC);
         if (fixAsset==null){
             return null;
         }
         DeviceVo deviceVo = new DeviceVo();
         deviceVo.setDeviceModel(fixAsset.getDeviceModel());
-        deviceVo.setUuid(fixAsset.getUuid());
+        //deviceVo.setUuid(fixAsset.getUuid());
         deviceVo.setType(fixAsset.getType());
         deviceVo.setTechniqueTarget(fixAsset.getTechniqueTarget());
         deviceVo.setStatus(fixAsset.getStatus());
-        deviceVo.setOwner(fixAsset.getOwner());
+        //deviceVo.setOwner(fixAsset.getOwner());
         deviceVo.setManufactor(fixAsset.getManufactor());
-        deviceVo.setIsFix(fixAsset.getIsFix());
+        // deviceVo.setIsFix(fixAsset.getIsFix());
         deviceVo.setEnterpriseNo(fixAsset.getEnterpriseNo());
         deviceVo.setDeviceName(fixAsset.getDeviceName());
-        deviceVo.setUpdateTime(fixAsset.getUpdateTime());
-        deviceVo.setDeviceStatus(fixAsset.getDeviceStatus());
+        //deviceVo.setUpdateTime(fixAsset.getUpdateTime());
+        //deviceVo.setDeviceStatus(fixAsset.getDeviceStatus());
         deviceVo.setCharge(fixAsset.getCharge());
-        deviceVo.setOwnerDepartment(userMapper.selectByEmail(fixAsset.getOwnerEmail()).getDepartment());
-        deviceVo.setChargeDepartment(userMapper.selectByEmail(fixAsset.getChargeEmail()).getDepartment());
-
+        //deviceVo.setOwnerDepartment(userMapper.selectByEmail(fixAsset.getOwnerEmail()).getDepartment());
+        deviceVo.setChargeDepartment(fixAsset.getChargeDepartment());
+        deviceVo.setAppraisal(fixAsset.getAppraisal());
+        deviceVo.setValidDate(fixAsset.getValidDate());
         return deviceVo;
     }
 
@@ -103,15 +98,27 @@ public class DeviceService implements DeviceServiceApi {
             }
         }
         String email = userInfo.getEmail();
-        FixAsset fixAsset = new FixAsset();
-        fixAsset.setEnterpriseNo(BO.getEnterpriseNo());
-        FixAsset fix = fixAssetMapper.selectOne(fixAsset);
-        if (fix.getOwnerEmail().equals(userInfo.getEmail())){
-            return ResponseReturn.failed("该设备已被你持有,无需向自己借用");
+        FixAssetNew fixAssetnew = new FixAssetNew();
+        fixAssetnew.setEnterpriseNo(BO.getEnterpriseNo());
+        FixAssetNew fix = fixAssetNewMapper.selectOne(fixAssetnew);
+        if (fix==null){
+            return  ResponseReturn.failed("设备不存在");
         }
-        User user = new User();
+        UserInfo chargeUser = userInfoMapper.selectByName(fix.getCharge());
+        if (chargeUser==null){
+            return  ResponseReturn.failed("设备负责人查询失败");
+        }
+        //设备流转状态,1待同意，2已同意，3已拒绝，4已被其他人借用
+        List<DeviceFlow> deviceFlows1 = deviceFlowMapper.selectList(
+                new EntityWrapper<DeviceFlow>().eq("device_id", BO.getEnterpriseNo()).eq("lend_to", email)
+                        .eq("status", "已同意"));
+        //借用申请已经发出，无需多次
+        if (deviceFlows1.size()>0){
+            return ResponseReturn.failed("设备被你持有,无需再次借用!");
+        }
+        UserInfo user = new UserInfo();
         user.setEmail(email);
-        User borrowUser = userMapper.selectOne(user);
+        UserInfo borrowUser = userInfoMapper.selectOne(user);
         //查询不到用户信息
         if (borrowUser==null){
             ResponseReturn.failed("查询不到用户信息");
@@ -120,10 +127,10 @@ public class DeviceService implements DeviceServiceApi {
         if (fix==null){
             ResponseReturn.failed("查不到设备");
         }
-
+        //设备流转状态,1待同意，2已同意，3已拒绝，4已被其他人借用
         List<DeviceFlow> deviceFlows = deviceFlowMapper.selectList(
             new EntityWrapper<DeviceFlow>().eq("device_id", BO.getEnterpriseNo()).eq("lend_to", email)
-                .eq("status", 1));
+                .eq("status", "待同意"));
         //借用申请已经发出，无需多次
         if (deviceFlows.size()>0){
             return ResponseReturn.failed("借用申请已经发出,无需多次申请!");
@@ -132,23 +139,23 @@ public class DeviceService implements DeviceServiceApi {
         DeviceFlow deviceFlow = new DeviceFlow();
         deviceFlow.setCreateTime(date);
         deviceFlow.setUpdateTime(date);
-        deviceFlow.setStatus(1);
+        deviceFlow.setStatus("待同意");
         deviceFlow.setRemark(BO.getRemark());
         deviceFlow.setLendToName(borrowUser.getUserName());
         //deviceFlow.setLendFromName(fix.getOwner());
         //向负责人借用
-        deviceFlow.setLendFromName(fix.getCharge());
+        deviceFlow.setLendFromName(chargeUser.getUserName());
         deviceFlow.setDeviceName(fix.getDeviceName());
         deviceFlow.setDeviceId(fix.getEnterpriseNo());
         //向负责人借用 deviceFlow.setLendFrom(fix.getOwnerEmail());
-        deviceFlow.setLendFromName(fix.getChargeEmail());
+        deviceFlow.setLendFrom(chargeUser.getEmail());
         deviceFlow.setLendTo(user.getEmail());
 
         //历史记录
         History history = new History();
         // history.setConnectPerson(fix.getOwnerEmail());
         //向负责人借用
-        history.setConnectPerson(fix.getChargeEmail());
+        history.setConnectPerson(chargeUser.getEmail());
         history.setTypeName("发起借用操作");
         history.setOperatorName(userInfo.getUserName());
         history.setDeviceName(fix.getDeviceName());
@@ -162,7 +169,7 @@ public class DeviceService implements DeviceServiceApi {
         deviceFlowMapper.insert(deviceFlow);
         historyMapper.insert(history);
         //socket推送,推送给被借用人
-        pushService.sendNotification(fix.getChargeEmail(),1);
+        pushService.sendNotification(chargeUser.getEmail(),1);
         return ResponseReturn.success("申请已发出,可以联系对方及时处理");
     }
 
@@ -187,9 +194,10 @@ public class DeviceService implements DeviceServiceApi {
     public Map recieveMessage(String email) {
         Set<String> set = new HashSet<>();
         set.add("update_time");
+        //设备流转状态,1待同意，2已同意，3已拒绝，4已被其他人借用
         List<DeviceFlow> lend_from = deviceFlowMapper
             .selectList(new EntityWrapper<DeviceFlow>().eq("lend_from", email).orderDesc(set));
-        lend_from.stream().filter(lf->lf.getStatus()!=4).collect(Collectors.toList());
+        lend_from.stream().filter(lf->lf.getStatus()!="已被其他人借用").collect(Collectors.toList());
         return ResponseReturn.success(lend_from);
     }
 
@@ -215,12 +223,13 @@ public class DeviceService implements DeviceServiceApi {
             return ResponseReturn.failed("用户信息查询失败");
         }
         //借用人信息
-        User user = new User();
+        UserInfo user = new UserInfo();
         user.setEmail(bo.getLendTo());
-        User borrowUser = userMapper.selectOne(user);
+        UserInfo borrowUser = userInfoMapper.selectOne(user);
         if (bo.getAgree().intValue()==1) {
+            //设备流转状态,1待同意，2已同意，3已拒绝，4已被其他人借用
             List<DeviceFlow> deviceFlows = deviceFlowMapper.selectList(
-                new EntityWrapper<DeviceFlow>().eq("device_id", bo.getEnterpriseNo()).eq("status", 1)
+                new EntityWrapper<DeviceFlow>().eq("device_id", bo.getEnterpriseNo()).eq("status", "待同意")
                     .eq("lend_from", userInfo.getEmail()));
             if (deviceFlows.size() < 1) {
                 return  ResponseReturn.failed("设备状态不对");
@@ -228,22 +237,12 @@ public class DeviceService implements DeviceServiceApi {
             List<DeviceFlow> flows = deviceFlows.stream().filter(d -> d.getLendTo().equals(bo.getLendTo())).collect(Collectors.toList());
             //状态更新为4，4设备已经借给其他人
             List<DeviceFlow> collect = deviceFlows.stream().filter(d -> !d.getLendTo().equals(bo.getLendTo())).collect(Collectors.toList());
-            collect.forEach(deviceFlow -> deviceFlow.setStatus(4));
+            collect.forEach(deviceFlow -> deviceFlow.setStatus("已被其他人借用"));
 
             DeviceFlow deviceFlow = flows.get(0);
-            deviceFlow.setStatus(2);
+            deviceFlow.setStatus("已同意");
             collect.add(deviceFlow);
 
-            FixAsset fixAssetCond = new FixAsset();
-            fixAssetCond.setEnterpriseNo(bo.getEnterpriseNo());
-
-            FixAsset fixAsset = fixAssetMapper.selectOne(fixAssetCond);
-            FixAsset fixAssetUpdate = new FixAsset();
-
-            fixAssetUpdate.setId(fixAsset.getId());
-            fixAssetUpdate.setOwnerEmail(borrowUser.getEmail());
-            fixAssetUpdate.setOwner(borrowUser.getUserName());
-            fixAssetUpdate.setUpdateTime(DateUtil.getTimeOfEastEight());
 
             //历史记录
             History history = new History();
@@ -258,15 +257,15 @@ public class DeviceService implements DeviceServiceApi {
             history.setOperator(userInfo.getEmail());
             history.setConnectPersonDepartment(borrowUser.getDepartment());
 
-            fixAssetMapper.updateById(fixAssetUpdate);
             deviceFlowMapper.updateBatch1(collect);
             historyMapper.insert(history);
             //socket推送,推送给借用人
             pushService.sendNotification(borrowUser.getEmail(),2);
             return ResponseReturn.success("借用成功!");
         }else{
+            //设备流转状态,1待同意，2已同意，3已拒绝，4已被其他人借用
             List<DeviceFlow> deviceFlows = deviceFlowMapper
-                .selectList(new EntityWrapper<DeviceFlow>().eq("device_id", bo.getEnterpriseNo()).eq("status", 1).eq("lend_from",userInfo.getEmail()));
+                .selectList(new EntityWrapper<DeviceFlow>().eq("device_id", bo.getEnterpriseNo()).eq("status", "待同意").eq("lend_from",userInfo.getEmail()));
             if (deviceFlows.size()<1){
                 return  ResponseReturn.failed("设备状态不对");
             }
@@ -279,7 +278,7 @@ public class DeviceService implements DeviceServiceApi {
 
             DeviceFlow deviceFlow = new DeviceFlow();
             deviceFlow.setId(device.getId());
-            deviceFlow.setStatus(3);
+            deviceFlow.setStatus("已拒绝");
 
             //历史记录
             History history = new History();
@@ -326,7 +325,7 @@ public class DeviceService implements DeviceServiceApi {
         }
         DeviceFlow deviceFlow = new DeviceFlow();
         deviceFlow.setId(collect.get(0).getId());
-        deviceFlow.setStatus(3);
+        deviceFlow.setStatus("已拒绝");
         deviceFlowMapper.updateById(deviceFlow);
         return ResponseReturn.success("拒绝成功");
     }
@@ -346,8 +345,13 @@ public class DeviceService implements DeviceServiceApi {
         Page page = new Page();
         page.setCurrent(bo.getPageNo());
         page.setSize(bo.getPageSize());
-        List<FixAsset> fixAssets = fixAssetMapper.selectPage(page, null);
-        List<HomepageVO> list = fixAssets.stream().map(DeviceService::fixAsset2Vo).collect(Collectors.toList());
+        List<FixAssetNew> fixAssets = fixAssetNewMapper.selectPage(page, null);
+        //List<HomepageVO> list = fixAssets.stream().map(DeviceService::fixAsset2Vo).collect(Collectors.toList());
+        List<HomepageVO> list = new ArrayList<>();
+        for (int i=0;i<fixAssets.size();i++){
+            HomepageVO homepageVO = fixAsset2Vo(fixAssets.get(i));
+            list.add(homepageVO);
+        }
         page.setRecords(list);
 
         return ResponseReturn.success(page);
@@ -358,7 +362,7 @@ public class DeviceService implements DeviceServiceApi {
         Page page = new Page<>();
         page.setSize(100);
         page.setCurrent(1);
-        List<HomepageVO> homepageVOPage = fixAssetMapper.likeSearch(page, context);
+        List<HomepageVO> homepageVOPage = fixAssetNewMapper.likeSearch(page, context);
         page.setRecords(homepageVOPage);
         return ResponseReturn.success(page);
     }
@@ -379,8 +383,16 @@ public class DeviceService implements DeviceServiceApi {
         page.setCurrent(pageBO.getPageNo());
         page.setSize(pageBO.getPageSize());
 
-        List<FixAsset> owner_email = fixAssetMapper
-            .selectPage(page,new EntityWrapper<FixAsset>().eq("owner_email", userInfo.getEmail()));
+        List<DeviceFlow> deviceFlows = deviceFlowMapper.selectPage(page, new EntityWrapper<DeviceFlow>().eq("lend_to", userInfo.getEmail()).eq("status", "已同意"));
+        //List<FixAsset> owner_email = fixAssetMapper.selectPage(page,new EntityWrapper<FixAsset>().eq("owner_email", userInfo.getEmail()));
+        List<FixAssetNew> owner_email = new ArrayList<>();
+        for (int i=1;i<deviceFlows.size();i++){
+            List<FixAssetNew> enterprise_no = fixAssetNewMapper.selectList(new EntityWrapper<FixAssetNew>().eq("enterprise_no", deviceFlows.get(0).getDeviceId()));
+            if (enterprise_no.size()<1){
+                continue;
+            }
+            owner_email.add(enterprise_no.get(0));
+        }
         page.setRecords(owner_email);
         return ResponseReturn.success(page);
     }
@@ -442,13 +454,18 @@ public class DeviceService implements DeviceServiceApi {
         return fixAssetInfo;
     }
 
-    private static HomepageVO fixAsset2Vo(FixAsset fixAsset){
+    private  HomepageVO fixAsset2Vo(FixAssetNew fixAsset){
         HomepageVO homepageVO = new HomepageVO();
         homepageVO.setDeviceModel(fixAsset.getDeviceModel());
         homepageVO.setEnterpriseNo(fixAsset.getEnterpriseNo());
         homepageVO.setDeviceName(fixAsset.getDeviceName());
         homepageVO.setTechniqueTarget(fixAsset.getTechniqueTarget());
-        homepageVO.setOwner(fixAsset.getOwner());
+        List<DeviceFlow> deviceFlows = deviceFlowMapper.selectList(new EntityWrapper<DeviceFlow>().eq("device_id", fixAsset.getEnterpriseNo()).eq("status", "已同意"));
+        if (deviceFlows.size()>0){
+            homepageVO.setOwner(deviceFlows.get(0).getLendToName());
+        }else {
+            homepageVO.setOwner(fixAsset.getCharge());
+        }
         homepageVO.setManufactor(fixAsset.getManufactor());
         homepageVO.setCharge(fixAsset.getCharge());
         return homepageVO;

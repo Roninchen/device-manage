@@ -1,6 +1,7 @@
 package com.stylefeng.guns.rest.common.persistence.dao;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.stylefeng.guns.rest.common.persistence.model.User;
 import com.stylefeng.guns.rest.common.persistence.model.UserInfo;
 
 /**
@@ -12,5 +13,9 @@ import com.stylefeng.guns.rest.common.persistence.model.UserInfo;
  * @since 2018-11-22
  */
 public interface UserInfoMapper extends BaseMapper<UserInfo> {
+
+    UserInfo selectByEmail(String email);
+
+    UserInfo selectByName(String name);
 
 }

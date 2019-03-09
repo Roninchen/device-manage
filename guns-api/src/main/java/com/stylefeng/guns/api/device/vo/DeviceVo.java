@@ -29,11 +29,11 @@ public class DeviceVo implements Serializable {
     /**
      * 设备分类，1为计量设备
      */
-    private Integer type;
+    private String type;
     /**
      * 管理状态,0为封存，1为已领用
      */
-    private Integer status;
+    private String status;
     /**
      * 持有人
      */
@@ -45,12 +45,12 @@ public class DeviceVo implements Serializable {
     /**
      * 是否为固定资产，1是固定资产
      */
-    private Integer isFix;
+    private String isFix;
     /**
      * 借用时间
      */
     private Long updateTime;
-    private Integer deviceStatus;
+    private String deviceStatus;
     /**
      * 借用人部门
      */
@@ -59,4 +59,16 @@ public class DeviceVo implements Serializable {
      * 负责人部门
      */
     private String chargeDepartment;
+    /**
+     * 出厂编号
+     */
+    private String manufactNo;
+    /**
+     * 有效日期
+     */
+    private String validDate;
+    /**
+     * 鉴定结果
+     */
+    private String appraisal;
 }

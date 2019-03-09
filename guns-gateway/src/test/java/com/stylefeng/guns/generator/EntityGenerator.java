@@ -29,7 +29,7 @@ public class EntityGenerator {
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir("C:\\IDEA-workspace\\device-manage\\guns-gateway\\src\\main\\java");//这里写你自己的java目录
+        gc.setOutputDir("/Users/yida/IDEA-workspace/device-manage/guns-gateway/src/main/java");//这里写你自己的java目录
         gc.setFileOverride(true);//是否覆盖
         gc.setActiveRecord(true);
         gc.setEnableCache(false);// XML 二级缓存
@@ -58,7 +58,8 @@ public class EntityGenerator {
         StrategyConfig strategy = new StrategyConfig();
         //strategy.setTablePrefix(new String[]{"_"});// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[]{"user","user_info","history","fix_asset","device_flow","device"});
+        //strategy.setInclude(new String[]{"user","user_info","history","fix_asset","device_flow","device"});
+        strategy.setInclude(new String[]{"fix_asset_new"});
         mpg.setStrategy(strategy);
 
         // 包配置
