@@ -145,7 +145,7 @@ public class DeviceService implements DeviceServiceApi {
         deviceFlow.setStatus("待同意");
         deviceFlow.setRemark(BO.getRemark());
         deviceFlow.setLendToName(borrowUser.getUserName());
-        //deviceFlow.setLendFromName(fix.getOwner());
+        deviceFlow.setLendFromName(chargeUser.getUserName());
         //向负责人借用
         deviceFlow.setLendFromName(chargeUser.getUserName());
         deviceFlow.setDeviceName(fix.getDeviceName());
