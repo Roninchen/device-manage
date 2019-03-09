@@ -20,7 +20,10 @@
 
     <select id="selectByName" resultType="com.stylefeng.guns.rest.common.persistence.model.UserInfo">
         SELECT
-            *
+            id AS id,
+            email AS email,
+            user_name AS userName,
+            department As department
         FROM
             `user_info` u
         WHERE u.user_name = #{name}
