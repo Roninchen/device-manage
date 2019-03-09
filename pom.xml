@@ -12,8 +12,8 @@
         <module>guns-admin</module>
         <module>guns-core</module>
         <module>guns-generator</module>
-        <module>guns-gateway</module>
-        <module>guns-api</module>
+        <!--<module>guns-gateway</module>-->
+        <!--<module>guns-api</module>-->
     </modules>
 
     <parent>
