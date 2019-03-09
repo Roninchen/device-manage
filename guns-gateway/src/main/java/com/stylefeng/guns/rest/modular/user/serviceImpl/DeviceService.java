@@ -72,6 +72,7 @@ public class DeviceService implements DeviceServiceApi {
         List<DeviceFlow> deviceFlows = deviceFlowMapper.selectList(new EntityWrapper<DeviceFlow>().eq("device_id", fixAsset.getEnterpriseNo()).eq("status", "已同意"));
         if (deviceFlows.size()>0){
             deviceVo.setOwner(deviceFlows.get(0).getLendToName());
+            deviceVo.setUpdateTime(deviceFlows.get(0).getUpdateTime());
         }
         deviceVo.setManufactor(fixAsset.getManufactor());
         // deviceVo.setIsFix(fixAsset.getIsFix());
@@ -282,6 +283,7 @@ public class DeviceService implements DeviceServiceApi {
             DeviceFlow deviceFlow = new DeviceFlow();
             deviceFlow.setId(device.getId());
             deviceFlow.setStatus("已拒绝");
+            deviceFlow.setUpdateTime(DateUtil.getTimeOfEastEight());
 
             //历史记录
             History history = new History();
