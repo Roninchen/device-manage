@@ -236,7 +236,7 @@ public class DeviceService implements DeviceServiceApi {
         if (bo.getAgree().intValue()==1) {
             //设备流转状态,1待同意，2已同意，3已拒绝，4已被其他人借用
             List<DeviceFlow> deviceFlows = deviceFlowMapper.selectList(
-                new EntityWrapper<DeviceFlow>().eq("device_id", bo.getEnterpriseNo()).eq("status", "待同意")
+                new EntityWrapper<DeviceFlow>().eq("device_id", bo.getEnterpriseNo())
                     .eq("lend_from", userInfo.getEmail()));
             if (deviceFlows.size() < 1) {
                 return  ResponseReturn.failed("设备状态不对");
@@ -395,7 +395,7 @@ public class DeviceService implements DeviceServiceApi {
         //List<FixAsset> owner_email = fixAssetMapper.selectPage(page,new EntityWrapper<FixAsset>().eq("owner_email", userInfo.getEmail()));
         List<FixAssetNew> owner_email = new ArrayList<>();
         for (int i=0;i<deviceFlows.size();i++){
-            List<FixAssetNew> enterprise_no = fixAssetNewMapper.selectList(new EntityWrapper<FixAssetNew>().eq("enterprise_no", deviceFlows.get(0).getDeviceId()));
+            List<FixAssetNew> enterprise_no = fixAssetNewMapper.selectList(new EntityWrapper<FixAssetNew>().eq("enterprise_no", deviceFlows.get(i).getDeviceId()));
             if (enterprise_no.size()<1){
                 continue;
             }
