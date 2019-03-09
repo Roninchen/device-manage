@@ -243,7 +243,7 @@ public class DeviceService implements DeviceServiceApi {
             }
             List<DeviceFlow> flows = deviceFlows.stream().filter(d -> d.getLendTo().equals(bo.getLendTo())).collect(Collectors.toList());
             //状态更新为4，4设备已经借给其他人
-            List<DeviceFlow> collect = deviceFlows.stream().filter(d -> !d.getLendTo().equals(bo.getLendTo())).collect(Collectors.toList());
+            List<DeviceFlow> collect = deviceFlows.stream().filter(d -> !d.getLendTo().equals(bo.getLendTo())).filter(d -> !d.getStatus().equals("待同意")).filter(d -> !d.getStatus().equals("已被其他人借用")).filter(d -> !d.getStatus().equals("已拒绝")).collect(Collectors.toList());
             collect.forEach(deviceFlow -> deviceFlow.setStatus("已被其他人借用"));
 
             DeviceFlow deviceFlow = flows.get(0);
