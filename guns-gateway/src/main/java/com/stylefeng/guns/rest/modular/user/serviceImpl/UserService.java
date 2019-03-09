@@ -26,6 +26,21 @@ public class UserService implements UserAPI {
 
     @Override
     public UserInfoVo login(String email, String password) {
+
+        UserInfo userInfo = new UserInfo();
+        UserInfoVo userInfoVo = new UserInfoVo();
+        userInfo.setUserName(email);
+        List<UserInfo> user_name = userInfoMapper.selectList(new EntityWrapper<UserInfo>().eq("user_name", email));
+        if (user_name.size()>0){
+            userInfoVo.setDepartment(user_name.get(0).getDepartment());
+            userInfoVo.setEmail(user_name.get(0).getEmail());
+            userInfoVo.setId(user_name.get(0).getId());
+            userInfoVo.setUserName(user_name.get(0).getUserName());
+            return userInfoVo;
+        }
+        userInfoVo.setId(0);
+        return userInfoVo;
+        /**
         UserInfoVo userInfoVo = new UserInfoVo();
         ////根据登录账户获取用户信息
         User user = new User();
@@ -47,6 +62,7 @@ public class UserService implements UserAPI {
         }
         userInfoVo.setId(0);
         return userInfoVo;
+         **/
     }
 
     @Override
