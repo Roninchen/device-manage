@@ -73,6 +73,10 @@ public class DeviceService implements DeviceServiceApi {
         if (deviceFlows.size()>0){
             deviceVo.setOwner(deviceFlows.get(0).getLendToName());
             deviceVo.setUpdateTime(deviceFlows.get(0).getUpdateTime());
+            List<UserInfo> user_name = userInfoMapper.selectList(new EntityWrapper<UserInfo>().eq("user_name", deviceFlows.get(0).getLendToName()));
+            if (user_name.size()>0) {
+                deviceVo.setOwnerDepartment(user_name.get(0).getDepartment());
+            }
         }
         deviceVo.setManufactor(fixAsset.getManufactor());
         // deviceVo.setIsFix(fixAsset.getIsFix());
@@ -81,7 +85,6 @@ public class DeviceService implements DeviceServiceApi {
         //deviceVo.setUpdateTime(fixAsset.getUpdateTime());
         //deviceVo.setDeviceStatus(fixAsset.getDeviceStatus());
         deviceVo.setCharge(fixAsset.getCharge());
-        //deviceVo.setOwnerDepartment(userMapper.selectByEmail(fixAsset.getOwnerEmail()).getDepartment());
         deviceVo.setChargeDepartment(fixAsset.getChargeDepartment());
         deviceVo.setAppraisal(fixAsset.getAppraisal());
         deviceVo.setValidDate(fixAsset.getValidDate());
@@ -391,7 +394,7 @@ public class DeviceService implements DeviceServiceApi {
         List<DeviceFlow> deviceFlows = deviceFlowMapper.selectPage(page, new EntityWrapper<DeviceFlow>().eq("lend_to", userInfo.getEmail()).eq("status", "已同意"));
         //List<FixAsset> owner_email = fixAssetMapper.selectPage(page,new EntityWrapper<FixAsset>().eq("owner_email", userInfo.getEmail()));
         List<FixAssetNew> owner_email = new ArrayList<>();
-        for (int i=1;i<deviceFlows.size();i++){
+        for (int i=0;i<deviceFlows.size();i++){
             List<FixAssetNew> enterprise_no = fixAssetNewMapper.selectList(new EntityWrapper<FixAssetNew>().eq("enterprise_no", deviceFlows.get(0).getDeviceId()));
             if (enterprise_no.size()<1){
                 continue;
