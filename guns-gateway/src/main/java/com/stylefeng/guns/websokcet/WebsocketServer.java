@@ -40,7 +40,7 @@ public final class WebsocketServer implements CommandLineRunner {
 
         configuration = new Configuration();
         configuration.setPort(serverConfig.getPort());
-        configuration.setHostname("127.0.0.1");
+//        configuration.setHostname("127.0.0.1");
         configuration.setWorkerThreads(serverConfig.getWorkerThread());
         configuration.setBossThreads(serverConfig.getBossThread());
 
