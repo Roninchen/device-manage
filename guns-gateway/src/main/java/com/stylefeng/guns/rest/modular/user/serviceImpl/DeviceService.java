@@ -198,23 +198,36 @@ public class DeviceService implements DeviceServiceApi {
     }
 
     @Override
-    public Map recieveMessage(String email) {
+    public Map recieveMessage(String email,PageBO bo) {
+        Page page = new Page();
+        page.setCurrent(bo.getPageNo());
+        page.setSize(bo.getPageSize());
         Set<String> set = new HashSet<>();
         set.add("update_time");
         //设备流转状态,1待同意，2已同意，3已拒绝，4已被其他人借用
-        List<DeviceFlow> lend_from = deviceFlowMapper
-            .selectList(new EntityWrapper<DeviceFlow>().eq("lend_from", email).orderDesc(set));
-        lend_from.stream().filter(lf->lf.getStatus()!="已被其他人借用").collect(Collectors.toList());
-        return ResponseReturn.success(lend_from);
+        //List<DeviceFlow> lend_from = deviceFlowMapper
+        //    .selectList(new EntityWrapper<DeviceFlow>().eq("lend_from", email).orderDesc(set));
+        //lend_from.stream().filter(lf->lf.getStatus()!="已被其他人借用").collect(Collectors.toList());
+        List<DeviceFlow> lend_from1 = deviceFlowMapper.selectPage(page, new EntityWrapper<DeviceFlow>().eq("lend_from", email).orderDesc(set));
+        lend_from1.stream().filter(lf->lf.getStatus()!="已被其他人借用").collect(Collectors.toList());
+        page.setRecords(lend_from1);
+        return ResponseReturn.success(page);
     }
 
     @Override
-    public Map sendMessage(String email) {
+    public Map sendMessage(String email,PageBO bo) {
         Set<String> set = new HashSet<>();
         set.add("update_time");
-        List<DeviceFlow> lend_from = deviceFlowMapper
-            .selectList(new EntityWrapper<DeviceFlow>().eq("lend_to", email).orderDesc(set));
-        return ResponseReturn.success(lend_from);
+        Page page = new Page();
+        page.setCurrent(bo.getPageNo());
+        page.setSize(bo.getPageSize());
+        //List<DeviceFlow> lend_from = deviceFlowMapper
+        //   .selectList(new EntityWrapper<DeviceFlow>().eq("lend_to", email).orderDesc(set));
+
+        List<DeviceFlow> lend_to = deviceFlowMapper.selectPage(page, new EntityWrapper<DeviceFlow>().eq("lend_to", email).orderDesc(set));
+        page.setRecords(lend_to);
+        return  ResponseReturn.success(page);
+        //return ResponseReturn.success(lend_from);
     }
 
     @Override

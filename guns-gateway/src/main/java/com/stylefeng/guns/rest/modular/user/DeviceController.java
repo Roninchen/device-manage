@@ -68,7 +68,7 @@ public class DeviceController {
      * @return
      */
     @GetMapping("recieve")
-    public Map recieveMessage(){
+    public Map recieveMessage(PageBO pageBO){
         // 获取当前登陆用户
         String userId = CurrentUser.getCurrentUser();
         if(userId != null && userId.trim().length()>0){
@@ -76,7 +76,7 @@ public class DeviceController {
             int uuid = Integer.parseInt(userId);
             UserInfoVo userInfo = userAPI.getUserInfo(uuid);
             if(userInfo!=null){
-                Map map = deviceServiceApi.recieveMessage(userInfo.getEmail());
+                Map map = deviceServiceApi.recieveMessage(userInfo.getEmail(),pageBO);
                 return map;
             }else{
                 return ResponseReturn.failed("用户信息查询失败");
@@ -91,7 +91,7 @@ public class DeviceController {
      * @return
      */
     @GetMapping("send")
-    public Map sendMessage(){
+    public Map sendMessage(PageBO pageBO){
         // 获取当前登陆用户
         String userId = CurrentUser.getCurrentUser();
         if(userId != null && userId.trim().length()>0){
@@ -100,7 +100,7 @@ public class DeviceController {
             UserInfoVo userInfo = userAPI.getUserInfo(uuid);
             if(userInfo!=null){
 
-                return deviceServiceApi.sendMessage(userInfo.getEmail());
+                return deviceServiceApi.sendMessage(userInfo.getEmail(),pageBO);
             }else{
                 return ResponseReturn.failed("用户信息查询失败");
             }
