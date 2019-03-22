@@ -8,6 +8,7 @@
     <name>guns-parent</name>
     <packaging>pom</packaging>
 
+
     <modules>
         <!--<module>guns-admin</module>-->
         <module>guns-core</module>
