@@ -44,7 +44,7 @@ public class AuthController {
     public Map createAuthenticationToken(@RequestBody AuthRequest authRequest) {
 
         boolean validate = true;
-        UserInfoVo user = userAPI.login(authRequest.getEmail(),authRequest.getPassword());
+        UserInfoVo user = userAPI.login(authRequest.getEmail(),authRequest.getPassword(),authRequest.getNeedPass());
         int userId = user.getId().intValue();
         if (userId==0){
             validate=false;

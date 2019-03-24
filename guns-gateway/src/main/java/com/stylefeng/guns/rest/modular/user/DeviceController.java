@@ -1,5 +1,6 @@
 package com.stylefeng.guns.rest.modular.user;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.stylefeng.guns.api.device.DeviceServiceApi;
 import com.stylefeng.guns.api.device.bo.DeviceBorrowBO;
 import com.stylefeng.guns.api.device.bo.LendBO;
@@ -12,6 +13,8 @@ import com.stylefeng.guns.rest.common.CurrentUser;
 
 import java.util.Map;
 
+import com.stylefeng.guns.rest.common.persistence.dao.UserMapper;
+import com.stylefeng.guns.rest.common.persistence.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,6 +38,8 @@ public class DeviceController {
     private DeviceServiceApi deviceServiceApi;
     @Autowired
     private UserAPI userAPI;
+    @Autowired
+    private UserMapper userMapper;
 
     /**
      * 获取设备
@@ -45,6 +50,31 @@ public class DeviceController {
     public Map getDeviceByNo(@RequestParam(value = "enterpriseNo") String enterpriseNo){
         DeviceVo deviceByEnterpriseNo = deviceServiceApi.getDeviceByEnterpriseNo(enterpriseNo);
         return ResponseReturn.success(deviceByEnterpriseNo);
+    }
+
+    /**
+     * 修改密码
+     */
+    @GetMapping("password")
+    public Map changePassword(@RequestParam(value = "newPassword") String newPassword){
+        // 获取当前登陆用户
+        String userId = CurrentUser.getCurrentUser();
+        if(userId != null && userId.trim().length()>0) {
+            // 将用户ID传入后端进行查询
+            int uuid = Integer.parseInt(userId);
+            UserInfoVo userInfo = userAPI.getUserInfo(uuid);
+            if (userInfo != null) {
+                userMapper.delete(new EntityWrapper<User>().eq("email",userInfo.getEmail()));
+                User user = new User();
+                user.setUserPwd(newPassword);
+                user.setEmail(userInfo.getEmail());
+                userMapper.insert(user);
+                return ResponseReturn.success("操作成功");
+            } else {
+                return ResponseReturn.failed("用户信息查询失败");
+            }
+        }
+        return ResponseReturn.failed("用户信息查询失败");
     }
 
     /**

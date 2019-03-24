@@ -7,7 +7,7 @@ import com.stylefeng.guns.api.user.vo.UserInfoModel;
 
 public interface UserAPI {
 
-    UserInfoVo login(String username, String password);
+    UserInfoVo login(String username, String password,Integer needPass);
 
     int register(RegisterBo registerBo);
 

@@ -25,7 +25,7 @@ public class UserService implements UserAPI {
     private UserInfoMapper userInfoMapper;
 
     @Override
-    public UserInfoVo login(String email, String password) {
+    public UserInfoVo login(String email, String password,Integer needPass) {
 
         UserInfo userInfo = new UserInfo();
         UserInfoVo userInfoVo = new UserInfoVo();
@@ -36,6 +36,22 @@ public class UserService implements UserAPI {
             userInfoVo.setEmail(user_name.get(0).getEmail());
             userInfoVo.setId(user_name.get(0).getId());
             userInfoVo.setUserName(user_name.get(0).getUserName());
+            if (needPass == 1){
+                List<User> email1 = userMapper.selectList(new EntityWrapper<User>().eq("email", userInfoVo.getEmail()));
+                if (email1.size() < 1) {
+                    User user = new User();
+                    user.setEmail(userInfoVo.getEmail());
+                    user.setUserPwd("8511123456");
+                    userMapper.insert(user);
+                }else {
+                    User user = email1.get(0);
+                    //密码不匹配
+                    if (user.getUserPwd() != password){
+                        userInfoVo.setId(0);
+                        return userInfoVo;
+                    }
+                }
+            }
             return userInfoVo;
         }
         userInfoVo.setId(0);
