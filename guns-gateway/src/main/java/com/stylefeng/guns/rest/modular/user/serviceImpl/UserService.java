@@ -39,9 +39,13 @@ public class UserService implements UserAPI {
             if (needPass == 1){
                 List<User> email1 = userMapper.selectList(new EntityWrapper<User>().eq("email", userInfoVo.getEmail()));
                 if (email1.size() < 1) {
+                    if (!password.equals("welcome")){
+                        userInfoVo.setId(0);
+                        return userInfoVo;
+                    }
                     User user = new User();
                     user.setEmail(userInfoVo.getEmail());
-                    user.setUserPwd("8511123456");
+                    user.setUserPwd("welcome");
                     userMapper.insert(user);
                 }else {
                     User user = email1.get(0);
