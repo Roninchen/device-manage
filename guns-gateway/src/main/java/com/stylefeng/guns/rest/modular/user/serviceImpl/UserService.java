@@ -36,6 +36,7 @@ public class UserService implements UserAPI {
             userInfoVo.setEmail(user_name.get(0).getEmail());
             userInfoVo.setId(user_name.get(0).getId());
             userInfoVo.setUserName(user_name.get(0).getUserName());
+            userInfoVo.setEmail(user_name.get(0).getEmail());
             if (needPass == 1){
                 List<User> email1 = userMapper.selectList(new EntityWrapper<User>().eq("email", userInfoVo.getEmail()));
                 if (email1.size() < 1) {
@@ -50,7 +51,7 @@ public class UserService implements UserAPI {
                 }else {
                     User user = email1.get(0);
                     //密码不匹配
-                    if (user.getUserPwd() != password){
+                    if (!user.getUserPwd().equals(password)){
                         userInfoVo.setId(0);
                         return userInfoVo;
                     }
