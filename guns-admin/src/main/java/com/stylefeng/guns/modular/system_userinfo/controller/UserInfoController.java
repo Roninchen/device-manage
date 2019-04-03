@@ -145,4 +145,22 @@ public class UserInfoController extends BaseController {
     public Object detail(@PathVariable("userInfoId") Integer userInfoId) {
         return userInfoService.selectById(userInfoId);
     }
+
+    @RequestMapping(value = "/reset_password")
+    @ResponseBody
+    public Object resetPassword(@RequestParam Integer userInfoId) {
+        UserInfo userInfo = userInfoService.selectById(userInfoId);
+        if (userInfo == null) {
+            return ERROR;
+        }
+
+        try {
+            jdbcTemplate.execute("delete from `user` where `email`= '" + userInfo.getEmail()+"'");
+            return SUCCESS_TIP;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ERROR;
+    }
 }

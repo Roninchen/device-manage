@@ -94,6 +94,21 @@ UserInfo.delete = function () {
     }
 };
 
+/**
+ * 重置密码
+ */
+UserInfo.resetPassword = function () {
+    if (this.check()) {
+        var ajax = new $ax(Feng.ctxPath + "/userInfo/reset_password", function (data) {
+            Feng.success("重置成功!");
+        }, function (data) {
+            Feng.error("重置失败!" + data.responseJSON.message + "!");
+        });
+        ajax.set("userInfoId",this.seItem.id);
+        ajax.start();
+    }
+};
+
 
 /**
  * 查询用户信息管理列表

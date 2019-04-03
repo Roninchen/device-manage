@@ -8,17 +8,13 @@
             <div class="ibox-content">
                 <div class="row row-lg">
                     <div class="col-sm-12">
-                        <!--<div class="row">-->
-                            <!--<div class="col-sm-3">-->
-                                <!--<#NameCon id="condition" name="名称" />-->
-                            <!--</div>-->
-                            <!--<div class="col-sm-3">-->
-                                <!--<#button name="搜索" icon="fa-search" clickFun="UserInfo.search()"/>-->
-                            <!--</div>-->
-                        <!--</div>-->
                         <div class="hidden-xs" id="UserInfoTableToolbar" role="group">
                             @if(shiro.hasPermission("/userInfo/adds")){
                             <#button name="批量导入" icon="fa-plus" clickFun="UserInfo.openAddUserInfos()" space="true"/>
+                            @}
+
+                            @if(shiro.hasPermission("/userInfo/adds")){
+                            <#button name="重置密码"  icon="" clickFun="UserInfo.resetPassword()" space="true"/>
                             @}
                         </div>
                         <#table id="UserInfoTable"/>
