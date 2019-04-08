@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +78,11 @@ public class UserInfoController extends BaseController {
     @RequestMapping(value = "/list")
     @ResponseBody
     public Object list(String condition) {
-        return userInfoService.selectList(null);
+        if (!StringUtils.isEmpty(condition)) {
+            return userInfoService.searchByUserName(condition);
+        } else {
+            return userInfoService.selectList(null);
+        }
     }
 
     /**
