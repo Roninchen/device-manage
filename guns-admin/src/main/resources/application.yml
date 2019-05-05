@@ -37,9 +37,12 @@ log:
 spring:
   profiles: local
   datasource:
-    url: jdbc:mysql://device.codingfine.com/device_manage?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
-    username: device
-    password: device001
+    url: jdbc:mysql://10.153.4.125:35087/dcf37739?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: 97526c23
+    password: da446398
+#    url: jdbc:mysql://device.codingfine.com/device_manage?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+#    username: device
+#    password: device001
     db-name: device_manage #用来搜集数据库的所有表
     filters: wall,mergeStat
 
