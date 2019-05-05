@@ -1,5 +1,5 @@
 /**
- * 员工信息管理初始化
+ * 用户信息管理管理初始化
  */
 var UserInfo = {
     id: "UserInfoTable",	//表格id
@@ -14,10 +14,9 @@ var UserInfo = {
 UserInfo.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
-            {title: '', field: 'id', visible: true, align: 'center', valign: 'middle'},
-            {title: '', field: 'email', visible: true, align: 'center', valign: 'middle'},
-            {title: '', field: 'userName', visible: true, align: 'center', valign: 'middle'},
-            {title: '', field: 'department', visible: true, align: 'center', valign: 'middle'}
+            {title: '用户ID', field: 'email', visible: true, align: 'center', valign: 'middle'},
+            {title: '用户姓名', field: 'userName', visible: true, align: 'center', valign: 'middle'},
+            {title: '部门名称', field: 'department', visible: true, align: 'center', valign: 'middle'}
     ];
 };
 
@@ -36,12 +35,12 @@ UserInfo.check = function () {
 };
 
 /**
- * 点击添加员工信息
+ * 点击添加用户信息管理
  */
 UserInfo.openAddUserInfo = function () {
     var index = layer.open({
         type: 2,
-        title: '添加员工信息',
+        title: '添加用户信息管理',
         area: ['800px', '420px'], //宽高
         fix: false, //不固定
         maxmin: true,
@@ -50,14 +49,26 @@ UserInfo.openAddUserInfo = function () {
     this.layerIndex = index;
 };
 
+UserInfo.openAddUserInfos = function () {
+    var index = layer.open({
+        type:2,
+        title:"员工批量导入",
+        area:['400px','280px'],
+        fix:false,
+        maxmin: true,
+        content:Feng.ctxPath + '/userInfo/userInfo_adds'
+    });
+    this.layerIndex = index;
+};
+
 /**
- * 打开查看员工信息详情
+ * 打开查看用户信息管理详情
  */
 UserInfo.openUserInfoDetail = function () {
     if (this.check()) {
         var index = layer.open({
             type: 2,
-            title: '员工信息详情',
+            title: '用户信息管理详情',
             area: ['800px', '420px'], //宽高
             fix: false, //不固定
             maxmin: true,
@@ -68,7 +79,7 @@ UserInfo.openUserInfoDetail = function () {
 };
 
 /**
- * 删除员工信息
+ * 删除用户信息管理
  */
 UserInfo.delete = function () {
     if (this.check()) {
@@ -84,7 +95,23 @@ UserInfo.delete = function () {
 };
 
 /**
- * 查询员工信息列表
+ * 重置密码
+ */
+UserInfo.resetPassword = function () {
+    if (this.check()) {
+        var ajax = new $ax(Feng.ctxPath + "/userInfo/reset_password", function (data) {
+            Feng.success("重置成功!");
+        }, function (data) {
+            Feng.error("重置失败!" + data.responseJSON.message + "!");
+        });
+        ajax.set("userInfoId",this.seItem.id);
+        ajax.start();
+    }
+};
+
+
+/**
+ * 查询用户信息管理列表
  */
 UserInfo.search = function () {
     var queryData = {};
@@ -96,5 +123,8 @@ $(function () {
     var defaultColunms = UserInfo.initColumn();
     var table = new BSTable(UserInfo.id, "/userInfo/list", defaultColunms);
     table.setPaginationType("client");
+    table.responseHandler = function(data){
+        console.info(data);
+    }
     UserInfo.table = table.init();
 });

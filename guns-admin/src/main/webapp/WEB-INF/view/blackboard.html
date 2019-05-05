@@ -5,7 +5,9 @@
 			@for(notice in noticeList){
 				<div class="alert alert-success alert-dismissable">
 					<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-					${notice.content}
+					<div align="right">
+						<span style="text-align: right">${notice.content}</span>
+					</div>
 				</div>
 			@}
 		</div>

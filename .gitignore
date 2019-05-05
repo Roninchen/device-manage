@@ -24,3 +24,17 @@ guns-core/guns-core.iml
 guns-gateway/guns-gateway.iml
 guns-generator/guns-generator.iml
 *.iml
+
+device-manage/guns-admin/target/*
+.idea/*
+/guns-admin/guns-admin.iml
+guns-admin/target/
+guns-api/target/
+guns-core/target/
+guns-gateway.log.2018-12-04.0.gz
+guns-gateway/target/
+guns-generator/target/
+.idea/workspace.xml
+*.DS_Store
+*.gz
+*.xml

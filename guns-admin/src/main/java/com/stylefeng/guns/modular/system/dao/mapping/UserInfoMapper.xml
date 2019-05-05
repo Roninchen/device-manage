@@ -15,4 +15,8 @@
         id, email, user_name, department
     </sql>
 
+    <select id="searchByUserName" resultType="com.stylefeng.guns.modular.system.model.UserInfo">
+        select * from `user_info` as  userName where `user_name` like #{userName};
+    </select>
+
 </mapper>

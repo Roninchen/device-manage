@@ -28,4 +28,9 @@ public interface CacheKey {
      */
     String DEPT_NAME = "dept_name_";
 
+    String DEVICE_STATUS = "device_status_";
+    String DEVICE_MANAGE_STATUS = "device_manage_status";
+    String DEVICE_IS_FIX = "device_is_fix_";
+    String DEVICE_TYPE = "device_type_";
+
 }

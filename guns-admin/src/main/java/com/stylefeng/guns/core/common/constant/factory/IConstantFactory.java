@@ -1,6 +1,7 @@
 package com.stylefeng.guns.core.common.constant.factory;
 
 import com.stylefeng.guns.modular.system.model.Dict;
+import io.swagger.models.auth.In;
 
 import java.util.List;
 
@@ -112,5 +113,33 @@ public interface IConstantFactory {
      * 获取所有父部门id
      */
     List<Integer> getParentDeptIds(Integer deptid);
+
+    /**
+     * 获取 设备状态
+     * @param deviceStatus
+     * @return
+     */
+    String getDeviceStatusName(Integer deviceStatus);
+
+    /**
+     * 获取设备管理状态
+     * @param status
+     * @return
+     */
+    String getManageStatusName(Integer status);
+
+    /**
+     * 获取固定资产 状态
+     * @param isFix
+     * @return
+     */
+    String getFixStatusName(Integer isFix);
+
+    /**
+     * 获取设备分类
+     * @param type
+     * @return
+     */
+    String getDeviceTypeName(Integer type);
 
 }

@@ -2,6 +2,9 @@ package com.stylefeng.guns.modular.system_staff.service;
 
 import com.stylefeng.guns.modular.system.model.UserInfo;
 import com.baomidou.mybatisplus.service.IService;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,7 @@ import com.baomidou.mybatisplus.service.IService;
  * @since 2018-11-29
  */
 public interface IUserInfoService extends IService<UserInfo> {
+
+    List<UserInfo> searchByUserName(@Param("userName")String userName);
 
 }

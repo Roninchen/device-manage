@@ -1,0 +1,61 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <#input id="enterpriseNo" name="企业编号" underline="true"/>
+                    <#input id="deviceName" name="设备名称" underline="true"/>
+                    <#input id="deviceModel" name="型号" underline="true"/>
+                    <#input id="techniqueTarget" name="技术指标" underline="true"/>
+                    <#input id="manufactor" name="国别厂家" underline="true"/>
+                    <!--<#input id="type" name="分类" underline="true"/>-->
+
+                    <#select id="type" name="分类" underline="true">
+                    <option value="1">计量设备</option>
+                    </#select>
+                    <!--<#input id="status" name="管理状态"/>-->
+                    <#select id="status" name="管理状态" underline="true">
+                    <option value="1">已领用</option>
+                    <option value="0">封存</option>
+                    </#select>
+                </div>
+
+                <div class="col-sm-6">
+                    <#input id="charge" name="负责人" underline="true"/>
+                    <#input id="chargeEmail" name="负责人ID" underline="true"/>
+                    <#input id="owner" name="持有人" underline="true"/>
+                    <#input id="ownerEmail" name="持有人ID" underline="true"/>
+
+                    <#select id="isFix" name="固定资产" underline="true">
+                    <option value="1">是</option>
+                    <option value="0">否</option>
+                    </#select>
+
+
+                    <#select id ="deviceStatus" name="设备状态" underline="true">
+                    <option value="1">合格</option>
+                    <option value="2">限用</option>
+                    <option value="3">准用</option>
+                    <option value="4">禁用</option>
+                    <option value="5">停用</option>
+                    </#select>
+                </div>
+            </div>
+            <!--<#input id="deviceStatus" name="设备状态" underline="true" type="number" min="1" max="5"/>-->
+        </div>
+    </div>
+
+    <div class="row btn-group-m-t">
+        <div class="col-sm-10">
+            <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="FixAssetInfoDlg.addSubmit()"/>
+            <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="FixAssetInfoDlg.close()"/>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+<script src="${ctxPath}/static/modular/system_device/fixAsset/fixAsset_info.js"></script>
+@}
