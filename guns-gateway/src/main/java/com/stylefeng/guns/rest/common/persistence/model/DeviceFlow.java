@@ -66,7 +66,7 @@ public class DeviceFlow extends Model<DeviceFlow> {
     /**
      * 设备流转状态
      */
-    private Integer status;
+    private String status;
     /**
      * 创建时间
      */

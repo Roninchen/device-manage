@@ -23,7 +23,6 @@ guns-api/guns-api.iml
 guns-core/guns-core.iml
 guns-gateway/guns-gateway.iml
 guns-generator/guns-generator.iml
-*.iml
 
 device-manage/guns-admin/target/*
 .idea/*

@@ -10,4 +10,23 @@
         <result column="department" property="department" />
     </resultMap>
 
+    <select id="selectByEmail" resultType="com.stylefeng.guns.rest.common.persistence.model.UserInfo">
+        SELECT
+            *
+        FROM
+            `user_info` u
+        WHERE u.email = #{email}
+    </select>
+
+    <select id="selectByName" resultType="com.stylefeng.guns.rest.common.persistence.model.UserInfo">
+        SELECT
+            id AS id,
+            email AS email,
+            user_name AS userName,
+            department As department
+        FROM
+            `user_info` u
+        WHERE u.user_name = #{name}
+    </select>
+
 </mapper>

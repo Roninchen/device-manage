@@ -25,11 +25,48 @@ public class UserService implements UserAPI {
     private UserInfoMapper userInfoMapper;
 
     @Override
-    public UserInfoVo login(String email, String password) {
+    public UserInfoVo login(String email, String password,Integer needPass) {
+
+        UserInfo userInfo = new UserInfo();
+        UserInfoVo userInfoVo = new UserInfoVo();
+        userInfo.setUserName(email);
+        List<UserInfo> user_name = userInfoMapper.selectList(new EntityWrapper<UserInfo>().eq("user_name", email));
+        if (user_name.size()>0){
+            userInfoVo.setDepartment(user_name.get(0).getDepartment());
+            userInfoVo.setEmail(user_name.get(0).getEmail());
+            userInfoVo.setId(user_name.get(0).getId());
+            userInfoVo.setUserName(user_name.get(0).getUserName());
+            userInfoVo.setEmail(user_name.get(0).getEmail());
+            if (needPass == 1){
+                List<User> email1 = userMapper.selectList(new EntityWrapper<User>().eq("email", userInfoVo.getEmail()));
+                if (email1.size() < 1) {
+                    if (!password.equals("welcome")){
+                        userInfoVo.setId(0);
+                        return userInfoVo;
+                    }
+                    User user = new User();
+                    user.setEmail(userInfoVo.getEmail());
+                    user.setUserPwd("welcome");
+                    userMapper.insert(user);
+                }else {
+                    User user = email1.get(0);
+                    //密码不匹配
+                    if (!user.getUserPwd().equals(password)){
+                        userInfoVo.setId(0);
+                        return userInfoVo;
+                    }
+                }
+            }
+            return userInfoVo;
+        }
+        userInfoVo.setId(0);
+        return userInfoVo;
+        /**
         UserInfoVo userInfoVo = new UserInfoVo();
         ////根据登录账户获取用户信息
         User user = new User();
-        user.setEmail(email);
+        //user.setEmail(email);
+        user.setFullName(email);
         User result = userMapper.selectOne(user);
         if (result!=null && result.getId()>0){
             String md5Password = MD5Util.encrypt(password);
@@ -46,12 +83,13 @@ public class UserService implements UserAPI {
         }
         userInfoVo.setId(0);
         return userInfoVo;
+         **/
     }
 
     @Override
     public int register(RegisterBo registerBo) {
         List<UserInfo> email = userInfoMapper
-            .selectList(new EntityWrapper<UserInfo>().eq("email", registerBo.getEmail()));
+            .selectList(new EntityWrapper<UserInfo>().like("email", registerBo.getEmail()));
                 //.eq("user_name",registerBo.getUserName()));
         //系统id必须对应，用户不是系统用户无权限注册
         if (email.size()<1){
@@ -64,12 +102,13 @@ public class UserService implements UserAPI {
         }
         UserInfo userInfo = email.get(0);
         User user = new User();
-        user.setEmail(registerBo.getEmail());
+        user.setEmail(userInfo.getEmail());
         user.setUserName(registerBo.getUserName());
         user.setDepartment(userInfo.getDepartment());
         user.setUserPwd(MD5Util.encrypt(registerBo.getUserPwd()));
         user.setPhone(registerBo.getPhone());
         user.setCreateTime(DateUtil.getTimeOfEastEight());
+        user.setFullName(registerBo.getEmail());
         Integer insert = userMapper.insert(user);
         //0为成功
         if (insert==1){
@@ -88,14 +127,12 @@ public class UserService implements UserAPI {
     @Override
     public UserInfoVo getUserInfo(int uuid) {
         //通过id获取user信息
-        User user = userMapper.selectById(uuid);
+        UserInfo user = userInfoMapper.selectById(uuid);
         UserInfoVo userInfoVo = new UserInfoVo();
         userInfoVo.setEmail(user.getEmail());
-        userInfoVo.setGender(user.getGender());
         userInfoVo.setUserName(user.getUserName());
-        userInfoVo.setPhone(user.getPhone());
-        userInfoVo.setNumber(user.getNumber());
         userInfoVo.setDepartment(user.getDepartment());
+        userInfoVo.setId(user.getId());
         return userInfoVo;
     }
 
