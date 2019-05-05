@@ -24,3 +24,5 @@ guns-core/guns-core.iml
 guns-gateway/guns-gateway.iml
 guns-generator/guns-generator.iml
 *.iml
+*.DS_Store
+*.log

@@ -14,5 +14,7 @@ public class AuthRequest {
 
     private String email;
     private String password;
+    // 1 需要密码 2不需要密码
+    private Integer needPass;
 
 }

@@ -15,9 +15,9 @@ public interface DeviceServiceApi {
 
     Map addEmail();
 
-    Map recieveMessage(String email);
+    Map recieveMessage(String email,PageBO bo);
 
-    Map sendMessage(String email);
+    Map sendMessage(String email,PageBO bo);
 
     Map agreeLend(LendBO bo);
 

@@ -23,7 +23,6 @@ public class UserInfo extends Model<UserInfo> {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     private String email;
-    @TableField("user_name")
     private String userName;
     private String department;
 
